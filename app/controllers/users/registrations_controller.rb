@@ -1,5 +1,7 @@
+
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
+  skip_action_callback :require_no_authentication
+  before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -8,9 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super
+   end
 
   # GET /resource/edit
   # def edit
@@ -36,12 +38,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :attribute
-  # end
+   def configure_sign_up_params
+     devise_parameter_sanitizer.for(:sign_up)        << :name
+     devise_parameter_sanitizer.for(:sign_up)        << :surname
+   end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

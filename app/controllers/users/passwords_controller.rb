@@ -1,4 +1,7 @@
+
+
 class Users::PasswordsController < Devise::PasswordsController
+  skip_action_callback :require_no_authentication
   # GET /resource/password/new
   # def new
   #   super
