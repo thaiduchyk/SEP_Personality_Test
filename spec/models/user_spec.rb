@@ -9,72 +9,90 @@ RSpec.describe User, type: :model do
 
   describe 'validations' do
 
-  end
-  it 'email format is correct' do
-    expect(@user).to be_valid
-  end
+    context 'with valid parameters' do
 
-  it 'email format is not correct' do
-    ['mittlag@test.com123', 'mittlag@cl_admin.com', 'mittlag', 'mittlag@cd.234'].each do |email|
-      @user.email = email
-      expect(@user).to_not be_valid
+      it 'is valid' do
+        expect(@user).to be_valid
+      end
+
     end
-  end
 
-  it 'email is present' do
-    expect(@user).to be_valid
-  end
+    context 'with invalid parameters' do
 
-  it 'email is blank' do
-    @user.email = ''
-    expect(@user).to_not be_valid
-  end
+      it 'is invalid then email format is not correct' do
+        ['mittlag@test.com123', 'mittlag@cl_admin.com', 'mittlag', 'mittlag@cd.234'].each do |email|
+          @user.email = email
+          expect(@user).to_not be_valid
+        end
+      end
 
-  it 'should have a unique email' do
-    @user.save!
-    user = User.new(email:'test@gmail.com')
-    expect(user).to_not be_valid
-  end
+      it 'is invalid then email is blank' do
+        @user.email = ''
+        expect(@user).to_not be_valid
+      end
 
-  it 'password is with correct length (6)' do
-    @user.password = 'a4' * 3
-    expect(@user).to be_valid
-  end
+      it 'is invalid then email is not unique' do
+        @user.save!
+        user = User.new(email:'test@gmail.com')
+        expect(user).to_not be_valid
+      end
 
-  it 'password is with incorrect length (< 6)' do
-    @user.password = 'a' * 5
-    expect(@user).to_not be_valid
-  end
+      it 'is invalid then password is too short' do
+        @user.password = '1' + 'a' * 4
+        expect(@user).to_not be_valid
+      end
 
-  it 'password format is correct' do
-    @user.password = '2d2d4d'
-    expect(@user).to be_valid
-  end
+      it 'is invalid then password format is not correct' do
+        ['111111', 'aaaaaa'].each do |password|
+          @user.password = password
+          expect(@user).to_not be_valid
+        end
+      end
 
-  it 'password format is not correct' do
-    ['111111', 'aaaaaa'].each do |password|
-      @user.password = password
-      expect(@user).to_not be_valid
+      it 'is invalid then password password is blank' do
+        @user.password = ''
+        expect(@user).to_not be_valid
+      end
+
+      it 'is invalid then name format is not correct' do
+        ['A', 'A1', 'Test5', 'testname'].each do |name|
+          @user.name = name
+          expect(@user).to_not be_valid
+        end
+      end
+
+      it 'is invalid then name is blank' do
+        @user.name = ''
+        expect(@user).to_not be_valid
+      end
+
+      it 'is invalid then surname format is not correct' do
+        ['A', 'A1', 'Test5', 'testname'].each do |surname|
+          @user.surname = surname
+          expect(@user).to_not be_valid
+        end
+      end
+
+      it 'is invalid then surname is blank' do
+        @user.surname = ''
+        expect(@user).to_not be_valid
+      end
+
     end
+
   end
 
-  it 'password is present' do
-    expect(@user).to be_valid
-  end
 
-  it 'password is blank' do
-    @user.password = ''
-    expect(@user).to_not be_valid
-  end
 
-  it 'name format is correct' do
-    expect(@user).to be_valid
-  end
 
-  it 'name format is not correct' do
-    ['A', 'A1', 'Test5', 'testname'].each do |name|
-      @user.name = name
-      expect(@user).to_not be_valid
-    end
-  end
+
+
+
+
+
+
+
+
+
+
 end

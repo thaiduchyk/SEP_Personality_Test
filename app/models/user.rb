@@ -16,4 +16,7 @@ class User < ActiveRecord::Base
   VALID_NAME_REGEX = /\A[A-Z][a-zA-Z]{2,}\z/
   validates :name, presence:true,
             format: { with: VALID_NAME_REGEX }
+
+  validates :surname, presence:true,
+            format: { with: VALID_NAME_REGEX }
 end
