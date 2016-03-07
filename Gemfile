@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
+gem 'bower-rails'
+
+gem 'haml-rails'
+
 # Use ActiveModel has_secure_passwordgit
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -40,6 +44,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'pry'
+  gem 'factory_girl_rails'
 end
 
 group :development do

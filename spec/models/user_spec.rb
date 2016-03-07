@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
 
       it 'is invalid then email is not unique' do
         @user.save!
-        user = User.new(email:'test@gmail.com')
+        user = User.new(email:'test@gmail.co')
         expect(user).to_not be_valid
       end
 
@@ -77,22 +77,6 @@ RSpec.describe User, type: :model do
         @user.surname = ''
         expect(@user).to_not be_valid
       end
-
     end
-
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end
