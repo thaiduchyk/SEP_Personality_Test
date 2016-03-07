@@ -11,17 +11,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
-     super
+     build_resource(sign_up_params)
+     resource.save
+     if resource.persisted?
+       if resource.active_for_authentication?
+         sign_up(resource_name, resource)
+         respond_with resource, location: after_sign_up_path_for(resource)
+       end
+     else
+      respond_with resource
+     end
+
+    # super
    end
 
   # GET /resource/edit
-  # def edit
-  #   super
+   #def edit
+   #  super
   # end
 
-  # PUT /resource
-  # def update
-  #   super
+   # PUT /resource
+   #def update
+   #  super
   # end
 
   # DELETE /resource
