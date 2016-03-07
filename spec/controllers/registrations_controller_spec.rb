@@ -4,54 +4,41 @@ RSpec.describe Users::RegistrationsController, :type => :controller do
   include Devise::TestHelpers
 
   before(:each) do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
+  describe 'POST #create' do
 
-  describe "POST 'create'" do
-
-    context "With valid parametrs" do
-      before(:each) do
-        @attr = { name: 'Name', surname: 'Surname', email:  'user@example.com',
-                  password: 'foobar01', password_confirmation: 'foobar01' }
-      end
+    context 'with valid parametrs' do
+      let(:user_attributes){ FactoryGirl.attributes_for(:user) }
 
       it 'user is saved' do
-        expect{post :create, :user => @attr}.to change(User, :count).by(1)
+        expect{ post :create, user: user_attributes }.to change(User, :count).by(1)
       end
 
       it 'user is signed in' do
-        post :create, :user => @attr
+        post :create, user: user_attributes
         expect(subject.current_user).to_not eq(nil)
       end
+
     end
 
-    context "With invalid parametrs" do
+    context 'with invalid parametrs' do
 
       it 'user is not saved' do
-        expect{post :create, :user => {}}.to_not change(User, :count)
+        expect{post :create, user: {}}.to_not change(User, :count)
       end
 
       it 'user is not signed in' do
-        post :create, :user => {}
+        post :create, user: {}
         expect(subject.current_user).to eq(nil)
       end
-    end
-  end
 
-  describe "PUT 'update'" do
-
-    before(:each) do
-      @user = { name: 'Name', surname: 'Surname', email:  'user@example.com',
-                password: 'foobar01', password_confirmation: 'foobar01'}
-    end
-
-    context "With invalid parametrs" do
-
-      it 'user have to be updated' do
-        @attr = { name: 'Other', surname: 'Other', email:  'other@example.com',
-                  password: 'otherpassword01', password_confirmation: 'otherpassword01' }
-        put :update, :id => @user, :user => @attr
+      it 'error return if email is already in use' do
+        user = FactoryGirl.create(:user)
+        post :create, { user: { :email => 'user@example.com', :password => user.password } }
+        expect(controller.current_user).to be_nil
+        expect(response.body).to eq('')
       end
 
     end
