@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include Devise
   require 'pry'
+
+  def angular
+    render 'layouts/application'
+  end
 end
