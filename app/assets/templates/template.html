@@ -1,0 +1,41 @@
+<section style="margin-top:20px">
+  <ul class="nav nav-tabs nav-justified">
+    <li role="presentation" ng-class="{active:isSelected(1)}"> <a href ng-click="selectTab(1)">Sign in</a> </li>
+    <li role="presentation" ng-class="{active:isSelected(2)}"> <a href ng-click="selectTab(2)">Create account</a> </li>
+  </ul>
+</section>
+<div class="panel" ng-show="isSelected(1)">
+  <form name="signinForm">
+    <div class="form-group form-group-lg col-lg-12" style="margin-top:20px">
+      <input type="text" class="form-control" ng-model="testLogin.username" placeholder="Username" />
+    </div>
+    <div class="form-group form-group-lg col-lg-12">
+      <input type="password" class="form-control" ng-model="testLogin.password" placeholder="Password" />
+    </div>
+    <div class="form-group form-group-lg col-lg-12">
+      <button type="submit" class="btn btn-warning btn-lg btn-block" ng-click="gotoBegin()">Sign in</button>
+    </div>
+  </form>
+</div>
+<div class="panel" ng-show="isSelected(2)">
+  <form name="signupForm">
+    <div class="form-group form-group-md col-lg-6" style="margin-top:10px">
+      <input type="text" class="form-control" placeholder="Name" />
+    </div>
+    <div class="form-group form-group-md col-lg-6">
+      <input type="text" class="form-control" placeholder="Surname" />
+    </div>
+    <div class="form-group form-group-md col-lg-12">
+      <input type="email" class="form-control" placeholder="Email" />
+    </div>
+    <div class="form-group form-group-md col-lg-12">
+      <input type="password" class="form-control" placeholder="Password" />
+    </div>
+    <div class="form-group form-group-md col-lg-12">
+      <input type="password" class="form-control" placeholder="Confirm password" />
+    </div>
+    <div class="form-group form-group-md col-lg-12">
+      <button type="submit" class="btn btn-warning btn-lg btn-block">Sign me up!</button>
+    </div>
+  </form>
+</div>
