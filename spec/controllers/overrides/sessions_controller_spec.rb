@@ -5,16 +5,17 @@ RSpec.describe Overrides::SessionsController, type: :controller do
 
   before(:each) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
+    user = FactoryGirl.create(:user)
+    sign_in user
   end
 
   describe 'create' do
     context 'with valid parameters' do
-      let(:user){ FactoryGirl.create(:user) }
       let(:user_attributes){ FactoryGirl.attributes_for(:user) }
 
       it 'sign in user' do
         post :create, user: user_attributes
-        expect(current_user).to eq(user)
+        expect(current_user.email).to eq(user.email)
       end
 
       it 'responds status 200' do
