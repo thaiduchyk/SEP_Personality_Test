@@ -21,12 +21,13 @@
     .otherwise('/');
   })
   .controller('MainCtrl', [
-    '$scope', '$location', 'ngDialog',
-    function($scope, $location, ngDialog){
+    '$scope', '$http', '$location', 'ngDialog',
+    function($scope, $http, $location, ngDialog){
       $scope.images = {fb: '/assets/fb.png',
                        in: '/assets/in.png',
                      mail: '/assets/mail.png',};
 
+      $scope.formData = {};
       $scope.clickToOpen = function() {
         ngDialog.open({ template: '/assets/template.html', className: 'ngdialog-theme-default', scope: $scope });
         $scope.tab=1;
@@ -43,6 +44,28 @@
           ngDialog.close();
           $location.path('/begin');
         }
+      };
+      $scope.processForm = function() {
+
+        $http({
+          method  : 'POST',
+          url     : '/auth',
+          data    : $.param($scope.formData),  // pass in data as strings
+          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+        })
+        .success(function(data) {
+          console.log(data);
+
+          if (!data.success) {
+            // if not successful, bind errors to error variables
+            $scope.errorName = data.errors.name;
+            $scope.errorSuperhero = data.errors.superheroAlias;
+          } else {
+            // if successful, bind success message to message
+            $scope.message = data.message;
+          }
+        });
+
       };
     }])
     .controller('TestCtrl', [
