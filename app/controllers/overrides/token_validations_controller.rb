@@ -1,0 +1,2 @@
+class TokenValidationsController < DeviseTokenAuth::TokenValidationsController
+end

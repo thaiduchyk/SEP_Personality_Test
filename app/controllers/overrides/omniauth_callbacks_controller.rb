@@ -1,0 +1,2 @@
+class OmniauthCallbacksController < DeviseTokenAuth::OmniauthCallbacksController
+end

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-                                    sessions: 'users/sessions',
-                                    registrations: 'users/registrations',
-                                    passwords: 'users/passwords'
-                                  }
+  mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+      token_validations:  'overrides/token_validations',
+      omniauth_callbacks: 'overrides/omniauth_callbacks',
+      registrations:      'overrides/registrations',
+      sessions:           'overrides/sessions',
+
+  }
 
   root to: 'application#angular'
 
