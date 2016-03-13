@@ -1,10 +1,12 @@
-class RegistrationsController < DeviseTokenAuth::RegistrationsController
-  before_filter :configure_permitted_parameters
+class Overrides::RegistrationsController < DeviseTokenAuth::RegistrationsController
+  skip_before_filter  :verify_authenticity_token
 
-  protected
+  def create
+    super
+  end
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up).push(:name, :surname)
-    end
+  def sign_up_params
+    params.permit(:name, :surname, :email, :password, :password_confirmation)
+  end
 
 end

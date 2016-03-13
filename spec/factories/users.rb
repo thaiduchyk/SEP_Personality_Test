@@ -6,5 +6,7 @@ FactoryGirl.define do
     password 'foobar01'
     password_confirmation 'foobar01'
     provider 'provider'
+    uid 'uid'
   end
+
 end

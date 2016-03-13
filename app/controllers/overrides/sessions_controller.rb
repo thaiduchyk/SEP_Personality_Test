@@ -1,5 +1,3 @@
 class Overrides::SessionsController < DeviseTokenAuth::SessionsController
-  def create
-    super
-  end
+  skip_before_filter  :verify_authenticity_token
 end
