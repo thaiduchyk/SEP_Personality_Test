@@ -2090,7 +2090,7 @@ for ( i in { submit: true, reset: true } ) {
 	Expr.pseudos[ i ] = createButtonPseudo( i );
 }
 
-// Easy API for creating new setFilters
+// Easy api for creating new setFilters
 function setFilters() {}
 setFilters.prototype = Expr.filters = Expr.pseudos;
 Expr.setFilters = new setFilters();
@@ -13124,7 +13124,7 @@ var escapeForRegexp = function(s) {
 function isElement(node) {
   return !!(node &&
     (node.nodeName  // we are a direct element
-    || (node.prop && node.attr && node.find)));  // we have an on and find method part of jQuery API
+    || (node.prop && node.attr && node.find)));  // we have an on and find method part of jQuery api
 }
 
 /**
@@ -14921,7 +14921,7 @@ function publishExternalAPI(angular) {
  * [jQuery](http://api.jquery.com/jQuery/) function. If jQuery is not available, `angular.element`
  * delegates to Angular's built-in subset of jQuery, called "jQuery lite" or "jqLite."
  *
- * <div class="alert alert-success">jqLite is a tiny, API-compatible subset of jQuery that allows
+ * <div class="alert alert-success">jqLite is a tiny, api-compatible subset of jQuery that allows
  * Angular to manipulate the DOM in a cross-browser compatible way. **jqLite** implements only the most
  * commonly needed functionality with the goal of having a very small footprint.</div>
  *
@@ -16267,7 +16267,7 @@ function annotate(fn, strictDi, name) {
  * @name $injector#annotate
  *
  * @description
- * Returns an array of service names which the function is requesting for injection. This API is
+ * Returns an array of service names which the function is requesting for injection. This api is
  * used by the injector to determine which services need to be injected into the function when the
  * function is invoked. There are three ways in which the function can be annotated with the needed
  * dependencies.
@@ -17927,7 +17927,7 @@ function Browser(window, document, $log, $sniffer) {
   };
 
   //////////////////////////////////////////////////////////////
-  // URL API
+  // URL api
   //////////////////////////////////////////////////////////////
 
   var cachedState, lastHistoryState,
@@ -17983,7 +17983,7 @@ function Browser(window, document, $log, $sniffer) {
       var sameBase = lastBrowserUrl && stripHash(lastBrowserUrl) === stripHash(url);
       lastBrowserUrl = url;
       lastHistoryState = state;
-      // Don't use history API if only the hash changed
+      // Don't use history api if only the hash changed
       // due to a bug in IE10/IE11 which leads
       // to not firing a `hashchange` nor `popstate` event
       // in some cases (see #9143).
@@ -18133,7 +18133,7 @@ function Browser(window, document, $log, $sniffer) {
   self.$$checkUrlChange = fireUrlChange;
 
   //////////////////////////////////////////////////////////////
-  // Misc API
+  // Misc api
   //////////////////////////////////////////////////////////////
 
   /**
@@ -18654,7 +18654,7 @@ function $TemplateCacheProvider() {
  * see the {@link guide/directive directive guide}.
  * </div>
  *
- * ## Comprehensive Directive API
+ * ## Comprehensive Directive api
  *
  * There are many different options for a directive.
  *
@@ -21471,7 +21471,7 @@ function $ControllerProvider() {
      * a service, so that one can override this service with [BC version](https://gist.github.com/1649788).
      */
     return function(expression, locals, later, ident) {
-      // PRIVATE API:
+      // PRIVATE api:
       //   param `later` --- indicates that the controller's constructor is invoked at a later time.
       //                     If true, $controller will allocate the object with the correct
       //                     prototype chain, but will not invoke the controller until a returned
@@ -22079,7 +22079,7 @@ function $HttpProvider() {
      * For a higher level of abstraction, please check out the {@link ngResource.$resource
      * $resource} service.
      *
-     * The $http API is based on the {@link ng.$q deferred/promise APIs} exposed by
+     * The $http api is based on the {@link ng.$q deferred/promise APIs} exposed by
      * the $q service. While for simple usage patterns this doesn't matter much, for advanced usage
      * it is important to familiarize yourself with these APIs and the guarantees they provide.
      *
@@ -22475,7 +22475,7 @@ function $HttpProvider() {
      *      XHR object. See [requests with credentials](https://developer.mozilla.org/docs/Web/HTTP/Access_control_CORS#Requests_with_credentials)
      *      for more information.
      *    - **responseType** - `{string}` - see
-     *      [XMLHttpRequest.responseType](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#xmlhttprequest-responsetype).
+     *      [XMLHttpRequest.responseType](https://developer.mozilla.org/en-US/docs/Web/api/XMLHttpRequest#xmlhttprequest-responsetype).
      *
      * @returns {HttpPromise} Returns a {@link ng.$q `Promise}` that will be resolved to a response object
      *                        when the request succeeds or fails.
@@ -24342,7 +24342,7 @@ forEach([LocationHashbangInHtml5Url, LocationHashbangUrl, LocationHtml5Url], fun
    * The state object is later passed to `pushState` or `replaceState`.
    *
    * NOTE: This method is supported only in HTML5 mode and only in browsers supporting
-   * the HTML5 History API (i.e. methods `pushState` and `replaceState`). If you need to support
+   * the HTML5 History api (i.e. methods `pushState` and `replaceState`). If you need to support
    * older browsers (like IE9 or Android < 4.0), don't use this method.
    *
    * @param {object=} state State object for pushState or replaceState
@@ -24354,8 +24354,8 @@ forEach([LocationHashbangInHtml5Url, LocationHashbangUrl, LocationHtml5Url], fun
     }
 
     if (Location !== LocationHtml5Url || !this.$$html5) {
-      throw $locationMinErr('nostate', 'History API state support is available only ' +
-        'in HTML5 mode and only in browsers supporting HTML5 History API');
+      throw $locationMinErr('nostate', 'History api state support is available only ' +
+        'in HTML5 mode and only in browsers supporting HTML5 History api');
     }
     // The user might modify `stateObject` after invoking `$location.state(stateObject)`
     // but we're changing the $$state reference to $browser.state() during the $digest
@@ -24500,7 +24500,7 @@ function $LocationProvider() {
    * {@link ng.$location#$locationChangeSuccess $locationChangeSuccess} is fired.
    *
    * The `newState` and `oldState` parameters may be defined only in HTML5 mode and when
-   * the browser supports the HTML5 History API.
+   * the browser supports the HTML5 History api.
    *
    * @param {Object} angularEvent Synthetic event object.
    * @param {string} newUrl New URL
@@ -24517,7 +24517,7 @@ function $LocationProvider() {
    * Broadcasted after a URL was changed.
    *
    * The `newState` and `oldState` parameters may be defined only in HTML5 mode and when
-   * the browser supports the HTML5 History API.
+   * the browser supports the HTML5 History api.
    *
    * @param {Object} angularEvent Synthetic event object.
    * @param {string} newUrl New URL
@@ -26916,7 +26916,7 @@ function $ParseProvider() {
  * For more on this please see the [Q documentation](https://github.com/kriskowal/q) especially the
  * section on serial or parallel joining of promises.
  *
- * # The Deferred API
+ * # The Deferred api
  *
  * A new instance of deferred is constructed by calling `$q.defer()`.
  *
@@ -26938,7 +26938,7 @@ function $ParseProvider() {
  * - promise – `{Promise}` – promise object associated with this deferred.
  *
  *
- * # The Promise API
+ * # The Promise api
  *
  * A new promise instance is created when a deferred instance is created and can be retrieved by
  * calling `deferred.promise`.
@@ -26966,7 +26966,7 @@ function $ParseProvider() {
  * - `finally(callback, notifyCallback)` – allows you to observe either the fulfillment or rejection of a promise,
  *   but to do so without modifying the final value. This is useful to release resources or do some
  *   clean-up that needs to be done whether the promise was rejected or resolved. See the [full
- *   specification](https://github.com/kriskowal/q/wiki/API-Reference#promisefinallycallback) for
+ *   specification](https://github.com/kriskowal/q/wiki/api-Reference#promisefinallycallback) for
  *   more information.
  *
  * # Chaining promises
@@ -27013,7 +27013,7 @@ function $ParseProvider() {
  *      // Simulate resolving of promise
  *      deferred.resolve(123);
  *      // Note that the 'then' function does not get called synchronously.
- *      // This is because we want the promise API to always be async, whether or not
+ *      // This is because we want the promise api to always be async, whether or not
  *      // it got called synchronously or asynchronously.
  *      expect(resolvedValue).toBeUndefined();
  *
@@ -27447,7 +27447,7 @@ function $$RAFProvider() { //rAF
  * value as last time so we optimize the operation.
  *
  * Closures construction is expensive in terms of speed as well as memory:
- *   - No closures, instead use prototypical inheritance for API
+ *   - No closures, instead use prototypical inheritance for api
  *   - Internal state needs to be stored on scope directly, which means that private state is
  *     exposed as $$____ properties
  *
@@ -29319,7 +29319,7 @@ function $SceDelegateProvider() {
  * context.  You can then audit your code (a simple grep would do) to ensure that this is only done
  * for those values that you can easily tell are safe - because they were received from your server,
  * sanitized by your library, etc.  You can organize your codebase to help with this - perhaps
- * allowing only the files in a specific directory to do this.  Ensuring that the internal API
+ * allowing only the files in a specific directory to do this.  Ensuring that the internal api
  * exposed by that code doesn't markup arbitrary values as safe then becomes a more manageable task.
  *
  * In the case of AngularJS' SCE service, one uses {@link ng.$sce#trustAs $sce.trustAs}
@@ -29557,7 +29557,7 @@ function $SceProvider() {
 
   /* Design notes on the default implementation for SCE.
    *
-   * The API contract for the SCE delegate
+   * The api contract for the SCE delegate
    * -------------------------------------
    * The SCE delegate object must provide the following 3 methods:
    *
@@ -29984,12 +29984,12 @@ function $SnifferProvider() {
 
     return {
       // Android has history.pushState, but it does not update location correctly
-      // so let's not use the history API at all.
+      // so let's not use the history api at all.
       // http://code.google.com/p/android/issues/detail?id=17471
       // https://github.com/angular/angular.js/issues/904
 
       // older webkit browser (533.9) on Boxee box has exactly the same problem as Android has
-      // so let's not use the history API also
+      // so let's not use the history api also
       // We are purposefully using `!(android < 4)` to cover the case when `android` is undefined
       // jshint -W018
       history: !!($window.history && $window.history.pushState && !(android < 4) && !boxee),
@@ -30335,7 +30335,7 @@ var originUrl = urlResolve(window.location.href);
  * properties such as protocol, hostname, port, etc.
  *
  * References:
- *   http://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement
+ *   http://developer.mozilla.org/en-US/docs/Web/api/HTMLAnchorElement
  *   http://www.aptana.com/reference/html/api/HTMLAnchorElement.html
  *   http://url.spec.whatwg.org/#urlutils
  *   https://github.com/angular/angular.js/pull/2902
@@ -32549,7 +32549,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
     control.$$parentForm = form;
   };
 
-  // Private API: rename a form control
+  // Private api: rename a form control
   form.$$renameControl = function(control, newName) {
     var oldName = control.$name;
 
@@ -34049,7 +34049,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
   // In composition mode, users are still inputing intermediate text buffer,
   // hold the listener until composition is done.
-  // More about composition events: https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent
+  // More about composition events: https://developer.mozilla.org/en-US/docs/Web/api/CompositionEvent
   if (!$sniffer.android) {
     var composing = false;
 
@@ -37110,7 +37110,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
  *
  * @description
  *
- * `NgModelController` provides API for the {@link ngModel `ngModel`} directive.
+ * `NgModelController` provides api for the {@link ngModel `ngModel`} directive.
  * The controller contains services for data-binding, validation, CSS updates, and value formatting
  * and parsing. It purposefully does not contain any logic which deals with DOM rendering or
  * listening to DOM events.

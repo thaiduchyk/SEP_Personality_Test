@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Overrides::RegistrationsController, type: :controller do
+RSpec.describe Api::V1::Overrides::RegistrationsController, type: :controller do
   include Devise::TestHelpers
 
   before(:each) do
