@@ -6,35 +6,35 @@
 </section>
 <div class="panel" ng-show="isSelected(1)">
   <form name="signinForm">
-    <div class="form-group form-group-lg col-lg-12" style="margin-top:20px">
+    <div class="form-group form-group-lg" style="margin-top:20px">
       <input type="text" class="form-control" ng-model="testLogin.username" placeholder="Username" />
     </div>
-    <div class="form-group form-group-lg col-lg-12">
+    <div class="form-group form-group-lg">
       <input type="password" class="form-control" ng-model="testLogin.password" placeholder="Password" />
     </div>
-    <div class="form-group form-group-lg col-lg-12">
+    <div class="form-group form-group-lg">
       <button type="submit" class="btn btn-warning btn-lg btn-block" ng-click="gotoBegin()">Sign in</button>
     </div>
   </form>
 </div>
 <div class="panel" ng-show="isSelected(2)">
   <form name="signupForm" ng-submit="processForm()">
-    <div class="form-group form-group-md col-lg-6" style="margin-top:10px">
+    <div class="form-group form-group-md" style="margin-top:10px">
       <input type="text" class="form-control" placeholder="Name" ng-model="formData.name"/>
     </div>
-    <div class="form-group form-group-md col-lg-6">
+    <div class="form-group form-group-md">
       <input type="text" class="form-control" placeholder="Surname" ng-model="formData.surname"/>
     </div>
-    <div class="form-group form-group-md col-lg-12">
+    <div class="form-group form-group-md">
       <input type="text" class="form-control" placeholder="Email" ng-model="formData.email"/>
     </div>
-    <div class="form-group form-group-md col-lg-12">
+    <div class="form-group form-group-md">
       <input type="password" class="form-control" placeholder="Password"  ng-model="formData.password" />
     </div>
-    <div class="form-group form-group-md col-lg-12">
+    <div class="form-group form-group-md">
       <input type="password" class="form-control" placeholder="Confirm password" ng-model="formData.password_confirmation"/>
     </div>
-    <div class="form-group form-group-md col-lg-12">
+    <div class="form-group form-group-md">
       <button type="submit" class="btn btn-warning btn-lg btn-block">Sign me up!</button>
     </div>
   </form>
