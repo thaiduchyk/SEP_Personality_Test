@@ -18,4 +18,6 @@
 //= require rzslider.min
 //= require ui-bootstrap-tpls
 //= require ngDialog.min
+//= require config/ngRoute.config
+//= require controllers/controllers
 //= require angular-module
