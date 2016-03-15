@@ -35,7 +35,6 @@ gem 'haml-rails'
 
 gem 'swagger-docs'
 
-gem 'swagger-ui_rails'
 
 # Use ActiveModel has_secure_passwordgit
 # gem 'bcrypt', '~> 3.1.7'

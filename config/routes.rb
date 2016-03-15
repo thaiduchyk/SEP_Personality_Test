@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root to: 'application#angular'
+
   namespace :api do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth', controllers: {
@@ -11,8 +14,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'api' => 'application#api'
 
-  root to: 'application#angular'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -5,7 +5,7 @@
     $routeProvider
     .when('/', {
       controller: 'MainCtrl',
-      templateUrl: '/assets/index.html'
+      templateUrl: '/assets/api.html'
     })
     .when('/signup', {
       controller: 'MainCtrl',
