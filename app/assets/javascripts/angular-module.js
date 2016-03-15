@@ -42,22 +42,26 @@
         return $scope.tab === checkTab;
       };
       $scope.userSignin = function() {
+        localStorage.setItem("email", $scope.signInData.email);
+        localStorage.setItem("pass", $scope.signInData.password);
         $http({
           method  : 'POST',
-          url     : '/sign_in',
+          url     : '/auth/sign_in',
           data    : $.param($scope.signInData),  // pass in data as strings
           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
         .success(function(data) {
-          console.log(data);
-          if (!data.success) {
+
+            console.log("success");
             // if not successful, bind errors to error variables
-            $scope.errorName = data.errors.name;
-            $scope.errorSuperhero = data.errors.superheroAlias;
-          } else {
-            // if successful, bind success message to message
-            $scope.message = data.message;
-          }
+            console.log(data.data);
+            //$scope.data = data;
+            // $scope.errorName = data.errors.name;
+            // $scope.errorSuperhero = data.errors.superheroAlias;
+
+        })
+        .error(function(error){
+          console.log("error");
         });
       };
       // $scope.gotoBegin = function() {
@@ -74,15 +78,15 @@
           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
         .success(function(data) {
-          console.log(data);
-
           if (!data.success) {
             // if not successful, bind errors to error variables
             $scope.errorName = data.errors.name;
             $scope.errorSuperhero = data.errors.superheroAlias;
+            console.log("error");
           } else {
             // if successful, bind success message to message
             $scope.message = data.message;
+            console.log("message = " + data.message);
           }
         });
       };
