@@ -24,7 +24,7 @@ angular.module('controllers', [])
     localStorage.setItem("pass", $scope.signInData.password);
     $http({
       method  : 'POST',
-      url     : '/auth/sign_in',
+      url     : '/api/v1/auth/sign_in',
       data    : $.param($scope.signInData),  // pass in data as strings
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
     })
@@ -51,7 +51,7 @@ angular.module('controllers', [])
   $scope.processForm = function() {
     $http({
       method  : 'POST',
-      url     : '/auth',
+      url     : '/api/v1/auth',
       data    : $.param($scope.formData),  // pass in data as strings
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
     })
