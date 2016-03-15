@@ -1,9 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-                                    sessions: 'users/sessions',
-                                    registrations: 'users/registrations',
-                                    passwords: 'users/passwords'
-                                  }
+
+  root to: 'application#angular'
+
+  namespace :api do
+    namespace :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+                                            token_validations:  'api/v1/overrides/token_validations',
+                                            omniauth_callbacks: 'api/v1/overrides/omniauth_callbacks',
+                                            registrations:      'api/v1/overrides/registrations',
+                                            sessions:           'api/v1/overrides/sessions',
+
+                                        }
+    end
+  end
+
+  get 'api' => 'application#api'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -781,7 +781,7 @@ var escapeForRegexp = function(s) {
 function isElement(node) {
   return !!(node &&
     (node.nodeName  // we are a direct element
-    || (node.prop && node.attr && node.find)));  // we have an on and find method part of jQuery API
+    || (node.prop && node.attr && node.find)));  // we have an on and find method part of jQuery api
 }
 
 /**
@@ -836,7 +836,7 @@ function arrayRemove(array, value) {
  *
  * @example
  <example module="copyExample">
- <file name="index.html">
+ <file name="api.html">
  <div ng-controller="ExampleController">
  <form novalidate class="simple-form">
  Name: <input type="text" ng-model="user.name" /><br />
@@ -1473,7 +1473,7 @@ function getNgAttribute(element, ngAttr) {
  * `ngApp` is the easiest, and most common way to bootstrap an application.
  *
  <example module="ngAppDemo">
-   <file name="index.html">
+   <file name="api.html">
    <div ng-controller="ngAppDemoController">
      I can add: {{a}} + {{b}} =  {{ a+b }}
    </div>
@@ -1489,7 +1489,7 @@ function getNgAttribute(element, ngAttr) {
  * Using `ngStrictDi`, you would see something like this:
  *
  <example ng-app-included="true">
-   <file name="index.html">
+   <file name="api.html">
    <div ng-app="ngAppStrictDemo" ng-strict-di>
        <div ng-controller="GoodController1">
            I can add: {{a}} + {{b}} =  {{ a+b }}
@@ -2578,7 +2578,7 @@ function publishExternalAPI(angular) {
  * [jQuery](http://api.jquery.com/jQuery/) function. If jQuery is not available, `angular.element`
  * delegates to Angular's built-in subset of jQuery, called "jQuery lite" or "jqLite."
  *
- * <div class="alert alert-success">jqLite is a tiny, API-compatible subset of jQuery that allows
+ * <div class="alert alert-success">jqLite is a tiny, api-compatible subset of jQuery that allows
  * Angular to manipulate the DOM in a cross-browser compatible way. **jqLite** implements only the most
  * commonly needed functionality with the goal of having a very small footprint.</div>
  *
@@ -3924,7 +3924,7 @@ function annotate(fn, strictDi, name) {
  * @name $injector#annotate
  *
  * @description
- * Returns an array of service names which the function is requesting for injection. This API is
+ * Returns an array of service names which the function is requesting for injection. This api is
  * used by the injector to determine which services need to be injected into the function when the
  * function is invoked. There are three ways in which the function can be annotated with the needed
  * dependencies.
@@ -4622,7 +4622,7 @@ function $AnchorScrollProvider() {
    *
    * @example
      <example module="anchorScrollExample">
-       <file name="index.html">
+       <file name="api.html">
          <div id="scrollArea" ng-controller="ScrollController">
            <a ng-click="gotoBottom()">Go to bottom</a>
            <a id="bottom"></a> You're at the bottom!
@@ -4661,7 +4661,7 @@ function $AnchorScrollProvider() {
    *
    * @example
      <example module="anchorScrollOffsetExample">
-       <file name="index.html">
+       <file name="api.html">
          <div class="fixed-header" ng-controller="headerCtrl">
            <a href="" ng-click="gotoAnchor(x)" ng-repeat="x in [1,2,3,4,5]">
              Go to anchor {{x}}
@@ -5584,7 +5584,7 @@ function Browser(window, document, $log, $sniffer) {
   };
 
   //////////////////////////////////////////////////////////////
-  // URL API
+  // URL api
   //////////////////////////////////////////////////////////////
 
   var cachedState, lastHistoryState,
@@ -5640,7 +5640,7 @@ function Browser(window, document, $log, $sniffer) {
       var sameBase = lastBrowserUrl && stripHash(lastBrowserUrl) === stripHash(url);
       lastBrowserUrl = url;
       lastHistoryState = state;
-      // Don't use history API if only the hash changed
+      // Don't use history api if only the hash changed
       // due to a bug in IE10/IE11 which leads
       // to not firing a `hashchange` nor `popstate` event
       // in some cases (see #9143).
@@ -5790,7 +5790,7 @@ function Browser(window, document, $log, $sniffer) {
   self.$$checkUrlChange = fireUrlChange;
 
   //////////////////////////////////////////////////////////////
-  // Misc API
+  // Misc api
   //////////////////////////////////////////////////////////////
 
   /**
@@ -5902,7 +5902,7 @@ function $BrowserProvider() {
  *
  * @example
    <example module="cacheExampleApp">
-     <file name="index.html">
+     <file name="api.html">
        <div ng-controller="CacheController">
          <input ng-model="newCacheKey" placeholder="Key">
          <input ng-model="newCacheValue" placeholder="Value">
@@ -6311,7 +6311,7 @@ function $TemplateCacheProvider() {
  * see the {@link guide/directive directive guide}.
  * </div>
  *
- * ## Comprehensive Directive API
+ * ## Comprehensive Directive api
  *
  * There are many different options for a directive.
  *
@@ -6875,7 +6875,7 @@ function $TemplateCacheProvider() {
  * </div>
  *
  <example module="compileExample">
-   <file name="index.html">
+   <file name="api.html">
     <script>
       angular.module('compileExample', [], function($compileProvider) {
         // configure new 'compile' directive by passing a directive
@@ -9128,7 +9128,7 @@ function $ControllerProvider() {
      * a service, so that one can override this service with [BC version](https://gist.github.com/1649788).
      */
     return function(expression, locals, later, ident) {
-      // PRIVATE API:
+      // PRIVATE api:
       //   param `later` --- indicates that the controller's constructor is invoked at a later time.
       //                     If true, $controller will allocate the object with the correct
       //                     prototype chain, but will not invoke the controller until a returned
@@ -9225,7 +9225,7 @@ function $ControllerProvider() {
  *
  * @example
    <example module="documentExample">
-     <file name="index.html">
+     <file name="api.html">
        <div ng-controller="ExampleController">
          <p>$document title: <b ng-bind="title"></b></p>
          <p>window.document title: <b ng-bind="windowTitle"></b></p>
@@ -9736,7 +9736,7 @@ function $HttpProvider() {
      * For a higher level of abstraction, please check out the {@link ngResource.$resource
      * $resource} service.
      *
-     * The $http API is based on the {@link ng.$q deferred/promise APIs} exposed by
+     * The $http api is based on the {@link ng.$q deferred/promise APIs} exposed by
      * the $q service. While for simple usage patterns this doesn't matter much, for advanced usage
      * it is important to familiarize yourself with these APIs and the guarantees they provide.
      *
@@ -10132,7 +10132,7 @@ function $HttpProvider() {
      *      XHR object. See [requests with credentials](https://developer.mozilla.org/docs/Web/HTTP/Access_control_CORS#Requests_with_credentials)
      *      for more information.
      *    - **responseType** - `{string}` - see
-     *      [XMLHttpRequest.responseType](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#xmlhttprequest-responsetype).
+     *      [XMLHttpRequest.responseType](https://developer.mozilla.org/en-US/docs/Web/api/XMLHttpRequest#xmlhttprequest-responsetype).
      *
      * @returns {HttpPromise} Returns a {@link ng.$q `Promise}` that will be resolved to a response object
      *                        when the request succeeds or fails.
@@ -10144,7 +10144,7 @@ function $HttpProvider() {
      *
      * @example
 <example module="httpExample">
-<file name="index.html">
+<file name="api.html">
   <div ng-controller="FetchController">
     <select ng-model="method" aria-label="Request method">
       <option>GET</option>
@@ -10848,7 +10848,7 @@ $interpolateMinErr.interr = function(text, err) {
  *
  * @example
 <example module="customInterpolationApp">
-<file name="index.html">
+<file name="api.html">
 <script>
   var customInterpolationApp = angular.module('customInterpolationApp', []);
 
@@ -11011,7 +11011,7 @@ function $InterpolateProvider() {
      * when otherwise untrusted data is used by a directive.
      *
      * <example>
-     *  <file name="index.html">
+     *  <file name="api.html">
      *    <div ng-init="username='A user'">
      *      <p ng-init="apptitle='Escaping demo'">{{apptitle}}: \{\{ username = "defaced value"; \}\}
      *        </p>
@@ -11219,7 +11219,7 @@ function $IntervalProvider() {
       *
       * @example
       * <example module="intervalExample">
-      * <file name="index.html">
+      * <file name="api.html">
       *   <script>
       *     angular.module('intervalExample', [])
       *       .controller('ExampleController', ['$scope', '$interval',
@@ -11999,7 +11999,7 @@ forEach([LocationHashbangInHtml5Url, LocationHashbangUrl, LocationHtml5Url], fun
    * The state object is later passed to `pushState` or `replaceState`.
    *
    * NOTE: This method is supported only in HTML5 mode and only in browsers supporting
-   * the HTML5 History API (i.e. methods `pushState` and `replaceState`). If you need to support
+   * the HTML5 History api (i.e. methods `pushState` and `replaceState`). If you need to support
    * older browsers (like IE9 or Android < 4.0), don't use this method.
    *
    * @param {object=} state State object for pushState or replaceState
@@ -12011,8 +12011,8 @@ forEach([LocationHashbangInHtml5Url, LocationHashbangUrl, LocationHtml5Url], fun
     }
 
     if (Location !== LocationHtml5Url || !this.$$html5) {
-      throw $locationMinErr('nostate', 'History API state support is available only ' +
-        'in HTML5 mode and only in browsers supporting HTML5 History API');
+      throw $locationMinErr('nostate', 'History api state support is available only ' +
+        'in HTML5 mode and only in browsers supporting HTML5 History api');
     }
     // The user might modify `stateObject` after invoking `$location.state(stateObject)`
     // but we're changing the $$state reference to $browser.state() during the $digest
@@ -12157,7 +12157,7 @@ function $LocationProvider() {
    * {@link ng.$location#$locationChangeSuccess $locationChangeSuccess} is fired.
    *
    * The `newState` and `oldState` parameters may be defined only in HTML5 mode and when
-   * the browser supports the HTML5 History API.
+   * the browser supports the HTML5 History api.
    *
    * @param {Object} angularEvent Synthetic event object.
    * @param {string} newUrl New URL
@@ -12174,7 +12174,7 @@ function $LocationProvider() {
    * Broadcasted after a URL was changed.
    *
    * The `newState` and `oldState` parameters may be defined only in HTML5 mode and when
-   * the browser supports the HTML5 History API.
+   * the browser supports the HTML5 History api.
    *
    * @param {Object} angularEvent Synthetic event object.
    * @param {string} newUrl New URL
@@ -12390,7 +12390,7 @@ function $LocationProvider() {
            $scope.message = 'Hello World!';
          }]);
      </file>
-     <file name="index.html">
+     <file name="api.html">
        <div ng-controller="LogController">
          <p>Reload this page with open console, enter text and hit the log button...</p>
          <label>Message:
@@ -14573,7 +14573,7 @@ function $ParseProvider() {
  * For more on this please see the [Q documentation](https://github.com/kriskowal/q) especially the
  * section on serial or parallel joining of promises.
  *
- * # The Deferred API
+ * # The Deferred api
  *
  * A new instance of deferred is constructed by calling `$q.defer()`.
  *
@@ -14595,7 +14595,7 @@ function $ParseProvider() {
  * - promise – `{Promise}` – promise object associated with this deferred.
  *
  *
- * # The Promise API
+ * # The Promise api
  *
  * A new promise instance is created when a deferred instance is created and can be retrieved by
  * calling `deferred.promise`.
@@ -14623,7 +14623,7 @@ function $ParseProvider() {
  * - `finally(callback, notifyCallback)` – allows you to observe either the fulfillment or rejection of a promise,
  *   but to do so without modifying the final value. This is useful to release resources or do some
  *   clean-up that needs to be done whether the promise was rejected or resolved. See the [full
- *   specification](https://github.com/kriskowal/q/wiki/API-Reference#promisefinallycallback) for
+ *   specification](https://github.com/kriskowal/q/wiki/api-Reference#promisefinallycallback) for
  *   more information.
  *
  * # Chaining promises
@@ -14670,7 +14670,7 @@ function $ParseProvider() {
  *      // Simulate resolving of promise
  *      deferred.resolve(123);
  *      // Note that the 'then' function does not get called synchronously.
- *      // This is because we want the promise API to always be async, whether or not
+ *      // This is because we want the promise api to always be async, whether or not
  *      // it got called synchronously or asynchronously.
  *      expect(resolvedValue).toBeUndefined();
  *
@@ -15104,7 +15104,7 @@ function $$RAFProvider() { //rAF
  * value as last time so we optimize the operation.
  *
  * Closures construction is expensive in terms of speed as well as memory:
- *   - No closures, instead use prototypical inheritance for API
+ *   - No closures, instead use prototypical inheritance for api
  *   - Internal state needs to be stored on scope directly, which means that private state is
  *     exposed as $$____ properties
  *
@@ -16976,7 +16976,7 @@ function $SceDelegateProvider() {
  * context.  You can then audit your code (a simple grep would do) to ensure that this is only done
  * for those values that you can easily tell are safe - because they were received from your server,
  * sanitized by your library, etc.  You can organize your codebase to help with this - perhaps
- * allowing only the files in a specific directory to do this.  Ensuring that the internal API
+ * allowing only the files in a specific directory to do this.  Ensuring that the internal api
  * exposed by that code doesn't markup arbitrary values as safe then becomes a more manageable task.
  *
  * In the case of AngularJS' SCE service, one uses {@link ng.$sce#trustAs $sce.trustAs}
@@ -17108,7 +17108,7 @@ function $SceDelegateProvider() {
  * ## Show me an example using SCE.
  *
  * <example module="mySceApp" deps="angular-sanitize.js">
- * <file name="index.html">
+ * <file name="api.html">
  *   <div ng-controller="AppController as myCtrl">
  *     <i ng-bind-html="myCtrl.explicitlyTrustedHtml" id="explicitlyTrustedHtml"></i><br><br>
  *     <b>User comments</b><br>
@@ -17214,7 +17214,7 @@ function $SceProvider() {
 
   /* Design notes on the default implementation for SCE.
    *
-   * The API contract for the SCE delegate
+   * The api contract for the SCE delegate
    * -------------------------------------
    * The SCE delegate object must provide the following 3 methods:
    *
@@ -17641,12 +17641,12 @@ function $SnifferProvider() {
 
     return {
       // Android has history.pushState, but it does not update location correctly
-      // so let's not use the history API at all.
+      // so let's not use the history api at all.
       // http://code.google.com/p/android/issues/detail?id=17471
       // https://github.com/angular/angular.js/issues/904
 
       // older webkit browser (533.9) on Boxee box has exactly the same problem as Android has
-      // so let's not use the history API also
+      // so let's not use the history api also
       // We are purposefully using `!(android < 4)` to cover the case when `android` is undefined
       // jshint -W018
       history: !!($window.history && $window.history.pushState && !(android < 4) && !boxee),
@@ -17992,7 +17992,7 @@ var originUrl = urlResolve(window.location.href);
  * properties such as protocol, hostname, port, etc.
  *
  * References:
- *   http://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement
+ *   http://developer.mozilla.org/en-US/docs/Web/api/HTMLAnchorElement
  *   http://www.aptana.com/reference/html/api/HTMLAnchorElement.html
  *   http://url.spec.whatwg.org/#urlutils
  *   https://github.com/angular/angular.js/pull/2902
@@ -18072,7 +18072,7 @@ function urlIsSameOrigin(requestUrl) {
  *
  * @example
    <example module="windowExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
          angular.module('windowExample', [])
            .controller('ExampleController', ['$scope', '$window', function($scope, $window) {
@@ -18238,7 +18238,7 @@ function $$CookieReaderProvider() {
  * @return {Function} the filter function
  * @example
    <example name="$filter" module="filterExample">
-     <file name="index.html">
+     <file name="api.html">
        <div ng-controller="MainCtrl">
         <h3>{{ originalText }}</h3>
         <h3>{{ filteredText }}</h3>
@@ -18379,7 +18379,7 @@ function $FilterProvider($provide) {
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
        <div ng-init="friends = [{name:'John', phone:'555-1276'},
                                 {name:'Mary', phone:'800-BIG-MARY'},
                                 {name:'Mike', phone:'555-4321'},
@@ -18590,7 +18590,7 @@ function getTypeForFilter(val) {
  *
  * @example
    <example module="currencyExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
          angular.module('currencyExample', [])
            .controller('ExampleController', ['$scope', function($scope) {
@@ -18666,7 +18666,7 @@ function currencyFilter($locale) {
  *
  * @example
    <example module="numberFilterExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
          angular.module('numberFilterExample', [])
            .controller('ExampleController', ['$scope', function($scope) {
@@ -18990,7 +18990,7 @@ var DATE_FORMATS_SPLIT = /((?:[^yMdHhmsaZEwG']+)|(?:'(?:[^']|'')*')|(?:E+|y+|M+|
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
        <span ng-non-bindable>{{1288323623006 | date:'medium'}}</span>:
            <span>{{1288323623006 | date:'medium'}}</span><br>
        <span ng-non-bindable>{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}</span>:
@@ -19109,7 +19109,7 @@ function dateFilter($locale) {
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
        <pre id="default-spacing">{{ {'name':'value'} | json }}</pre>
        <pre id="custom-spacing">{{ {'name':'value'} | json:4 }}</pre>
      </file>
@@ -19177,7 +19177,7 @@ var uppercaseFilter = valueFn(uppercase);
  *
  * @example
    <example module="limitToExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
          angular.module('limitToExample', [])
            .controller('ExampleController', ['$scope', function($scope) {
@@ -19318,7 +19318,7 @@ function limitToFilter() {
  * by age in descending order (predicate is set to `'-age'`).
  * `reverse` is not set, which means it defaults to `false`.
    <example module="orderByExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
          angular.module('orderByExample', [])
            .controller('ExampleController', ['$scope', function($scope) {
@@ -19351,7 +19351,7 @@ function limitToFilter() {
  * as shown in the next example.
  * @example
    <example module="orderByExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
          angular.module('orderByExample', [])
            .controller('ExampleController', ['$scope', function($scope) {
@@ -19414,7 +19414,7 @@ function limitToFilter() {
  *
  * @example
   <example module="orderByExample">
-    <file name="index.html">
+    <file name="api.html">
       <div ng-controller="ExampleController">
         <table class="friend">
           <tr>
@@ -19646,7 +19646,7 @@ var htmlAnchorDirective = valueFn({
  * This example shows various combinations of `href`, `ng-href` and `ng-click` attributes
  * in links and their different behaviors:
     <example>
-      <file name="index.html">
+      <file name="api.html">
         <input ng-model="value" /><br />
         <a id="link-1" href ng-click="value = 1">link 1</a> (link, don't reload)<br />
         <a id="link-2" href="" ng-click="value = 2">link 2</a> (link, don't reload)<br />
@@ -19795,7 +19795,7 @@ var htmlAnchorDirective = valueFn({
  *
  * @example
     <example>
-      <file name="index.html">
+      <file name="api.html">
         <label>Click me to toggle: <input type="checkbox" ng-model="checked"></label><br/>
         <button ng-model="button" ng-disabled="checked">Button</button>
       </file>
@@ -19837,7 +19837,7 @@ var htmlAnchorDirective = valueFn({
  * a permanent reliable place to store the binding information.
  * @example
     <example>
-      <file name="index.html">
+      <file name="api.html">
         <label>Check me to check both: <input type="checkbox" ng-model="master"></label><br/>
         <input id="checkSlave" type="checkbox" ng-checked="master" aria-label="Slave input">
       </file>
@@ -19872,7 +19872,7 @@ var htmlAnchorDirective = valueFn({
  * a permanent reliable place to store the binding information.
  * @example
     <example>
-      <file name="index.html">
+      <file name="api.html">
         <label>Check me to make text readonly: <input type="checkbox" ng-model="checked"></label><br/>
         <input type="text" ng-readonly="checked" value="I'm Angular" aria-label="Readonly field" />
       </file>
@@ -19908,7 +19908,7 @@ var htmlAnchorDirective = valueFn({
  *
  * @example
     <example>
-      <file name="index.html">
+      <file name="api.html">
         <label>Check me to select: <input type="checkbox" ng-model="selected"></label><br/>
         <select aria-label="ngSelected demo">
           <option>Hello!</option>
@@ -19945,7 +19945,7 @@ var htmlAnchorDirective = valueFn({
  * a permanent reliable place to store the binding information.
  * @example
      <example>
-       <file name="index.html">
+       <file name="api.html">
          <label>Check me check multiple: <input type="checkbox" ng-model="open"></label><br/>
          <details id="details" ng-open="open">
             <summary>Show/Hide me</summary>
@@ -20206,7 +20206,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
     control.$$parentForm = form;
   };
 
-  // Private API: rename a form control
+  // Private api: rename a form control
   form.$$renameControl = function(control, newName) {
     var oldName = control.$name;
 
@@ -20476,7 +20476,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
  *
  * @example
     <example deps="angular-animate.js" animations="true" fixBase="true" module="formExample">
-      <file name="index.html">
+      <file name="api.html">
        <script>
          angular.module('formExample', [])
            .controller('FormController', ['$scope', function($scope) {
@@ -20675,7 +20675,7 @@ var inputType = {
    *
    * @example
       <example name="text-input-directive" module="textInputExample">
-        <file name="index.html">
+        <file name="api.html">
          <script>
            angular.module('textInputExample', [])
              .controller('ExampleController', ['$scope', function($scope) {
@@ -20772,7 +20772,7 @@ var inputType = {
      *
      * @example
      <example name="date-input-directive" module="dateInputExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
           angular.module('dateInputExample', [])
             .controller('DateController', ['$scope', function($scope) {
@@ -20875,7 +20875,7 @@ var inputType = {
     *
     * @example
     <example name="datetimelocal-input-directive" module="dateExample">
-    <file name="index.html">
+    <file name="api.html">
       <script>
         angular.module('dateExample', [])
           .controller('DateController', ['$scope', function($scope) {
@@ -20979,7 +20979,7 @@ var inputType = {
    *
    * @example
    <example name="time-input-directive" module="timeExample">
-   <file name="index.html">
+   <file name="api.html">
      <script>
       angular.module('timeExample', [])
         .controller('DateController', ['$scope', function($scope) {
@@ -21082,7 +21082,7 @@ var inputType = {
     *
     * @example
     <example name="week-input-directive" module="weekExample">
-    <file name="index.html">
+    <file name="api.html">
       <script>
       angular.module('weekExample', [])
         .controller('DateController', ['$scope', function($scope) {
@@ -21188,7 +21188,7 @@ var inputType = {
    *
    * @example
    <example name="month-input-directive" module="monthExample">
-   <file name="index.html">
+   <file name="api.html">
      <script>
       angular.module('monthExample', [])
         .controller('DateController', ['$scope', function($scope) {
@@ -21307,7 +21307,7 @@ var inputType = {
    *
    * @example
       <example name="number-input-directive" module="numberExample">
-        <file name="index.html">
+        <file name="api.html">
          <script>
            angular.module('numberExample', [])
              .controller('ExampleController', ['$scope', function($scope) {
@@ -21405,7 +21405,7 @@ var inputType = {
    *
    * @example
       <example name="url-input-directive" module="urlExample">
-        <file name="index.html">
+        <file name="api.html">
          <script>
            angular.module('urlExample', [])
              .controller('ExampleController', ['$scope', function($scope) {
@@ -21504,7 +21504,7 @@ var inputType = {
    *
    * @example
       <example name="email-input-directive" module="emailExample">
-        <file name="index.html">
+        <file name="api.html">
          <script>
            angular.module('emailExample', [])
              .controller('ExampleController', ['$scope', function($scope) {
@@ -21580,7 +21580,7 @@ var inputType = {
    *
    * @example
       <example name="radio-input-directive" module="radioExample">
-        <file name="index.html">
+        <file name="api.html">
          <script>
            angular.module('radioExample', [])
              .controller('ExampleController', ['$scope', function($scope) {
@@ -21642,7 +21642,7 @@ var inputType = {
    *
    * @example
       <example name="checkbox-input-directive" module="checkboxExample">
-        <file name="index.html">
+        <file name="api.html">
          <script>
            angular.module('checkboxExample', [])
              .controller('ExampleController', ['$scope', function($scope) {
@@ -21706,7 +21706,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
   // In composition mode, users are still inputing intermediate text buffer,
   // hold the listener until composition is done.
-  // More about composition events: https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent
+  // More about composition events: https://developer.mozilla.org/en-US/docs/Web/api/CompositionEvent
   if (!$sniffer.android) {
     var composing = false;
 
@@ -22183,7 +22183,7 @@ function checkboxInputType(scope, element, attr, ctrl, $sniffer, $browser, $filt
  *
  * @example
     <example name="input-directive" module="inputExample">
-      <file name="index.html">
+      <file name="api.html">
        <script>
           angular.module('inputExample', [])
             .controller('ExampleController', ['$scope', function($scope) {
@@ -22321,7 +22321,7 @@ var CONSTANT_VALUE_REGEXP = /^(true|false|\d+)$/;
  *
  * @example
     <example name="ngValue-directive" module="valueExample">
-      <file name="index.html">
+      <file name="api.html">
        <script>
           angular.module('valueExample', [])
             .controller('ExampleController', ['$scope', function($scope) {
@@ -22402,7 +22402,7 @@ var ngValueDirective = function() {
  * @example
  * Enter a name in the Live Preview text box; the greeting below the text box changes instantly.
    <example module="bindExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
          angular.module('bindExample', [])
            .controller('ExampleController', ['$scope', function($scope) {
@@ -22462,7 +22462,7 @@ var ngBindDirective = ['$compile', function($compile) {
  * @example
  * Try it here: enter text in text box and watch the greeting change.
    <example module="bindExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
          angular.module('bindExample', [])
            .controller('ExampleController', ['$scope', function($scope) {
@@ -22535,7 +22535,7 @@ var ngBindTemplateDirective = ['$interpolate', '$compile', function($interpolate
  * @example
 
    <example module="bindHtmlExample" deps="angular-sanitize.js">
-     <file name="index.html">
+     <file name="api.html">
        <div ng-controller="ExampleController">
         <p ng-bind-html="myHTML"></p>
        </div>
@@ -22608,7 +22608,7 @@ var ngBindHtmlDirective = ['$sce', '$parse', '$compile', function($sce, $parse, 
  *
  * @example
  * <example name="ngChange-directive" module="changeExample">
- *   <file name="index.html">
+ *   <file name="api.html">
  *     <script>
  *       angular.module('changeExample', [])
  *         .controller('ExampleController', ['$scope', function($scope) {
@@ -22819,7 +22819,7 @@ function classDirective(name, selector) {
  *
  * @example Example that demonstrates basic bindings via ngClass directive.
    <example>
-     <file name="index.html">
+     <file name="api.html">
        <p ng-class="{strike: deleted, bold: important, 'has-error': error}">Map Syntax Example</p>
        <label>
           <input type="checkbox" ng-model="deleted">
@@ -22912,7 +22912,7 @@ function classDirective(name, selector) {
    The example below demonstrates how to perform animations using ngClass.
 
    <example module="ngAnimate" deps="angular-animate.js" animations="true">
-     <file name="index.html">
+     <file name="api.html">
       <input id="setbtn" type="button" value="set" ng-click="myVar='my-class'">
       <input id="clearbtn" type="button" value="clear" ng-click="myVar=''">
       <br>
@@ -22975,7 +22975,7 @@ var ngClassDirective = classDirective('', true);
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
         <ol ng-init="names=['John', 'Mary', 'Cate', 'Suz']">
           <li ng-repeat="name in names">
            <span ng-class-odd="'odd'" ng-class-even="'even'">
@@ -23023,7 +23023,7 @@ var ngClassOddDirective = classDirective('Odd', 0);
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
         <ol ng-init="names=['John', 'Mary', 'Cate', 'Suz']">
           <li ng-repeat="name in names">
            <span ng-class-odd="'odd'" ng-class-even="'even'">
@@ -23089,7 +23089,7 @@ var ngClassEvenDirective = classDirective('Even', 1);
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
         <div id="template1" ng-cloak>{{ 'hello' }}</div>
         <div id="template2" class="ng-cloak">{{ 'world' }}</div>
      </file>
@@ -23173,7 +23173,7 @@ var ngCloakDirective = ngDirective({
  * This example demonstrates the `controller as` syntax.
  *
  * <example name="ngControllerAs" module="controllerAsExample">
- *   <file name="index.html">
+ *   <file name="api.html">
  *    <div id="ctrl-as-exmpl" ng-controller="SettingsController1 as settings">
  *      <label>Name: <input type="text" ng-model="settings.name"/></label>
  *      <button ng-click="settings.greet()">greet</button><br/>
@@ -23256,7 +23256,7 @@ var ngCloakDirective = ngDirective({
  * This example demonstrates the "attach to `$scope`" style of controller.
  *
  * <example name="ngController" module="controllerExample">
- *  <file name="index.html">
+ *  <file name="api.html">
  *   <div id="ctrl-exmpl" ng-controller="SettingsController2">
  *     <label>Name: <input type="text" ng-model="name"/></label>
  *     <button ng-click="greet()">greet</button><br/>
@@ -23429,7 +23429,7 @@ var ngControllerDirective = [function() {
       // Note: the suffix `.csp` in the example name triggers
       // csp mode in our http server!
       <example name="example.csp" module="cspExample" ng-csp="true">
-        <file name="index.html">
+        <file name="api.html">
           <div ng-controller="MainController as ctrl">
             <div>
               <button ng-click="ctrl.inc()" id="inc">Increment</button>
@@ -23564,7 +23564,7 @@ var ngControllerDirective = [function() {
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <button ng-click="count = count + 1" ng-init="count=0">
         Increment
       </button>
@@ -23639,7 +23639,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <button ng-dblclick="count = count + 1" ng-init="count=0">
         Increment (on double click)
       </button>
@@ -23663,7 +23663,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <button ng-mousedown="count = count + 1" ng-init="count=0">
         Increment (on mouse down)
       </button>
@@ -23687,7 +23687,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <button ng-mouseup="count = count + 1" ng-init="count=0">
         Increment (on mouse up)
       </button>
@@ -23710,7 +23710,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <button ng-mouseover="count = count + 1" ng-init="count=0">
         Increment (when mouse is over)
       </button>
@@ -23734,7 +23734,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <button ng-mouseenter="count = count + 1" ng-init="count=0">
         Increment (when mouse enters)
       </button>
@@ -23758,7 +23758,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <button ng-mouseleave="count = count + 1" ng-init="count=0">
         Increment (when mouse leaves)
       </button>
@@ -23782,7 +23782,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <button ng-mousemove="count = count + 1" ng-init="count=0">
         Increment (when mouse moves)
       </button>
@@ -23806,7 +23806,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <input ng-keydown="count = count + 1" ng-init="count=0">
       key down count: {{count}}
      </file>
@@ -23828,7 +23828,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
        <p>Typing in the input box below updates the key count</p>
        <input ng-keyup="count = count + 1" ng-init="count=0"> key up count: {{count}}
 
@@ -23855,7 +23855,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <input ng-keypress="count = count + 1" ng-init="count=0">
       key press count: {{count}}
      </file>
@@ -23888,7 +23888,7 @@ forEach(
  *
  * @example
    <example module="submitExample">
-     <file name="index.html">
+     <file name="api.html">
       <script>
         angular.module('submitExample', [])
           .controller('ExampleController', ['$scope', function($scope) {
@@ -23984,7 +23984,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <input ng-copy="copied=true" ng-init="copied=false; value='copy me'" ng-model="value">
       copied: {{copied}}
      </file>
@@ -24005,7 +24005,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <input ng-cut="cut=true" ng-init="cut=false; value='cut me'" ng-model="value">
       cut: {{cut}}
      </file>
@@ -24026,7 +24026,7 @@ forEach(
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
       <input ng-paste="paste=true" ng-init="paste=false" placeholder='paste here'>
       pasted: {{paste}}
      </file>
@@ -24079,7 +24079,7 @@ forEach(
  *
  * @example
   <example module="ngAnimate" deps="angular-animate.js" animations="true">
-    <file name="index.html">
+    <file name="api.html">
       <label>Click me: <input type="checkbox" ng-model="checked" ng-init="checked=true" /></label><br/>
       Show when checked:
       <span ng-if="checked" class="animate-if">
@@ -24207,7 +24207,7 @@ var ngIfDirective = ['$animate', function($animate) {
  *
  * @example
   <example module="includeExample" deps="angular-animate.js" animations="true">
-    <file name="index.html">
+    <file name="api.html">
      <div ng-controller="ExampleController">
        <select ng-model="template" ng-options="t.name for t in templates">
         <option value="">(blank)</option>
@@ -24488,7 +24488,7 @@ var ngIncludeFillContentDirective = ['$compile',
  *
  * @example
    <example module="initExample">
-     <file name="index.html">
+     <file name="api.html">
    <script>
      angular.module('initExample', [])
        .controller('ExampleController', ['$scope', function($scope) {
@@ -24552,7 +24552,7 @@ var ngInitDirective = ngDirective({
  *          $scope.names = ['morpheus', 'neo', 'trinity'];
  *        }]);
  *   </file>
- *   <file name="index.html">
+ *   <file name="api.html">
  *    <form name="myForm" ng-controller="ExampleController">
  *      <label>List: <input name="namesInput" ng-model="names" ng-list required></label>
  *      <span role="alert">
@@ -24592,7 +24592,7 @@ var ngInitDirective = ngDirective({
  *
  * ### Example - splitting on newline
  * <example name="ngList-directive-newlines">
- *   <file name="index.html">
+ *   <file name="api.html">
  *    <textarea ng-model="list" ng-list="&#10;" ng-trim="false"></textarea>
  *    <pre>{{ list | json }}</pre>
  *   </file>
@@ -24767,7 +24767,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
  *
  * @description
  *
- * `NgModelController` provides API for the {@link ngModel `ngModel`} directive.
+ * `NgModelController` provides api for the {@link ngModel `ngModel`} directive.
  * The controller contains services for data-binding, validation, CSS updates, and value formatting
  * and parsing. It purposefully does not contain any logic which deals with DOM rendering or
  * listening to DOM events.
@@ -24838,7 +24838,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
           };
         }]);
     </file>
-    <file name="index.html">
+    <file name="api.html">
       <form name="myForm">
        <div contenteditable
             name="myWidget" ng-model="userContent"
@@ -25118,7 +25118,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    *       };
    *     }]);
    *   </file>
-   *   <file name="index.html">
+   *   <file name="api.html">
    *     <div ng-controller="CancelUpdateController">
    *       <p>Try typing something in each input.  See that the model only updates when you
    *          blur off the input.
@@ -25589,7 +25589,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
  *
  * @example
  * <example deps="angular-animate.js" animations="true" fixBase="true" module="inputExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
         angular.module('inputExample', [])
           .controller('ExampleController', ['$scope', function($scope) {
@@ -25639,7 +25639,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
  *
  * @example
  * <example name="ngModel-getter-setter" module="getterSetterExample">
-     <file name="index.html">
+     <file name="api.html">
        <div ng-controller="ExampleController">
          <form name="userForm">
            <label>Name:
@@ -25776,7 +25776,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
   pressed while the input field is focused, the value is reset to the value in the current model.
 
   <example name="ngModelOptions-directive-blur" module="optionsExample">
-    <file name="index.html">
+    <file name="api.html">
       <div ng-controller="ExampleController">
         <form name="userForm">
           <label>Name:
@@ -25833,7 +25833,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
   If the `Clear` button is pressed, any debounced action is canceled and the value becomes empty.
 
   <example name="ngModelOptions-directive-debounce" module="optionsExample">
-    <file name="index.html">
+    <file name="api.html">
       <div ng-controller="ExampleController">
         <form name="userForm">
           <label>Name:
@@ -25858,7 +25858,7 @@ var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
   This one shows how to bind to getter/setters:
 
   <example name="ngModelOptions-directive-getter-setter" module="getterSetterExample">
-    <file name="index.html">
+    <file name="api.html">
       <div ng-controller="ExampleController">
         <form name="userForm">
           <label>Name:
@@ -26036,7 +26036,7 @@ function isObjectEmpty(obj) {
  *
  * @example
     <example>
-      <file name="index.html">
+      <file name="api.html">
         <div>Normal: {{1 + 2}}</div>
         <div ng-non-bindable>Ignored: {{1 + 2}}</div>
       </file>
@@ -26208,7 +26208,7 @@ var ngOptionsMinErr = minErr('ngOptions');
  *
  * @example
     <example module="selectExample">
-      <file name="index.html">
+      <file name="api.html">
         <script>
         angular.module('selectExample', [])
           .controller('ExampleController', ['$scope', function($scope) {
@@ -26905,7 +26905,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
  *
  * @example
     <example module="pluralizeExample">
-      <file name="index.html">
+      <file name="api.html">
         <script>
           angular.module('pluralizeExample', [])
             .controller('ExampleController', ['$scope', function($scope) {
@@ -27276,7 +27276,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  * This example initializes the scope to a list of names and
  * then uses `ngRepeat` to display every person:
   <example module="ngAnimate" deps="angular-animate.js" animations="true">
-    <file name="index.html">
+    <file name="api.html">
       <div ng-init="friends = [
         {name:'John', age:25, gender:'boy'},
         {name:'Jessie', age:30, gender:'girl'},
@@ -27688,7 +27688,7 @@ var NG_HIDE_IN_PROGRESS_CLASS = 'ng-hide-animate';
  *
  * @example
   <example module="ngAnimate" deps="angular-animate.js" animations="true">
-    <file name="index.html">
+    <file name="api.html">
       Click me: <input type="checkbox" ng-model="checked" aria-label="Toggle ngHide"><br/>
       <div>
         Show:
@@ -27852,7 +27852,7 @@ var ngShowDirective = ['$animate', function($animate) {
  *
  * @example
   <example module="ngAnimate" deps="angular-animate.js" animations="true">
-    <file name="index.html">
+    <file name="api.html">
       Click me: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow"><br/>
       <div>
         Show:
@@ -27944,7 +27944,7 @@ var ngHideDirective = ['$animate', function($animate) {
  *
  * @example
    <example>
-     <file name="index.html">
+     <file name="api.html">
         <input type="button" value="set color" ng-click="myStyle={color:'red'}">
         <input type="button" value="set background" ng-click="myStyle={'background-color':'blue'}">
         <input type="button" value="clear" ng-click="myStyle={}">
@@ -28035,7 +28035,7 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
  *
  * @example
   <example module="switchExample" deps="angular-animate.js" animations="true">
-    <file name="index.html">
+    <file name="api.html">
       <div ng-controller="ExampleController">
         <select ng-model="selection" ng-options="item for item in items">
         </select>
@@ -28196,7 +28196,7 @@ var ngSwitchDefaultDirective = ngDirective({
  *
  * @example
    <example module="transcludeExample">
-     <file name="index.html">
+     <file name="api.html">
        <script>
          angular.module('transcludeExample', [])
           .directive('pane', function(){
@@ -28271,7 +28271,7 @@ var ngTranscludeDirective = ngDirective({
  *
  * @example
   <example>
-    <file name="index.html">
+    <file name="api.html">
       <script type="text/ng-template" id="/tpl.html">
         Content of the template.
       </script>
@@ -28504,7 +28504,7 @@ var SelectController =
  * ### Simple `select` elements with static options
  *
  * <example name="static-select" module="staticSelect">
- * <file name="index.html">
+ * <file name="api.html">
  * <div ng-controller="ExampleController">
  *   <form name="myForm">
  *     <label for="singleSelect"> Single select: </label><br>
@@ -28551,7 +28551,7 @@ var SelectController =
  *
  * ### Using `ngRepeat` to generate `select` options
  * <example name="ngrepeat-select" module="ngrepeatSelect">
- * <file name="index.html">
+ * <file name="api.html">
  * <div ng-controller="ExampleController">
  *   <form name="myForm">
  *     <label for="repeatSelect"> Repeat select: </label>
@@ -28583,7 +28583,7 @@ var SelectController =
  * See the {@link ngOptions ngOptions documentation} for more `ngOptions` usage examples.
  *
  * <example name="select-with-default-values" module="defaultValueSelect">
- * <file name="index.html">
+ * <file name="api.html">
  * <div ng-controller="ExampleController">
  *   <form name="myForm">
  *     <label for="mySelect">Make a choice:</label>
@@ -28614,7 +28614,7 @@ var SelectController =
  * ### Binding `select` to a non-string value via `ngModel` parsing / formatting
  *
  * <example name="select-with-non-string-options" module="nonStringSelect">
- *   <file name="index.html">
+ *   <file name="api.html">
  *     <select ng-model="model.id" convert-to-number>
  *       <option value="0">Zero</option>
  *       <option value="1">One</option>

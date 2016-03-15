@@ -1,0 +1,132 @@
+/** 
+
+colors:
+
+yellow       = f7cc17
+gray         = c0bfbf
+light yellow = fcfcf5
+
+
+@media only screen and (max-width: 500px) {
+    p {
+        display: none;
+    }
+}*/
+
+/** {
+    font-family: 'Lato', sans-serif;
+}*/
+
+@media (max-width: 600px) {
+    h1{font-size: 3.5em;}
+    h2{font-size:1.2em;}
+}
+@media (min-width: 600px) {
+    h1{font-size: 5em;}
+    h2{font-size: 1.8em;}
+}
+
+hr {
+    border-top: 10px solid #f7cc17 !important;
+    margin-bottom:50px !important; 
+    margin-top:10px !important;
+}
+
+h1 {
+    margin-top: 60px;
+    font-weight: bold;
+}
+
+h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+
+.input {
+  width: 75%;
+  height: 50px;
+  display: block;
+  margin: 0 auto 15px;
+  padding: 0 15px;
+  border: none;
+  border-bottom: 2px solid #ebebeb;
+}
+.input:focus {
+  outline: none;
+  border-bottom-color: #f7cc17 !important;
+}
+.input:hover {
+  border-bottom-color: #dcdcdc;
+}
+.input:invalid {
+  box-shadow: none;
+}
+
+.pass:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+.inputButton {
+  /*position: relative;*/
+  width: 50%;
+  height: 50px;
+  display: block;
+  margin: 30px auto 30px;
+  color: white;
+  background-color: #f7cc17;
+  border: none;
+/*  -webkit-box-shadow: 0 5px 0 #2CADAD;
+  -moz-box-shadow: 0 5px 0 #2CADAD;
+  box-shadow: 0 5px 0 #2CADAD;*/
+}
+
+.modal-title {
+    text-align: center;
+}
+
+#logbox {
+  padding: 10px;
+  margin: 50px auto;
+  width: 340px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.inputButton:hover {
+  top: 2px;
+ /* -webkit-box-shadow: 0 3px 0 #2CADAD;
+  -moz-box-shadow: 0 3px 0 #2CADAD;
+  box-shadow: 0 3px 0 #2CADAD;*/
+}
+.inputButton:active {
+  top: 5px;
+  box-shadow: none;
+}
+.inputButton:focus {
+  outline: none;
+}
+
+
+
+/*.icon {
+    padding: 0 10px 0 10px;
+}*/
+
+.glyphicon {
+    color: #f7cc17;
+}
+
+.row {
+    max-width: 700px;
+    margin: auto;
+}

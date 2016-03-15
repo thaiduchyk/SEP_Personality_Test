@@ -1,0 +1,41 @@
+<section style="margin-top:20px">
+  <ul class="nav nav-tabs nav-justified">
+    <li role="presentation" ng-class="{active:isSelected(1)}"> <a href ng-click="selectTab(1)">Sign in</a> </li>
+    <li role="presentation" ng-class="{active:isSelected(2)}"> <a href ng-click="selectTab(2)">Create account</a> </li>
+  </ul>
+</section>
+<div class="panel" ng-show="isSelected(1)">
+  <form name="signinForm"">
+    <div class="form-group form-group-lg" style="margin-top:20px">
+      <input type="text" class="form-control" placeholder="Email" ng-model="signInData.email"/>
+    </div>
+    <div class="form-group form-group-lg">
+      <input type="password" class="form-control" placeholder="Password" ng-model="signInData.password"/>
+    </div>
+    <div class="form-group form-group-lg">
+      <button type="submit" class="btn btn-warning btn-lg btn-block" ng-click="userSignin()">Sign in</button>
+    </div>
+  </form>
+</div>
+<div class="panel" ng-show="isSelected(2)">
+  <form name="signupForm">
+    <div class="form-group form-group-md" style="margin-top:10px">
+      <input type="text" class="form-control" placeholder="Name" ng-model="formData.name"/>
+    </div>
+    <div class="form-group form-group-md">
+      <input type="text" class="form-control" placeholder="Surname" ng-model="formData.surname"/>
+    </div>
+    <div class="form-group form-group-md">
+      <input type="text" class="form-control" placeholder="Email" ng-model="formData.email"/>
+    </div>
+    <div class="form-group form-group-md">
+      <input type="password" class="form-control" placeholder="Password"  ng-model="formData.password" />
+    </div>
+    <div class="form-group form-group-md">
+      <input type="password" class="form-control" placeholder="Confirm password" ng-model="formData.password_confirmation"/>
+    </div>
+    <div class="form-group form-group-md">
+      <button type="submit" class="btn btn-warning btn-lg btn-block" ng-click="processForm()">Sign me up!</button>
+    </div>
+  </form>
+</div>
