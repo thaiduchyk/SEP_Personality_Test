@@ -30,11 +30,12 @@ angular.module('controllers', [])
     })
     .success(function(data) {
         console.log("success");
+        localStorage.setItem("name", data.data.name);
+        localStorage.setItem("surname", data.data.surname);
         // if not successful, bind errors to error variables
         console.log(data.data);
         ngDialog.close();
         $location.path('/begin');
-        //$scope.data = data;
 
     })
     .error(function(error){
@@ -56,6 +57,9 @@ angular.module('controllers', [])
     })
     .success(function(data) {
       console.log(data.data);
+    })
+    .error(function(error){
+      console.log("error");
     });
   };
 }])
@@ -63,6 +67,8 @@ angular.module('controllers', [])
   '$scope', '$rootScope', '$timeout', '$uibModal',
   function($scope, $rootScope, $timeout, $uibModal){
     $scope.count = 0;
+    $scope.name = localStorage.getItem('name');
+    $scope.surname = localStorage.getItem('surname');
     $scope.array = ["You believe most people have a short attention span",
     "You are interested in people histories",
     "You always root for the underdog",

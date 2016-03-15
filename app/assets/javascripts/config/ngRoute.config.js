@@ -10,6 +10,7 @@ angular.module('ngRoute.config', ['ngRoute'])
     templateUrl: '/assets/template.html'
   })
   .when('/begin', {
+    controller: 'TestCtrl',
     templateUrl: '/assets/begin.html'
   })
   .when('/test', {
