@@ -28,10 +28,12 @@
                      mail: '/assets/mail.png',};
 
       $scope.formData = {};
+      $scope.signInData = {};
+
       $scope.clickToOpen = function() {
         ngDialog.open({ template: '/assets/template.html', className: 'ngdialog-theme-default', scope: $scope });
         $scope.tab=1;
-        $scope.testLogin={};
+        // $scope.testLogin={};
       };
       $scope.selectTab = function(setTab) {
         $scope.tab = setTab;
@@ -39,14 +41,36 @@
       $scope.isSelected = function(checkTab) {
         return $scope.tab === checkTab;
       };
-      $scope.gotoBegin = function() {
-        if (($scope.testLogin.username === 'test') && ($scope.testLogin.password='test')) {
-          ngDialog.close();
-          $location.path('/begin');
-        }
-      };
-      $scope.processForm = function() {
+      $scope.userSignin = function() {
+        localStorage.setItem("email", $scope.signInData.email);
+        localStorage.setItem("pass", $scope.signInData.password);
+        $http({
+          method  : 'POST',
+          url     : '/auth/sign_in',
+          data    : $.param($scope.signInData),  // pass in data as strings
+          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+        })
+        .success(function(data) {
 
+            console.log("success");
+            // if not successful, bind errors to error variables
+            console.log(data.data);
+            //$scope.data = data;
+            // $scope.errorName = data.errors.name;
+            // $scope.errorSuperhero = data.errors.superheroAlias;
+
+        })
+        .error(function(error){
+          console.log("error");
+        });
+      };
+      // $scope.gotoBegin = function() {
+      //   if (($scope.testLogin.username === 'test') && ($scope.testLogin.password='test')) {
+      //     ngDialog.close();
+      //     $location.path('/begin');
+      //   }
+      // };
+      $scope.processForm = function() {
         $http({
           method  : 'POST',
           url     : '/auth',
@@ -54,18 +78,17 @@
           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         })
         .success(function(data) {
-          console.log(data);
-
           if (!data.success) {
             // if not successful, bind errors to error variables
             $scope.errorName = data.errors.name;
             $scope.errorSuperhero = data.errors.superheroAlias;
+            console.log("error");
           } else {
             // if successful, bind success message to message
             $scope.message = data.message;
+            console.log("message = " + data.message);
           }
         });
-
       };
     }])
     .controller('TestCtrl', [
