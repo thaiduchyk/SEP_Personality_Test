@@ -32,9 +32,9 @@ angular.module('controllers', [])
         console.log("success");
         // if not successful, bind errors to error variables
         console.log(data.data);
+        ngDialog.close();
+        $location.path('/begin');
         //$scope.data = data;
-        // $scope.errorName = data.errors.name;
-        // $scope.errorSuperhero = data.errors.superheroAlias;
 
     })
     .error(function(error){
@@ -55,16 +55,7 @@ angular.module('controllers', [])
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
     })
     .success(function(data) {
-      if (!data.success) {
-        // if not successful, bind errors to error variables
-        $scope.errorName = data.errors.name;
-        $scope.errorSuperhero = data.errors.superheroAlias;
-        console.log("error");
-      } else {
-        // if successful, bind success message to message
-        $scope.message = data.message;
-        console.log("message = " + data.message);
-      }
+      console.log(data.data);
     });
   };
 }])
