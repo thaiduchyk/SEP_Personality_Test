@@ -31,6 +31,8 @@ gem 'omniauth'
 
 gem 'omniauth-linkedin-oauth2'
 
+gem 'omniauth-facebook'
+
 gem 'bower-rails'
 
 gem 'haml-rails'
