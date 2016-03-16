@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   angular.module('personality_test', [
-    'ngRoute.config',
+    'ui-router.config',
     'ngDialog',
     'controllers',
     'rzModule',

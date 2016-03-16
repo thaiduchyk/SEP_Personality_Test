@@ -14,10 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require angular/angular
-//= require angular-route.min
+//= require angular-ui-router.min
 //= require rzslider.min
 //= require ui-bootstrap-tpls
 //= require ngDialog.min
-//= require config/ngRoute.config
+//= require config/ui-router.config
 //= require controllers/controllers
 //= require angular-module
