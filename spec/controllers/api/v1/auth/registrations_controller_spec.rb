@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::Overrides::RegistrationsController, type: :controller do
-  include Devise::TestHelpers
+RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
 
   before(:each) do
     @request.env['devise.mapping'] = Devise.mappings[:user]

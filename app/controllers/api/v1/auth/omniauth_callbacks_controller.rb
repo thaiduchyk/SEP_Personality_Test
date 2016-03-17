@@ -1,4 +1,4 @@
-class Api::V1::Overrides::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCallbacksController
+class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCallbacksController
 
   swagger_controller :omniauth_callbacks, "Oauth"
 

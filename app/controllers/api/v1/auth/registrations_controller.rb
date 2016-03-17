@@ -1,4 +1,4 @@
-class Api::V1::Overrides::RegistrationsController < DeviseTokenAuth::RegistrationsController
+class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsController
   skip_before_filter  :verify_authenticity_token
 
   def create

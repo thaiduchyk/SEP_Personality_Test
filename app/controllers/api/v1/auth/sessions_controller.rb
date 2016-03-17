@@ -1,4 +1,4 @@
-class Api::V1::Overrides::SessionsController < DeviseTokenAuth::SessionsController
+class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
   skip_before_filter  :verify_authenticity_token
 
   swagger_controller :sessions, "User Management"

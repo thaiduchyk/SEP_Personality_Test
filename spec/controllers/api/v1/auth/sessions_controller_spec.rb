@@ -1,17 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::Overrides::SessionsController, type: :controller do
-  include Devise::TestHelpers
+RSpec.describe Api::V1::Auth::SessionsController, type: :controller do
+
   before(:each) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
-
   end
 
   context 'with valid parameters' do
 
     it 'signs in user' do
       post :create, {email:'', password:''}
-      binding.pry
+
       expect(subject.current_user).to_not eq(nil)
     end
 

@@ -1666,7 +1666,7 @@ function bootstrap(element, modules, config) {
     }]);
 
     if (config.debugInfoEnabled) {
-      // Pushing so that this overrides `debugInfoEnabled` setting defined in user's `modules`.
+      // Pushing so that this auth `debugInfoEnabled` setting defined in user's `modules`.
       modules.push(['$compileProvider', function($compileProvider) {
         $compileProvider.debugInfoEnabled(true);
       }]);
@@ -7163,7 +7163,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    * @kind function
    *
    * @description
-   * Retrieves or overrides the default regular expression that is used for whitelisting of safe
+   * Retrieves or auth the default regular expression that is used for whitelisting of safe
    * urls during a[href] sanitization.
    *
    * The sanitization is a security measure aimed at preventing XSS attacks via html links.
@@ -7193,7 +7193,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    * @kind function
    *
    * @description
-   * Retrieves or overrides the default regular expression that is used for whitelisting of safe
+   * Retrieves or auth the default regular expression that is used for whitelisting of safe
    * urls during img[src] sanitization.
    *
    * The sanitization is a security measure aimed at prevent XSS attacks via html links.
@@ -9133,7 +9133,7 @@ function $ControllerProvider() {
       //                     If true, $controller will allocate the object with the correct
       //                     prototype chain, but will not invoke the controller until a returned
       //                     callback is invoked.
-      //   param `ident` --- An optional label which overrides the label parsed from the controller
+      //   param `ident` --- An optional label which auth the label parsed from the controller
       //                     expression, if any.
       var instance, match, constructor, identifier;
       later = later === true;
@@ -9843,7 +9843,7 @@ function $HttpProvider() {
      * ```
      *
      * In addition, you can supply a `headers` property in the config object passed when
-     * calling `$http(config)`, which overrides the defaults without changing them globally.
+     * calling `$http(config)`, which auth the defaults without changing them globally.
      *
      * To explicitly remove a header automatically added via $httpProvider.defaults.headers on a per request basis,
      * Use the `headers` property, setting the desired header to `undefined`. For example:
@@ -16469,7 +16469,7 @@ function $$SanitizeUriProvider() {
 
   /**
    * @description
-   * Retrieves or overrides the default regular expression that is used for whitelisting of safe
+   * Retrieves or auth the default regular expression that is used for whitelisting of safe
    * urls during a[href] sanitization.
    *
    * The sanitization is a security measure aimed at prevent XSS attacks via html links.
@@ -16494,7 +16494,7 @@ function $$SanitizeUriProvider() {
 
   /**
    * @description
-   * Retrieves or overrides the default regular expression that is used for whitelisting of safe
+   * Retrieves or auth the default regular expression that is used for whitelisting of safe
    * urls during img[src] sanitization.
    *
    * The sanitization is a security measure aimed at prevent XSS attacks via html links.
@@ -16652,7 +16652,7 @@ function adjustMatchers(matchers) {
  *      'http://srv*.assets.example.com/**'
  *    ]);
  *
- *    // The blacklist overrides the whitelist so the open redirect here is blocked.
+ *    // The blacklist auth the whitelist so the open redirect here is blocked.
  *    $sceDelegateProvider.resourceUrlBlacklist([
  *      'http://myapp.example.com/clickThru**'
  *    ]);
@@ -16712,7 +16712,7 @@ function $SceDelegateProvider() {
    *     [open redirects](http://cwe.mitre.org/data/definitions/601.html)** served by your domain as
    *     these would otherwise be trusted but actually return content from the redirected domain.
    *
-   *     Finally, **the blacklist overrides the whitelist** and has the final say.
+   *     Finally, **the blacklist auth the whitelist** and has the final say.
    *
    * @return {Array} the currently set blacklist array.
    *

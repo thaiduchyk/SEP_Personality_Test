@@ -264,7 +264,6 @@ DEPENDENCIES
   bower-rails
   byebug
   coffee-rails (~> 4.1.0)
-  devise
   devise_token_auth
   factory_girl_rails
   guard-rspec
