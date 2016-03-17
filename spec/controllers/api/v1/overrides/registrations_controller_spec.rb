@@ -25,7 +25,8 @@ RSpec.describe Api::V1::Overrides::RegistrationsController, type: :controller do
       expect{ post :create, user_attributes }.to change(User, :count).by(1)
     end
 
-    it 'renders correct json'
+    it 'renders correct json'do
+    end
   end
 
   context 'with invalid parameters' do

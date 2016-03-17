@@ -11,5 +11,8 @@ class Api::V1::Overrides::SessionsController < DeviseTokenAuth::SessionsControll
     response :not_acceptable, "The request you made is not acceptable"
   end
 
+  def create
+    super
+  end
 
 end
