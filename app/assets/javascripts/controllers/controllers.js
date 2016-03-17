@@ -3,7 +3,8 @@ angular.module('controllers', ['ngDialog', 'rzModule', 'ng-token-auth'])
   $authProvider.configure({
     apiUrl: 'http://localhost:3000',
     authProviderPaths: {
-      facebook: '/api/v1/auth/facebook'
+      facebook: '/api/v1/auth/facebook',
+      linkedin: '/api/v1/auth/linkedin'
     }
   });
 })
