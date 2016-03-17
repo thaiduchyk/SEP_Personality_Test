@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, class: User do
     name 'Name'
     surname 'Surname'
     email 'user@example.com'
@@ -8,5 +8,4 @@ FactoryGirl.define do
     provider 'provider'
     uid 'uid'
   end
-
 end

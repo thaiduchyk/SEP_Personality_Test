@@ -29,6 +29,10 @@ gem 'devise_token_auth'
 
 gem 'omniauth'
 
+gem 'omniauth-linkedin-oauth2'
+
+gem 'omniauth-facebook'
+
 gem 'bower-rails'
 
 gem 'haml-rails'
