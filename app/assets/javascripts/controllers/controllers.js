@@ -1,4 +1,12 @@
 angular.module('controllers', ['ngDialog', 'rzModule', 'ng-token-auth'])
+.config(function($authProvider) {
+  $authProvider.configure({
+    apiUrl: 'http://localhost:3000',
+    authProviderPaths: {
+      facebook: '/api/v1/auth/facebook'
+    }
+  });
+})
 .controller('MainCtrl', ['$rootScope', '$scope', '$http', '$location', 'ngDialog',
 function($rootScope, $scope, $http, $location, ngDialog) {
 

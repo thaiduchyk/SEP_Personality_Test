@@ -21,24 +21,24 @@
   </form>
 </div>
 <div class="panel" ng-show="isSelected(2)">
-  <form name="signupForm">
+  <form name="signupForm" ng-submit=="signupForm.$valid && processForm()" novalidate>
     <div class="form-group form-group-md" style="margin-top:10px">
-      <input type="text" class="form-control" placeholder="Name" ng-model="formData.name"/>
+      <input type="text" class="form-control" placeholder="Name" ng-model="formData.name" required/>
     </div>
     <div class="form-group form-group-md">
-      <input type="text" class="form-control" placeholder="Surname" ng-model="formData.surname"/>
+      <input type="text" class="form-control" placeholder="Surname" ng-model="formData.surname" required/>
     </div>
     <div class="form-group form-group-md">
-      <input type="text" class="form-control" placeholder="Email" ng-model="formData.email"/>
+      <input type="text" class="form-control" placeholder="Email" ng-model="formData.email" required/>
     </div>
     <div class="form-group form-group-md">
-      <input type="password" class="form-control" placeholder="Password"  ng-model="formData.password" />
+      <input type="password" class="form-control" placeholder="Password"  ng-model="formData.password" required/>
     </div>
     <div class="form-group form-group-md">
-      <input type="password" class="form-control" placeholder="Confirm password" ng-model="formData.password_confirmation"/>
+      <input type="password" class="form-control" placeholder="Confirm password" ng-model="formData.password_confirmation" required/>
     </div>
     <div class="form-group form-group-md">
-      <button type="submit" class="btn btn-warning btn-lg btn-block" ng-click="processForm()">Sign me up!</button>
+      <button type="submit" class="btn btn-warning btn-lg btn-block">Sign me up!</button>
     </div>
   </form>
 </div>
