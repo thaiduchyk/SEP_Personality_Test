@@ -1,5 +1,14 @@
-angular.module('controllers', [])
-.controller('MainCtrl', ['$rootScope', '$scope', '$http', '$location', 'ngDialog', function($rootScope, $scope, $http, $location, ngDialog) {
+angular.module('controllers', ['ngDialog', 'rzModule', 'ng-token-auth'])
+.config(function($authProvider) {
+  $authProvider.configure({
+    apiUrl: 'http://localhost:3000',
+    authProviderPaths: {
+      facebook: '/api/v1/auth/facebook'
+    }
+  });
+})
+.controller('MainCtrl', ['$rootScope', '$scope', '$http', '$location', 'ngDialog',
+function($rootScope, $scope, $http, $location, ngDialog) {
 
   $scope.images = {fb: '/assets/fb.png',
                    in: '/assets/in.png',
@@ -7,11 +16,15 @@ angular.module('controllers', [])
 
   $scope.formData = {};
   $scope.signInData = {};
+  $scope.errorMessage = "";
 
-  $scope.clickToOpen = function() {
-    ngDialog.open({ template: '/assets/template.html', className: 'ngdialog-theme-default', scope: $scope });
+  $scope.clearErrorMessage = function() {
+    $scope.errorMessage = "";
+  };
+
+  $scope.clickToOpen = function(template) {
+    ngDialog.open({ template: '/assets/'+template+'.html', className: 'ngdialog-theme-default', scope: $scope });
     $scope.tab=1;
-    // $scope.testLogin={};
   };
   $scope.selectTab = function(setTab) {
     $scope.tab = setTab;
@@ -20,26 +33,25 @@ angular.module('controllers', [])
     return $scope.tab === checkTab;
   };
   $scope.userSignin = function() {
-    localStorage.setItem("email", $scope.signInData.email);
-    localStorage.setItem("pass", $scope.signInData.password);
+    // localStorage.setItem("email", $scope.signInData.email);
+    // localStorage.setItem("pass", $scope.signInData.password);
     $http({
       method  : 'POST',
       url     : '/api/v1/auth/sign_in',
       data    : $.param($scope.signInData),  // pass in data as strings
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
     })
-    .success(function(data) {
-        console.log("success");
-        localStorage.setItem("name", data.data.name);
-        localStorage.setItem("surname", data.data.surname);
-        // if not successful, bind errors to error variables
-        console.log(data.data);
-        ngDialog.close();
-        $location.path('/begin');
+    .then(function(response) {
+      // console.log("success");
+      localStorage.setItem("name", response.data.data.name);
+      localStorage.setItem("surname", response.data.data.surname);
+      // if not successful, bind errors to error variables
+      console.log(response.headers('x-request-id'));
+      ngDialog.close();
+      $location.path('/begin');
 
-    })
-    .error(function(error){
-      console.log("error");
+    }, function(response) {
+      $scope.errorMessage = "Incorrect login";
     });
   };
   // $scope.gotoBegin = function() {

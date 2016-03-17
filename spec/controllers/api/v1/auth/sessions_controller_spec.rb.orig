@@ -1,18 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::Overrides::SessionsController, type: :controller do
-  include Devise::TestHelpers
+RSpec.describe Api::V1::Auth::SessionsController, type: :controller do
+
   before(:each) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
-
   end
 
   context 'with valid parameters' do
     let(:user_attributes){ FactoryGirl.attributes_for(:user) }
 
     it 'signs in user' do
+<<<<<<< HEAD:spec/controllers/api/v1/auth/sessions_controller_spec.rb
+      post :create, {email:'', password:''}
+
+=======
        post :create, {email:'', password:''}
       binding.pry
+>>>>>>> cca29411988b4a5e1c8f02efda86ca7a92e2f02a:spec/controllers/api/v1/overrides/sessions_controller_spec.rb
       expect(subject.current_user).to_not eq(nil)
     end
 
@@ -20,6 +24,6 @@ RSpec.describe Api::V1::Overrides::SessionsController, type: :controller do
        post :create, { email: user_attributes.email ,password: user_attributes.password }
        expect(response.status).to eq(200)
     end
-
   end
+
 end

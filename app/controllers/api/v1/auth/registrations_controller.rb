@@ -6,7 +6,7 @@ class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsCon
   end
 
   def sign_up_params
-    params.permit(:name, :surname, :email, :password, :password_confirmation)
+    params.permit(:email, :password, :name, :surname, :password_confirmation)
   end
 
   swagger_controller :registrations, "User Management"
