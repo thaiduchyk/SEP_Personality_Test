@@ -1,4 +1,4 @@
-angular.module('controllers', [])
+angular.module('controllers', ['ngDialog', 'rzModule'])
 .controller('MainCtrl', ['$rootScope', '$scope', '$http', '$location', 'ngDialog', function($rootScope, $scope, $http, $location, ngDialog) {
 
   $scope.images = {fb: '/assets/fb.png',
@@ -7,6 +7,11 @@ angular.module('controllers', [])
 
   $scope.formData = {};
   $scope.signInData = {};
+  $scope.errorMessage = "";
+
+  $scope.clearErrorMessage = function() {
+    $scope.errorMessage = "";
+  };
 
   $scope.clickToOpen = function() {
     ngDialog.open({ template: '/assets/template.html', className: 'ngdialog-theme-default', scope: $scope });
@@ -38,7 +43,7 @@ angular.module('controllers', [])
       $location.path('/begin');
 
     }, function(response) {
-      console.log('request failed');
+      $scope.errorMessage = "Incorrect login";
     });
   };
   // $scope.gotoBegin = function() {
