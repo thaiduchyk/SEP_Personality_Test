@@ -21,5 +21,6 @@
 //= require ui-bootstrap-tpls
 //= require ngDialog.min
 //= require config/ui-router.config
+//= require config/ng-token-auth.config
 //= require controllers/controllers
 //= require angular-module
