@@ -1,5 +1,6 @@
-angular.module('controllers', ['ngDialog', 'rzModule'])
-.controller('MainCtrl', ['$rootScope', '$scope', '$http', '$location', 'ngDialog', function($rootScope, $scope, $http, $location, ngDialog) {
+angular.module('controllers', ['ngDialog', 'rzModule', 'ng-token-auth'])
+.controller('MainCtrl', ['$rootScope', '$scope', '$http', '$location', 'ngDialog',
+function($rootScope, $scope, $http, $location, ngDialog) {
 
   $scope.images = {fb: '/assets/fb.png',
                    in: '/assets/in.png',
@@ -13,10 +14,9 @@ angular.module('controllers', ['ngDialog', 'rzModule'])
     $scope.errorMessage = "";
   };
 
-  $scope.clickToOpen = function() {
-    ngDialog.open({ template: '/assets/template.html', className: 'ngdialog-theme-default', scope: $scope });
+  $scope.clickToOpen = function(template) {
+    ngDialog.open({ template: '/assets/'+template+'.html', className: 'ngdialog-theme-default', scope: $scope });
     $scope.tab=1;
-    // $scope.testLogin={};
   };
   $scope.selectTab = function(setTab) {
     $scope.tab = setTab;

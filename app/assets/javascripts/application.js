@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require angular/angular
 //= require angular-ui-router.min
+//= require ng-token-auth.min
+//= require angular-cookie.min
 //= require rzslider.min
 //= require ui-bootstrap-tpls
 //= require ngDialog.min
