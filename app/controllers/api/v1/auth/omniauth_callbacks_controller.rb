@@ -65,7 +65,7 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
   # break out provider attribute assignment for easy method extension
   def assign_provider_attrs(user, auth_hash)
     binding.pry
-    if 'facebook' == auth_hash['provider']
+    if auth_hash['provider'].equal?('facebook')
       binding.pry
       user.assign_attributes({
                                  name:     auth_hash['info']['name'].split(' ')[0],
@@ -149,9 +149,17 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
   def set_random_password
     # set crazy password for new oauth users. this is only used to prevent
     # access via email sign-in.
-    p = SecureRandom.urlsafe_base64(nil, false)
+    p = generate_random_password
     @resource.password = p
     @resource.password_confirmation = p
+  end
+
+  def generate_random_password
+    s = [random_bytes(n)].pack("m*")
+    s.delete!("\n")
+    s.tr!("+/", "-_")
+    s.delete!("=") unless padding
+    s=*3
   end
 
   def create_token_info
