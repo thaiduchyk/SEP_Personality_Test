@@ -7,8 +7,10 @@ function($rootScope, $scope, $http, $location, ngDialog) {
                  mail: '/assets/mail.png',};
 
   $scope.formData = {};
+  $scope.formData.valid = false;
   $scope.signInData = {};
   $scope.errorMessage = "";
+
 
   $scope.clearErrorMessage = function() {
     $scope.errorMessage = "";
@@ -18,6 +20,14 @@ function($rootScope, $scope, $http, $location, ngDialog) {
     ngDialog.open({ template: '/assets/'+template+'.html', className: 'ngdialog-theme-default', scope: $scope });
     $scope.tab=1;
   };
+
+
+  // $scope.$watch('signupForm.$valid', function(newVal) {
+  //   console.log("changed");
+  // });
+
+
+
   $scope.selectTab = function(setTab) {
     $scope.tab = setTab;
   };
@@ -46,6 +56,15 @@ function($rootScope, $scope, $http, $location, ngDialog) {
       $scope.errorMessage = "Incorrect login";
     });
   };
+  $scope.comparePasswords = function() {
+    // console.log($scope.formData.signupForm);
+     return $scope.formData.password == $scope.formData.password_confirmation;
+  };
+
+  $scope.isFormValid = function(){
+    return ($scope.formData.valid && $scope.comparePasswords());
+  };
+
   // $scope.gotoBegin = function() {
   //   if (($scope.testLogin.username === 'test') && ($scope.testLogin.password='test')) {
   //     ngDialog.close();

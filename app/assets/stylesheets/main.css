@@ -74,6 +74,10 @@ h2 {
   border-color: #FA787E
 }
 
+.form-control.redborder {
+  border-color: #FA787E
+}
+
 .warningMessage {
   text-align: center;
   color: #FA787E;
