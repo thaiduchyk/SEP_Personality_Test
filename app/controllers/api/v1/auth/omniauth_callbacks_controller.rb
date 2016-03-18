@@ -80,11 +80,21 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
   # break out provider attribute assignment for easy method extension
   def assign_provider_attrs(user, auth_hash)
     binding.pry
-    user.assign_attributes({
+    if 'facebook' == auth_hash['provider']
+      binding.pry
+      user.assign_attributes({
+                                 name:     auth_hash['info']['name'].split(' ')[0],
+                                 surname:     auth_hash['info']['name'].split(' ')[1],
+                                 email:    auth_hash['info']['email']
+                             })
+    else
+      binding.pry
+      user.assign_attributes({
                                name:     auth_hash['info']['first_name'],
                                surname:     auth_hash['info']['last_name'],
                                email:    auth_hash['info']['email']
                            })
+    end
   end
 
   # derive allowed params from the standard devise parameter sanitizer
