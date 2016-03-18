@@ -25,7 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise_token_auth'
 
-gem 'omniauth'
+#gem 'omniauth'
+
+gem 'omniauth-oauth2', '1.3.1'
 
 gem 'omniauth-linkedin-oauth2'
 
