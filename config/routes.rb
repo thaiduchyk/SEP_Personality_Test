@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'application#angular'
-  devise_for :users, skip: [:registrations, :sessions, :passwords]
+
 
   namespace :api do
     namespace :v1 do
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
                                             sessions:           'api/v1/auth/sessions',
 
                                         }
+      devise_for :users, skip: [:registrations, :sessions, :passwords]
     end
   end
 

@@ -233,9 +233,11 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
 
   def get_resource_from_auth_hash
     # find or create user by provider and provider uid
+    binding.pry
     @resource = resource_class.where({
-                                         uid:      auth_hash['uid'],
-                                         provider: auth_hash['provider']
+                                         email:      auth_hash['info']['email'],
+                                         #uid:      auth_hash['uid'],
+                                         #provider: auth_hash['provider']
                                      }).first_or_initialize
 
     if @resource.new_record?
