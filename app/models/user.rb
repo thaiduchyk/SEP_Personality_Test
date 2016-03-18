@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6},
              format: { with: VALID_PASSWORD_REGEX }
 
-  VALID_NAME_REGEX = /\A[A-Z][a-zA-Z]{2,}\z/
+  VALID_NAME_REGEX = /\A[A-ZА-Я][a-zа-я]{2,}\z/
   validates :name, presence:true,
             format: { with: VALID_NAME_REGEX }
 
