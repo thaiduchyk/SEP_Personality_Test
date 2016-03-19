@@ -10,14 +10,6 @@ Rails.application.routes.draw do
 
                                     }
 
-
-  namespace :api do
-    namespace :v1 do
-
-      #devise_for :users, skip: [:registrations, :sessions, :passwords, :omniauth_callbacks]
-    end
-  end
-
   get 'api' => 'application#api'
 
 
