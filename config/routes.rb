@@ -2,17 +2,19 @@ Rails.application.routes.draw do
 
   root to: 'application#angular'
 
+  mount_devise_token_auth_for 'User', at: 'api/v1/auth', controllers: {
+                                        token_validations:  'api/v1/auth/token_validations',
+                                        omniauth_callbacks: 'api/v1/auth/omniauth_callbacks',
+                                        registrations:      'api/v1/auth/registrations',
+                                        sessions:           'api/v1/auth/sessions',
+
+                                    }
+
 
   namespace :api do
     namespace :v1 do
-      mount_devise_token_auth_for 'User', at: 'auth', controllers: {
-                                            token_validations:  'api/v1/auth/token_validations',
-                                            omniauth_callbacks: 'api/v1/auth/omniauth_callbacks',
-                                            registrations:      'api/v1/auth/registrations',
-                                            sessions:           'api/v1/auth/sessions',
 
-                                        }
-      devise_for :users, skip: [:registrations, :sessions, :passwords]
+      #devise_for :users, skip: [:registrations, :sessions, :passwords, :omniauth_callbacks]
     end
   end
 
