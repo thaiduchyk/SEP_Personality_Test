@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  attr_accessor :skip_password_validation
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable :rememberable
@@ -15,9 +15,10 @@ class User < ActiveRecord::Base
 
   VALID_PASSWORD_REGEX = /(?=.*\d)(?=.*[a-zA-Z])/
   validates :password, length: {minimum: 6},
-             format: { with: VALID_PASSWORD_REGEX }
+             format: { with: VALID_PASSWORD_REGEX },
+             unless: :skip_password_validation
 
-  VALID_NAME_REGEX = /\A[A-Z][a-zA-Z]{2,}\z/
+  VALID_NAME_REGEX = /\A[A-ZА-Я][a-zа-я]{2,}\z/
   validates :name, presence:true,
             format: { with: VALID_NAME_REGEX }
 

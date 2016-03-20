@@ -1,4 +1,4 @@
-class Api::V1::Overrides::SessionsController < DeviseTokenAuth::SessionsController
+class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
   skip_before_filter  :verify_authenticity_token
 
   swagger_controller :sessions, "User Management"
@@ -10,6 +10,5 @@ class Api::V1::Overrides::SessionsController < DeviseTokenAuth::SessionsControll
     response :unauthorized
     response :not_acceptable, "The request you made is not acceptable"
   end
-
 
 end

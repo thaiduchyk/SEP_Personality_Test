@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::Overrides::RegistrationsController, type: :controller do
-  include Devise::TestHelpers
+RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
 
   before(:each) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
@@ -25,7 +24,8 @@ RSpec.describe Api::V1::Overrides::RegistrationsController, type: :controller do
       expect{ post :create, user_attributes }.to change(User, :count).by(1)
     end
 
-    it 'renders correct json'
+    it 'renders correct json'do
+    end
   end
 
   context 'with invalid parameters' do

@@ -19,9 +19,9 @@
 		</div>
 
 		<div style="width:270px; margin:0 auto;">
-			<img  ng-src={{images.fb}} style="margin-right: 30px">
-			<img  ng-src={{images.in}} style="margin-right: 30px">
-			<img  ng-src={{images.mail}} ng-click="clickToOpen()" style="margin-right: 30px">
+			<img  ng-src={{images.fb}} ng-click="authenticate('facebook')" style="margin-right: 30px">
+			<img  ng-src={{images.in}} ng-click="authenticate('linkedin')" style="margin-right: 30px">
+			<img  ng-src={{images.mail}} ng-click="clickToOpen('signin')" style="margin-right: 30px">
 		</div>
 
 	</div>

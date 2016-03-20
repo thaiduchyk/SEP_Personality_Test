@@ -1,4 +1,4 @@
-/** 
+/**
 
 colors:
 
@@ -28,7 +28,7 @@ light yellow = fcfcf5
 
 hr {
     border-top: 10px solid #f7cc17 !important;
-    margin-bottom:50px !important; 
+    margin-bottom:50px !important;
     margin-top:10px !important;
 }
 
@@ -68,6 +68,20 @@ h2 {
 }
 .input:invalid {
   box-shadow: none;
+}
+
+.ng-invalid.ng-dirty {
+  border-color: #FA787E
+}
+
+.form-control.redborder {
+  border-color: #FA787E
+}
+
+.warningMessage {
+  text-align: center;
+  color: #FA787E;
+  margin-bottom: 10px;
 }
 
 .pass:-webkit-autofill {

@@ -23,11 +23,13 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the api under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'devise'
-
 gem 'devise_token_auth'
 
-gem 'omniauth'
+gem 'omniauth-oauth2', '1.3.1'
+
+gem 'omniauth-linkedin-oauth2'
+
+gem 'omniauth-facebook'
 
 gem 'bower-rails'
 
@@ -52,6 +54,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'pry'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :development do

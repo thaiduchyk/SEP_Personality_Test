@@ -1,12 +1,7 @@
-class Api::V1::Overrides::RegistrationsController < DeviseTokenAuth::RegistrationsController
-  skip_before_filter  :verify_authenticity_token
-
-  def create
-    super
-  end
+class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsController
 
   def sign_up_params
-    params.permit(:name, :surname, :email, :password, :password_confirmation)
+    params.permit(:email, :password, :name, :surname, :password_confirmation)
   end
 
   swagger_controller :registrations, "User Management"
