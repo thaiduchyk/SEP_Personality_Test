@@ -50,7 +50,7 @@ function($rootScope, $scope, $http, $location, ngDialog) {
       // if not successful, bind errors to error variables
       console.log(response.headers('x-request-id'));
       ngDialog.close();
-      $location.path('/begin');
+      $location.path('/test');
 
     }, function(response) {
       $scope.errorMessage = "Incorrect login";
@@ -89,7 +89,13 @@ function($rootScope, $scope, $http, $location, ngDialog) {
 .controller('TestCtrl', [
   '$scope', '$rootScope', '$timeout', '$uibModal',
   function($scope, $rootScope, $timeout, $uibModal){
-    $scope.count = 0;
+    $scope.testVisible = false;
+    $scope.resultsVisible = false;
+    $scope.buttonText = "Next";
+    $scope.startButtonText = "Start";
+    $scope.testInProgress = true;
+    $scope.count = 1;
+
     $scope.name = localStorage.getItem('name');
     $scope.surname = localStorage.getItem('surname');
     $scope.array = ["You believe most people have a short attention span",
@@ -103,14 +109,40 @@ function($rootScope, $scope, $http, $location, ngDialog) {
     "Your faith sustains you",
     "You intuitively see the perspectives of others",
     "You feel being a focused expert is better than a broad generalist"];
-    $scope.nextQuestion = function(){
-      $scope.count += 1;
-      if ($scope.count > 10) {
-        $scope.count = 0;
-      }
-      $scope.question = $scope.array[$scope.count];
-    };
     $scope.question = $scope.array[0];
+
+    $scope.startTest = function() {
+      $scope.question = $scope.array[0];
+      $scope.resultsArray = [];
+      $scope.testVisible = true;
+      $scope.minSlider.value = 4;
+      $scope.count = 1;
+      $scope.testInProgress = true;
+      $scope.resultsVisible = false;
+      $scope.buttonText = "Next";
+    };
+
+    $scope.nextQuestion = function(){
+      var item = {
+        question: $scope.question,
+        value: $scope.minSlider.value
+      };
+      $scope.resultsArray.push(item);
+      if ($scope.testInProgress) {
+        $scope.minSlider.value = 4;
+        $scope.question = $scope.array[$scope.count];
+        $scope.count += 1;
+        if ($scope.count == $scope.array.length) {
+          $scope.buttonText = "Finish";
+          $scope.testInProgress = false;
+        };
+      } else {
+        $scope.testVisible = false;
+        $scope.resultsVisible = true;
+        $scope.startButtonText = "Restart";
+      };
+
+    };
     // Minimal slider config
     $scope.minSlider = {
       value: 8

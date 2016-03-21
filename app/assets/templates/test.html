@@ -1,4 +1,24 @@
-<div class="wrapper">
+
+<div class="wrapper" ng-show="resultsVisible">
+  <br><br>
+  <h3 class="text-center">Results</h3>
+  <br><br>
+  <div class="row" ng-repeat="item in resultsArray">
+    <div class="col-md-12 text-center">
+      <strong>{{item.question}} : {{item.value}}</strong>
+    </div>
+  </div>
+  <br><br>
+</div>
+
+<div class="row" ng-show="!testVisible">
+  <div class="col-md-12 text-center">
+    <br><br>
+    <button type="button" class="btn btn-default btn-lg" ng-click="startTest()">{{startButtonText}}</button>
+  </div>
+</div>
+
+<div class="wrapper" ng-show="testVisible">
 
   <div class="row" style="height:200px; margin-top: 50px">
     <div class="col-md-12 text-center">
@@ -7,7 +27,6 @@
   </div>
 
   <div class="row">
-    <!-- Value: <input type="number" style="margin-bottom: 20px" ng-model="minSlider.value"/> -->
     <rzslider rz-slider-model="minSlider.value"></rzslider>
   </div>
 
@@ -23,14 +42,14 @@
   <div class="row">
     <div class="col-md-12 text-center">
       <br><br>
-      <button type="button" class="btn btn-default btn-lg" ng-click="nextQuestion()">Next</button>
+      <button type="button" class="btn btn-default btn-lg" ng-click="nextQuestion()">{{buttonText}}</button>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12 text-center">
       <br><br>
-      <h4>{{count+1}}/{{array.length}}</h4>
+      <h4>{{count}}/{{array.length}}</h4>
     </div>
   </div>
 
