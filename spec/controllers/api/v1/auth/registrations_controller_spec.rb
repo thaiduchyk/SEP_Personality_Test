@@ -27,8 +27,11 @@ RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
       expect{ post :create, user_attributes }.to change(User, :count).by(1)
     end
 
-    it 'renders correct json' do
+    it 'renders correct user' do
+      post :create, user_attributes
+      expect((JSON.parse(response.body))['data']['email']).to eq(user.email)
     end
+
   end
 
   context 'with invalid parameters' do
@@ -42,11 +45,16 @@ RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
       expect(response.status).to eq(403)
     end
 
-    it 'responds with error message'
+    it 'renders correct errors' do
+      post :create, invalid_attributes
+      expect((JSON.parse(response.body))['status']).to eq('error')
+      expect((JSON.parse(response.body))['errors']).to include('name', 'surname', 'password', 'email')
+    end
 
   end
 
-  context 'with existing email' do
+  context 'then email is in database' do
+
     before (:each) do
       @user = FactoryGirl.create(:user)
     end
@@ -59,7 +67,15 @@ RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
       post :create, user_attributes
       expect(response.status).to eq(403)
     end
-  end
 
+    it 'renders correct errors' do
+      post :create, user_attributes
+      binding.pry
+      expect((JSON.parse(response.body))['status']).to eq('error')
+      expect((JSON.parse(response.body))['errors']).to include('email')
+      expect((JSON.parse(response.body))['errors']['full_messages']).to include('Email already in use')
+    end
+
+  end
 
 end
