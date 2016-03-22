@@ -71,11 +71,15 @@ h2 {
 }
 
 .ng-invalid.ng-dirty {
-  border-color: #FA787E
+  border-color: #FA787E;
+}
+
+.ng-invalid-pattern {
+  border-color: #FA787E;
 }
 
 .form-control.redborder {
-  border-color: #FA787E
+  border-color: #FA787E;
 }
 
 .warningMessage {
