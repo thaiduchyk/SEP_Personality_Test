@@ -21,11 +21,9 @@ function($rootScope, $scope, $auth, $http, $location, ngDialog) {
     $scope.tab=1;
   };
 
-
   // $scope.$watch('signupForm.$valid', function(newVal) {
   //   console.log("changed");
   // });
-
 
 
   $scope.selectTab = function(setTab) {
@@ -97,8 +95,8 @@ function($rootScope, $scope, $auth, $http, $location, ngDialog) {
   };
 }])
 .controller('TestCtrl', [
-  '$scope', '$rootScope', '$timeout', '$uibModal',
-  function($scope, $rootScope, $timeout, $uibModal){
+  '$scope', '$rootScope', '$auth', '$timeout', '$uibModal',
+  function($scope, $rootScope, $auth, $timeout, $uibModal){
 
     $scope.startButtonText = "Start";
     $scope.resultsVisible = false;
@@ -116,6 +114,17 @@ function($rootScope, $scope, $auth, $http, $location, ngDialog) {
     "You intuitively see the perspectives of others",
     "You feel being a focused expert is better than a broad generalist"];
     $scope.question = $scope.array[0];
+
+    $scope.authSignOut = function() {
+      console.log("Signing out...");
+      $auth.signOut()
+      .then(function(resp) {
+        console.log("Signed out succesfully");
+      })
+      .catch(function(resp) {
+        console.log("Sign out error");
+      });
+    };
 
     $scope.startTest = function() {
       $scope.count = 1;
