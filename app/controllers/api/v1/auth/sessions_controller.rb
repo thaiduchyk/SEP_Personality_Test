@@ -8,7 +8,6 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
     param :form, :email, :string, :required, "Email"
     param :form, :password, :string, :required, "Password"
     response :unauthorized
-    response :not_acceptable, "The request you made is not acceptable"
   end
 
 end
