@@ -89,13 +89,9 @@ function($rootScope, $scope, $http, $location, ngDialog) {
 .controller('TestCtrl', [
   '$scope', '$rootScope', '$timeout', '$uibModal',
   function($scope, $rootScope, $timeout, $uibModal){
-    $scope.testVisible = false;
-    $scope.resultsVisible = false;
-    $scope.buttonText = "Next";
+    
     $scope.startButtonText = "Start";
-    $scope.testInProgress = true;
-    $scope.count = 1;
-
+    $scope.resultsVisible = false;
     $scope.name = localStorage.getItem('name');
     $scope.surname = localStorage.getItem('surname');
     $scope.array = ["You believe most people have a short attention span",
@@ -112,6 +108,7 @@ function($rootScope, $scope, $http, $location, ngDialog) {
     $scope.question = $scope.array[0];
 
     $scope.startTest = function() {
+      $scope.count = 1;
       $scope.question = $scope.array[0];
       $scope.resultsArray = [];
       $scope.testVisible = true;
