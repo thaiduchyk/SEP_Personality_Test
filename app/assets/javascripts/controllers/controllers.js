@@ -1,6 +1,6 @@
 angular.module('controllers', ['ngDialog', 'rzModule'])
-.controller('MainCtrl', ['$rootScope', '$scope', '$http', '$location', 'ngDialog',
-function($rootScope, $scope, $http, $location, ngDialog) {
+.controller('MainCtrl', ['$rootScope', '$scope', '$auth', '$http', '$location', 'ngDialog',
+function($rootScope, $scope, $auth, $http, $location, ngDialog) {
 
   $scope.images = {fb: '/assets/fb.png',
                    in: '/assets/in.png',
@@ -33,6 +33,16 @@ function($rootScope, $scope, $http, $location, ngDialog) {
   };
   $scope.isSelected = function(checkTab) {
     return $scope.tab === checkTab;
+  };
+  $scope.authSignin = function() {
+    $auth.submitLogin($scope.signInData)
+    .then(function(resp){
+      ngDialog.close();
+      $location.path('/test');
+    })
+    .catch(function(resp){
+      console.log("auth login failed");
+    });
   };
   $scope.userSignin = function() {
     // localStorage.setItem("email", $scope.signInData.email);
@@ -89,7 +99,7 @@ function($rootScope, $scope, $http, $location, ngDialog) {
 .controller('TestCtrl', [
   '$scope', '$rootScope', '$timeout', '$uibModal',
   function($scope, $rootScope, $timeout, $uibModal){
-    
+
     $scope.startButtonText = "Start";
     $scope.resultsVisible = false;
     $scope.name = localStorage.getItem('name');
