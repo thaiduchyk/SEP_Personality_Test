@@ -27,13 +27,11 @@ RSpec.describe Api::V1::Auth::SessionsController, type: :controller do
 
       it 'user is not signs in' do
         post :create, {password: ''}
-        binding.pry
         expect(subject.current_user).to eq(nil)
       end
 
       it 'responds with status 401' do
         post :create, {email: '', password: ''}
-        binding.pry
         expect(response.status).to eq(401)
       end
 

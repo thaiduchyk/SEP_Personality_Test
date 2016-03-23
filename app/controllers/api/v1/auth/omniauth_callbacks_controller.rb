@@ -24,7 +24,7 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
     yield if block_given?
 
     render json: { data: @resource.as_json }
-    binding.pry
+
   end
 
   protected
@@ -33,7 +33,7 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
   def assign_provider_attrs(user, auth_hash)
 
     if auth_hash['provider'] == 'facebook'
-    binding.pry
+
       user.assign_attributes({
                                  name:     auth_hash['info']['name'].split(' ')[0],
                                  surname:     auth_hash['info']['name'].split(' ')[1],

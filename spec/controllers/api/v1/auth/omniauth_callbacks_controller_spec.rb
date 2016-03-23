@@ -36,11 +36,13 @@ RSpec.describe Api::V1::Auth::OmniauthCallbacksController, type: :controller do
 
         it 'responds with status 200' do
           get :omniauth_success, provider: 'linkedin'
-          binding.pry
           expect(response.status).to eq(200)
         end
 
-
+        it 'renders correct user' do
+          get :omniauth_success, provider: 'linkedin'
+          expect((JSON.parse(response.body))['data']['email']).to eq(@user.email)
+        end
 
     end
 end
