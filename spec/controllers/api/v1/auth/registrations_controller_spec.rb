@@ -70,7 +70,6 @@ RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
 
     it 'renders correct errors' do
       post :create, user_attributes
-      binding.pry
       expect((JSON.parse(response.body))['status']).to eq('error')
       expect((JSON.parse(response.body))['errors']).to include('email')
       expect((JSON.parse(response.body))['errors']['full_messages']).to include('Email already in use')
