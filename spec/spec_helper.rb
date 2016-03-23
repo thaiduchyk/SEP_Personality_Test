@@ -56,8 +56,8 @@ RSpec.configure do |config|
                                                                     "uid"=>"AbC123",
                                                                     "info"=> {
                                                                         "email"=>"user@example.com",
-                                                                        "first_name"=>"John",
-                                                                        "last_name"=>"Doe",
+                                                                        "first_name"=>"Name",
+                                                                        "last_name"=>"Surname"
                                                                     }
                                                                })
 

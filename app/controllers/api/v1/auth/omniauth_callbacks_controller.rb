@@ -5,6 +5,7 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
   skip_after_action :update_auth_header
 
   def omniauth_success
+
     get_resource_from_auth_hash
     create_token_info
     set_token_on_resource
@@ -21,7 +22,7 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
     @resource.save!
 
     yield if block_given?
-
+    binding.pry
     render_data_or_redirect('deliverCredentials', @auth_params.as_json, @resource.as_json)
   end
 
@@ -38,7 +39,7 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
                                  email:    auth_hash['info']['email']
                              })
     else
-      binding.pry
+
       user.assign_attributes({
                                name:     auth_hash['info']['first_name'],
                                surname:     auth_hash['info']['last_name'],
@@ -52,7 +53,6 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
     @resource = resource_class.where({
                                          email:      auth_hash['info']['email'],
                                        }).first_or_initialize
-    binding.pry
 
     if @resource.new_record?
       @oauth_registration = true

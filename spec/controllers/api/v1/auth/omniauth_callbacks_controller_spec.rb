@@ -5,15 +5,43 @@ RSpec.describe Api::V1::Auth::OmniauthCallbacksController, type: :controller do
 
   before(:each) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
-    @request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:linkedin]
-    @request.env['omniauth.params'] = {}
+    @request.env['omniauth.params'] = {'resource_class'=>'User'}
     @request.env['HTTP_HOST'] = 'localhost:3000'
-    @request.env['omniauth.params']['resource_class'] = 'User'
+    @request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:linkedin]
   end
 
-  it 'signs in user' do
-    get :redirect_callbacks, provider: 'linkedin'#, auth_origin_url: 'http://localhost:3000/home'  #, omniauth_window_type: 'sameWindow'
+  describe '#redirect_callbacks' do
+
+    it 'redirects to omniauth_success' do
+        get :redirect_callbacks, provider: 'linkedin'
+        expect(response).to redirect_to('http://localhost:3000//api/v1/auth/linkedin/callback')
+    end
 
   end
 
+  describe '#omniauth_success'
+
+    context 'from linkedin provider' do
+
+      context 'then user exists'
+        before (:each) do
+          @user = FactoryGirl.create(:user)
+          session['dta.omniauth.auth'] = request.env['omniauth.auth'].except('extra')
+        end
+
+        it 'signs in user' do
+          get :omniauth_success, provider: 'linkedin'
+          expect(subject.current_user.email).to eq(@user.email)
+        end
+
+        it 'responds with status 200' do
+          get :omniauth_success, provider: 'linkedin'
+          binding.pry
+          expect(response.status).to eq(200)
+        end
+
+
+
+    end
 end
+

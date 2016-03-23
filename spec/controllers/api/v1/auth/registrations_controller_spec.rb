@@ -27,7 +27,7 @@ RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
 
     it 'renders correct user' do
       post :create, user_attributes
-      expect((JSON.parse(response.body))['data']['email']).to eq(user.email)
+      expect((JSON.parse(response.body))['data']['email']).to eq(user_attributes[:email])
     end
 
   end
