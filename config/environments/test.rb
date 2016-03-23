@@ -42,9 +42,4 @@ Rails.application.configure do
 
   config.host = 'http://localhost:3000'
 
-
-  OmniAuth.config.test_mode = true
-
-
-
 end
