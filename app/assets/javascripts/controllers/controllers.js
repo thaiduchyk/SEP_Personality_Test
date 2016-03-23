@@ -1,6 +1,6 @@
 angular.module('controllers', ['ngDialog', 'rzModule'])
-.controller('MainCtrl', ['$rootScope', '$scope', '$auth', '$http', '$location', 'ngDialog',
-function($rootScope, $scope, $auth, $http, $location, ngDialog) {
+.controller('MainCtrl', ['$rootScope', '$scope', '$auth', '$http', '$state', 'ngDialog',
+function($rootScope, $scope, $auth, $http, $state, ngDialog) {
 
   $scope.images = {fb: '/assets/fb.png',
                    in: '/assets/in.png',
@@ -10,7 +10,6 @@ function($rootScope, $scope, $auth, $http, $location, ngDialog) {
   $scope.formData.valid = false;
   $scope.signInData = {};
   $scope.errorMessage = "";
-
 
   $scope.clearErrorMessage = function() {
     $scope.errorMessage = "";
@@ -25,18 +24,24 @@ function($rootScope, $scope, $auth, $http, $location, ngDialog) {
   //   console.log("changed");
   // });
 
-
   $scope.selectTab = function(setTab) {
     $scope.tab = setTab;
   };
   $scope.isSelected = function(checkTab) {
     return $scope.tab === checkTab;
   };
+  // $rootScope.$on('auth:login-success', function(ev, user) {
+  //   console.log(user.name+' '+user.surname);
+  //   alert('Welcome ' + user.name);
+  // });
   $scope.authSignin = function() {
     $auth.submitLogin($scope.signInData)
     .then(function(resp){
+      localStorage.setItem("name", resp.name);
+      localStorage.setItem("surname", resp.surname);
       ngDialog.close();
-      $location.path('/test');
+      $state.go('auth.test');
+      // $location.path('/auth');
     })
     .catch(function(resp){
       console.log("auth login failed");
