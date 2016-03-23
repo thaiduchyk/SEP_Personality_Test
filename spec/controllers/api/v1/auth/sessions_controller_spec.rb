@@ -10,7 +10,7 @@ RSpec.describe Api::V1::Auth::SessionsController, type: :controller do
   context 'with valid parameters' do
     it 'signs in user' do
       post :create, {email: @user.email, password: @user.password }
-      expect(subject.current_user).to_not eq(nil)
+      expect(subject.current_user).to eq(@user)
     end
     it 'responds with status 200' do
        post :create, {email: @user.email, password: @user.password }
@@ -27,15 +27,20 @@ RSpec.describe Api::V1::Auth::SessionsController, type: :controller do
 
       it 'user is not signs in' do
         post :create, {password: ''}
+        binding.pry
         expect(subject.current_user).to eq(nil)
       end
 
       it 'responds with status 401' do
         post :create, {email: '', password: ''}
+        binding.pry
         expect(response.status).to eq(401)
       end
 
-      it 'need check error'
+      it 'renders correct errors' do
+        post :create, {email: '', password: ''}
+        expect((JSON.parse(response.body))['errors']).to include('Invalid login credentials. Please try again.')
+      end
     end
   end
 
