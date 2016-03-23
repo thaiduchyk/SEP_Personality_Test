@@ -11,20 +11,18 @@ RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
   let(:invalid_attributes){ FactoryGirl.attributes_for(:user_not_valid) }
 
   context 'with valid parameters' do
-    user = FactoryGirl.build(:user)
+    it 'sing up an user' do
+     expect{ post :create, user_attributes }.to change(User, :count).by(1)
+    end
 
-    it 'signs in user' do
+    it 'signs in user after sign up' do
       post :create, user_attributes
-      expect(subject.current_user.email).to eq(user.email)
+      expect(subject.current_user.email).to eq(user_attributes[:email])
     end
 
     it 'responds with status 200' do
       post :create, user_attributes
       expect(response.status).to eq(200)
-    end
-
-    it 'saves user' do
-      expect{ post :create, user_attributes }.to change(User, :count).by(1)
     end
 
     it 'renders correct user' do
@@ -37,7 +35,7 @@ RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
   context 'with invalid parameters' do
 
     it 'doesnt save user' do
-      expect{post :create, invalid_attributes}.to_not change(User, :count)
+      expect{ post :create, invalid_attributes }.to_not change(User, :count)
     end
 
     it 'responds with status 403' do
@@ -53,7 +51,7 @@ RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
 
   end
 
-  context 'then email is in database' do
+  context 'then email is present' do
 
     before (:each) do
       @user = FactoryGirl.create(:user)
