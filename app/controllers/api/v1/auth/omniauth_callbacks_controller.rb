@@ -22,8 +22,9 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
     @resource.save!
 
     yield if block_given?
+
+    render json: { data: @resource.as_json }
     binding.pry
-    render_data_or_redirect('deliverCredentials', @auth_params.as_json, @resource.as_json)
   end
 
   protected
