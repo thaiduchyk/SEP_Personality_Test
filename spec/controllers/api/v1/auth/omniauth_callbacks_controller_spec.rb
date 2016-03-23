@@ -19,11 +19,9 @@ RSpec.describe Api::V1::Auth::OmniauthCallbacksController, type: :controller do
 
   end
 
-  describe '#omniauth_success'
+  describe '#omniauth_success' do
 
-    context 'from linkedin provider' do
-
-      context 'then user exists'
+     context 'then user exists' do
         before (:each) do
           @user = FactoryGirl.create(:user)
           session['dta.omniauth.auth'] = request.env['omniauth.auth'].except('extra')
@@ -43,6 +41,8 @@ RSpec.describe Api::V1::Auth::OmniauthCallbacksController, type: :controller do
           get :omniauth_success, provider: 'linkedin'
           expect((JSON.parse(response.body))['data']['email']).to eq(@user.email)
         end
+     end
+    
+  end
 
-    end
 end
