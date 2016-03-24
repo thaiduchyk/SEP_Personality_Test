@@ -7,7 +7,8 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
                  mail: '/assets/mail.png',};
 
   $scope.formData = {};
-  $scope.formDataIsValid = false;
+  $scope.formValidation = {};
+  $scope.formValidation.valid = false;
   $scope.signInData = {};
   $scope.errorMessage = "";
   $rootScope.userInfo = {};
@@ -64,7 +65,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
   };
 
   $scope.isFormValid = function(){
-    return ($scope.formDataIsValid && $scope.comparePasswords());
+    return ($scope.formValidation.valid && $scope.comparePasswords());
   };
 
   $scope.processForm = function() {
