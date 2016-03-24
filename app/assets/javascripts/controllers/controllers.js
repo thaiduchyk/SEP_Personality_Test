@@ -1,6 +1,6 @@
 angular.module('controllers', ['ngDialog', 'rzModule'])
-.controller('MainCtrl', ['$rootScope', '$scope', '$auth', '$http', '$state', 'ngDialog',
-function($rootScope, $scope, $auth, $http, $state, ngDialog) {
+.controller('MainCtrl', ['$rootScope', '$scope', '$auth', 'ipCookie', '$http', '$state', 'ngDialog',
+function($rootScope, $scope, $auth, ipCookie, $http, $state, ngDialog) {
 
   $scope.images = {fb: '/assets/fb.png',
                    in: '/assets/in.png',
@@ -10,6 +10,9 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
   $scope.formData.valid = false;
   $scope.signInData = {};
   $scope.errorMessage = "";
+  $rootScope.userInfo = {};
+
+  // console.log(ipCookie());
 
   $scope.clearErrorMessage = function() {
     $scope.errorMessage = "";
@@ -39,6 +42,8 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
     .then(function(resp){
       localStorage.setItem("name", resp.name);
       localStorage.setItem("surname", resp.surname);
+      $rootScope.userInfo.name = resp.name;
+      // console.log(ipCookie());
       ngDialog.close();
       $state.go('auth.test');
       // $location.path('/auth');
@@ -100,11 +105,14 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
   };
 }])
 .controller('TestCtrl', [
-  '$scope', '$rootScope', '$auth', '$timeout', '$uibModal',
-  function($scope, $rootScope, $auth, $timeout, $uibModal){
+  '$scope', '$rootScope', '$auth', '$state', '$timeout', '$uibModal',
+  function($scope, $rootScope, $auth, $state, $timeout, $uibModal){
 
-    $scope.startButtonText = "Start";
-    $scope.resultsVisible = false;
+    // $scope.startButtonText = "Start";
+    // $scope.resultsVisible = false;
+    $rootScope.resultsArray = [];
+    $scope.count = 1;
+    $scope.buttonText = "Next";
     $scope.name = localStorage.getItem('name');
     $scope.surname = localStorage.getItem('surname');
     $scope.array = ["You believe most people have a short attention span",
@@ -119,38 +127,28 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
     "You intuitively see the perspectives of others",
     "You feel being a focused expert is better than a broad generalist"];
     $scope.question = $scope.array[0];
+    $scope.testInProgress = true;
 
-    $scope.authSignOut = function() {
-      console.log("Signing out...");
-      $auth.signOut()
-      .then(function(resp) {
-        console.log("Signed out succesfully");
-      })
-      .catch(function(resp) {
-        console.log("Sign out error");
-      });
-    };
-
-    $scope.startTest = function() {
-      $scope.count = 1;
-      $scope.question = $scope.array[0];
-      $scope.resultsArray = [];
-      $scope.testVisible = true;
-      $scope.minSlider.value = 4;
-      $scope.count = 1;
-      $scope.testInProgress = true;
-      $scope.resultsVisible = false;
-      $scope.buttonText = "Next";
-    };
+    // $scope.startTest = function() {
+    //   $scope.count = 1;
+    //   $scope.question = $scope.array[0];
+    //   $rootScope.resultsArray = [];
+    //   $scope.testVisible = true;
+    //   $scope.minSlider.value = 50;
+    //   $scope.count = 1;
+    //   $scope.testInProgress = true;
+    //   // $scope.resultsVisible = false;
+    //   $scope.buttonText = "Next";
+    // };
 
     $scope.nextQuestion = function(){
       var item = {
         question: $scope.question,
         value: $scope.minSlider.value
       };
-      $scope.resultsArray.push(item);
+      $rootScope.resultsArray.push(item);
       if ($scope.testInProgress) {
-        $scope.minSlider.value = 4;
+        $scope.minSlider.value = 0;
         $scope.question = $scope.array[$scope.count];
         $scope.count += 1;
         if ($scope.count == $scope.array.length) {
@@ -158,14 +156,41 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
           $scope.testInProgress = false;
         };
       } else {
-        $scope.testVisible = false;
-        $scope.resultsVisible = true;
-        $scope.startButtonText = "Restart";
+        $state.go('auth.results');
+        // $scope.testVisible = false;
+        // $scope.resultsVisible = true;
+        // $scope.startButtonText = "Restart";
       };
 
     };
     // Minimal slider config
     $scope.minSlider = {
-      value: 8
+      value: 0,
+      options: {
+        floor: -50,
+        ceil: 50
+      }
     };
-  }]);
+  }])
+  .controller('ResultsCtrl', [
+    '$scope', '$rootScope', '$auth', '$state',
+    function($scope, $rootScope, $auth, $state){
+
+      console.log($auth.validateUser());
+
+      $scope.retakeTest = function(){
+        $state.go('auth.test');
+      };
+
+      $scope.authSignOut = function() {
+        console.log("Signing out...");
+        $auth.signOut()
+        .then(function(resp) {
+          console.log("Signed out succesfully");
+        })
+        .catch(function(resp) {
+          console.log("Sign out error");
+        });
+      };
+
+    }]);

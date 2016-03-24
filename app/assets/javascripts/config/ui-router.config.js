@@ -20,7 +20,6 @@ angular.module('ui-router.config', ['ui.router'])
       template: '<ui-view/>',
       resolve: {
         auth: function($auth) {
-          console.log($auth.validateUser());
           return $auth.validateUser();
         }
       }
@@ -29,6 +28,11 @@ angular.module('ui-router.config', ['ui.router'])
       url: '/test',
       templateUrl: '/assets/test.html',
       controller: 'TestCtrl'
+    })
+    .state('auth.results', {
+      url: '/results',
+      templateUrl: '/assets/results.html',
+      controller: 'ResultsCtrl'
     });
     // .state('begin', {
     //   url: '/begin',

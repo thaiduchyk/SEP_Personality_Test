@@ -1,31 +1,11 @@
-<div class="wrapper" ng-show="resultsVisible">
-  <br><br>
-  <h3 class="text-center">Results</h3>
-  <br><br>
-  <div class="row" ng-repeat="item in resultsArray">
+<div class="wrapper" >
+
+  <div class="row">
     <div class="col-md-12 text-center">
-      <strong>{{item.question}} : {{item.value}}</strong>
+      <br>
+      <h2>Hello {{name}} {{surname}}</h2>
     </div>
   </div>
-  <br><br>
-</div>
-
-<div class="row" ng-show="!testVisible">
-  <div class="col-md-12 text-center">
-    <br><br>
-    <h2>Hello {{name}} {{surname}}</h2>
-  </div>
-  <div class="col-md-12 text-center">
-    <br><br>
-    <button type="button" class="btn btn-default btn-lg" ng-click="startTest()">{{startButtonText}}</button>
-  </div>
-  <div class="col-md-12 text-center">
-    <br><br>
-    <button type="button" class="btn btn-default btn-lg" ng-click="authSignOut()">Logout</button>
-  </div>
-</div>
-
-<div class="wrapper" ng-show="testVisible">
 
   <div class="row" style="height:200px; margin-top: 50px">
     <div class="col-md-12 text-center">
@@ -34,7 +14,7 @@
   </div>
 
   <div class="row">
-    <rzslider rz-slider-model="minSlider.value"></rzslider>
+    <rzslider rz-slider-model="minSlider.value" rz-slider-options="minSlider.options"></rzslider>
   </div>
 
   <div class="row" style="margin-top: 40px">
