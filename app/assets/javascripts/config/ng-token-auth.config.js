@@ -3,6 +3,7 @@ angular.module('ng-token-auth.config', ['ng-token-auth'])
   $authProvider.configure({
     apiUrl: 'http://localhost:3000',
     emailSignInPath: '/api/v1/auth/sign_in',
+    emailRegistrationPath: '/api/v1/auth',
     tokenValidationPath: '/api/v1/auth/validate_token',
     signOutUrl: '/api/v1/auth/sign_out',
     authProviderPaths: {

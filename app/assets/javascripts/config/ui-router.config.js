@@ -24,15 +24,25 @@ angular.module('ui-router.config', ['ui.router'])
         }
       }
     })
-    .state('auth.test', {
+    .state('test', {
       url: '/test',
       templateUrl: '/assets/test.html',
-      controller: 'TestCtrl'
+      controller: 'TestCtrl',
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
+      }
     })
-    .state('auth.results', {
+    .state('results', {
       url: '/results',
       templateUrl: '/assets/results.html',
-      controller: 'ResultsCtrl'
+      controller: 'ResultsCtrl',
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
+      }
     });
     // .state('begin', {
     //   url: '/begin',
