@@ -24,6 +24,16 @@ angular.module('ui-router.config', ['ui.router'])
         }
       }
     })
+    .state('start', {
+      url: '/start',
+      templateUrl: '/assets/start.html',
+      controller: 'TestCtrl',
+      resolve: {
+        auth: function($auth) {
+          return $auth.validateUser();
+        }
+      }
+    })
     .state('test', {
       url: '/test',
       templateUrl: '/assets/test.html',

@@ -37,10 +37,10 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
       $rootScope.userInfo.name = resp.name;
       $rootScope.userInfo.surname = resp.surname;
       ngDialog.close();
-      $state.go('test');
+      $state.go('start');
     })
     .catch(function(resp){
-      console.log("auth login failed");
+      $scope.errorMessage = "Incorrect login";
     });
   };
   // $scope.userSignin = function() {
@@ -81,7 +81,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
       $rootScope.userInfo.surname = resp.surname;
       console.log("success");
       ngDialog.close();
-      $state.go('test');
+      $state.go('start');
     })
     .catch(function(resp){
       console.log("registration error");
@@ -158,7 +158,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
       console.log($auth.validateUser());
 
       $scope.retakeTest = function(){
-        $state.go('auth.test');
+        $state.go('test');
       };
 
       $scope.authSignOut = function() {
