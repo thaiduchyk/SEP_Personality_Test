@@ -30,6 +30,7 @@ angular.module('ui-router.config', ['ui.router'])
       controller: 'TestCtrl',
       resolve: {
         auth: function($auth) {
+          console.log($auth.validateUser());
           return $auth.validateUser();
         }
       }

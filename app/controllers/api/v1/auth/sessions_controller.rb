@@ -8,7 +8,13 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
     param :form, :email, :string, :required, "Email"
     param :form, :password, :string, :required, "Password"
     response :unauthorized
-    response :not_acceptable, "The request you made is not acceptable"
+  end
+
+  swagger_api :destroy do
+    summary "Deletes an existing User item"
+    param :path, :id, :integer, :optional, "User Id"
+    response :unauthorized
+    response :not_found
   end
 
 end

@@ -44,7 +44,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
       $scope.errorMessage = "Incorrect login";
     });
   };
-  // $scope.userSignin = function() {
+  // $scope.authSignin = function() {
   //   $http({
   //     method  : 'POST',
   //     url     : '/api/v1/auth/sign_in',
@@ -52,9 +52,9 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
   //     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
   //   })
   //   .then(function(response) {
-  //     console.log(response.headers('x-request-id'));
-  //     ngDialog.close();
-  //     $location.path('/test');
+  //     console.log(response.headers());
+  //     // ngDialog.close();
+  //     // $location.path('/test');
   //
   //   }, function(response) {
   //     $scope.errorMessage = "Incorrect login";
