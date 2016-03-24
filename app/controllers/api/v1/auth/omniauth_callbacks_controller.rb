@@ -36,15 +36,19 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
 
       user.assign_attributes({
                                  name:     auth_hash['info']['name'].split(' ')[0],
-                                 surname:     auth_hash['info']['name'].split(' ')[1],
-                                 email:    auth_hash['info']['email']
+                                 surname:  auth_hash['info']['name'].split(' ')[1],
+                                 email:    auth_hash['info']['email'],
+                                 uid:      auth_hash['uid'],
+                                 provider: auth_hash['provider']
                              })
     else
 
       user.assign_attributes({
                                name:     auth_hash['info']['first_name'],
-                               surname:     auth_hash['info']['last_name'],
-                               email:    auth_hash['info']['email']
+                               surname:  auth_hash['info']['last_name'],
+                               email:    auth_hash['info']['email'],
+                               uid:      auth_hash['uid'],
+                               provider: auth_hash['provider']
                            })
     end
   end
