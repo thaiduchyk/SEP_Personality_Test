@@ -19,7 +19,7 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
 
   private
 
-  def sign_in_params
+  def resource_params
     params.permit(:email, :password, :session)
   end
 
