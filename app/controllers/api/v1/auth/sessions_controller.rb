@@ -10,4 +10,11 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
     response :unauthorized
   end
 
+  swagger_api :destroy do
+    summary "Deletes an existing User item"
+    param :path, :id, :integer, :optional, "User Id"
+    response :unauthorized
+    response :not_found
+  end
+
 end
