@@ -5,6 +5,7 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
   skip_after_action :update_auth_header
 
   def omniauth_success
+
     get_resource_from_auth_hash
     create_token_info
     set_token_on_resource
@@ -22,7 +23,8 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
 
     yield if block_given?
 
-    render_data_or_redirect('deliverCredentials', @auth_params.as_json, @resource.as_json)
+    render json: { data: @resource.as_json }
+
   end
 
   protected
@@ -34,26 +36,28 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
 
       user.assign_attributes({
                                  name:     auth_hash['info']['name'].split(' ')[0],
-                                 surname:     auth_hash['info']['name'].split(' ')[1],
-                                 email:    auth_hash['info']['email']
+                                 surname:  auth_hash['info']['name'].split(' ')[1],
+                                 email:    auth_hash['info']['email'],
+                                 uid:      auth_hash['uid'],
+                                 provider: auth_hash['provider']
                              })
     else
-      binding.pry
+
       user.assign_attributes({
                                name:     auth_hash['info']['first_name'],
-                               surname:     auth_hash['info']['last_name'],
-                               email:    auth_hash['info']['email']
+                               surname:  auth_hash['info']['last_name'],
+                               email:    auth_hash['info']['email'],
+                               uid:      auth_hash['uid'],
+                               provider: auth_hash['provider']
                            })
     end
   end
 
   def get_resource_from_auth_hash
     # find or create user by provider and provider uid
-    binding.pry
     @resource = resource_class.where({
                                          email:      auth_hash['info']['email'],
                                        }).first_or_initialize
-    binding.pry
 
     if @resource.new_record?
       @oauth_registration = true

@@ -56,8 +56,13 @@ RSpec.configure do |config|
                                                                     "uid"=>"AbC123",
                                                                     "info"=> {
                                                                         "email"=>"user@example.com",
+<<<<<<< HEAD
+                                                                        "first_name"=>"Name",
+                                                                        "last_name"=>"Surname"
+=======
                                                                         "first_name"=>"John",
-                                                                        "last_name"=>"Doe",
+                                                                        "last_name"=>"Doe"
+>>>>>>> f73e5d7fc4ec7b6341c256efde02b15f54cc5cda
                                                                     }
                                                                })
 
@@ -119,4 +124,6 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+ # OmniAuth.config.test_mode = true
+ # config.include(OmniauthMacros)
 end

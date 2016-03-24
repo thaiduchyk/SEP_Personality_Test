@@ -1,7 +1,16 @@
 class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsController
+<<<<<<< HEAD
+skip_before_filter  :verify_authenticity_token
+  def sign_up_params
+    params.permit(:email, :password, :name, :surname, :password_confirmation)
+  end
+
+  swagger_controller :registrations, "User Management"
+=======
 
   skip_before_filter  :verify_authenticity_token
   swagger_controller :registrations, "User form registration"
+>>>>>>> f10d4dae6bf3baacc8a344721640ca40b1b2c1d5
 
   swagger_api :create do
     summary "Creates new user"
@@ -14,9 +23,13 @@ class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsCon
 
   end
 
+<<<<<<< HEAD
+end
+=======
   private
 
   def sign_up_params
     params.permit(:email, :password, :name, :surname, :password_confirmation, :valid)
   end
 end
+>>>>>>> f10d4dae6bf3baacc8a344721640ca40b1b2c1d5

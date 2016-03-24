@@ -15,12 +15,15 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
     param :path, :id, :integer, :optional, "User Id"
     response :unauthorized
     response :not_found
+<<<<<<< HEAD
+=======
   end
 
   private
 
   def resource_params
     params.permit(:email, :password, :session)
+>>>>>>> f10d4dae6bf3baacc8a344721640ca40b1b2c1d5
   end
 
 end

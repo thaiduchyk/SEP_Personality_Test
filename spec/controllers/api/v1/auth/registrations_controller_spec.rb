@@ -6,41 +6,73 @@ RSpec.describe Api::V1::Auth::RegistrationsController, type: :controller do
     @request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
+  let(:user_attributes){ FactoryGirl.attributes_for(:user) }
+
+  let(:invalid_attributes){ FactoryGirl.attributes_for(:user_not_valid) }
+
   context 'with valid parameters' do
-
-    let(:user_attributes){ FactoryGirl.attributes_for(:user) }
-
-    it 'signs in user' do
-      post :create, user_attributes
-      expect(subject.current_user).to_not eq(nil)
+    it 'sing up an user' do
+     expect{ post :create, user_attributes }.to change(User, :count).by(1)
     end
 
-    it 'responds status with status 200' do
+    it 'signs in user after sign up' do
+      post :create, user_attributes
+      expect(subject.current_user.email).to eq(user_attributes[:email])
+    end
+
+    it 'responds with status 200' do
       post :create, user_attributes
       expect(response.status).to eq(200)
     end
 
-    it 'saves user' do
-      expect{ post :create, user_attributes }.to change(User, :count).by(1)
+    it 'renders correct user' do
+      post :create, user_attributes
+      expect((JSON.parse(response.body))['data']['email']).to eq(user_attributes[:email])
     end
 
-    it 'renders correct json'do
-    end
   end
 
   context 'with invalid parameters' do
 
     it 'doesnt save user' do
-      expect{post :create, {}}.to_not change(User, :count)
+      expect{ post :create, invalid_attributes }.to_not change(User, :count)
     end
 
-    it 'doesnt sign in user' do
-      post :create, {}
-      expect(subject.current_user).to eq(nil)
+    it 'responds with status 403' do
+      post :create, invalid_attributes
+      expect(response.status).to eq(403)
     end
 
-    it 'error return if email is already in use' do
+    it 'renders correct errors' do
+      post :create, invalid_attributes
+      expect((JSON.parse(response.body))['status']).to eq('error')
+      expect((JSON.parse(response.body))['errors']).to include('name', 'surname', 'password', 'email')
     end
 
   end
+
+  context 'then email is present' do
+
+    before (:each) do
+      @user = FactoryGirl.create(:user)
+    end
+
+    it 'doesnt save user' do
+      expect{post :create, user_attributes}.to_not change(User, :count)
+    end
+
+    it 'responds with status 403' do
+      post :create, user_attributes
+      expect(response.status).to eq(403)
+    end
+
+    it 'renders correct errors' do
+      post :create, user_attributes
+      expect((JSON.parse(response.body))['status']).to eq('error')
+      expect((JSON.parse(response.body))['errors']).to include('email')
+      expect((JSON.parse(response.body))['errors']['full_messages']).to include('Email already in use')
+    end
+
+  end
+
 end
