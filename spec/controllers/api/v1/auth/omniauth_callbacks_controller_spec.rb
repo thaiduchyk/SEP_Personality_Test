@@ -29,7 +29,7 @@ RSpec.describe Api::V1::Auth::OmniauthCallbacksController, type: :controller do
 
         it 'signs in user' do
           get :omniauth_success, provider: 'linkedin'
-          expect(subject.current_user.email).to eq(@user.email)
+          expect(subject.current_user.email).to eq(@request.env['omniauth.auth']['info']['email'])
         end
 
         it 'responds with status 200' do
@@ -39,10 +39,33 @@ RSpec.describe Api::V1::Auth::OmniauthCallbacksController, type: :controller do
 
         it 'renders correct user' do
           get :omniauth_success, provider: 'linkedin'
-          expect((JSON.parse(response.body))['data']['email']).to eq(@user.email)
+          expect((JSON.parse(response.body))['data']['email']).to eq((@request.env['omniauth.auth']['info']['email']))
         end
      end
-    
-  end
 
+     context 'with new user' do
+       before (:each) do
+         session['dta.omniauth.auth'] = request.env['omniauth.auth'].except('extra')
+       end
+
+       it 'sings up an user' do
+         expect{ get :omniauth_success, provider: 'linkedin' }.to change(User, :count).by(1)
+       end
+
+       it 'signs in user' do
+         get :omniauth_success, provider: 'linkedin'
+         expect(subject.current_user.email).to eq((@request.env['omniauth.auth']['info']['email']))
+       end
+
+       it 'responds with status 200' do
+         get :omniauth_success, provider: 'linkedin'
+         expect(response.status).to eq(200)
+       end
+
+       it 'renders correct user' do
+         get :omniauth_success, provider: 'linkedin'
+         expect((JSON.parse(response.body))['data']['email']).to eq((@request.env['omniauth.auth']['info']['email']))
+       end
+     end
+  end
 end

@@ -17,4 +17,10 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
     response :not_found
   end
 
+  private
+
+  def sign_in_params
+    params.permit(:email, :password, :session)
+  end
+
 end
