@@ -23,6 +23,8 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
 
     yield if block_given?
 
+    update_auth_header
+
     render json: { data: @resource.as_json }
 
   end
