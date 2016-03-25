@@ -11,6 +11,14 @@
           "summary": "Creates new user",
           "parameters": [
             {
+              "paramType": "header",
+              "name": "token",
+              "type": "string",
+              "description": "token to be passed as a header",
+              "required": true,
+              "in": "header"
+            },
+            {
               "paramType": "form",
               "name": "email",
               "type": "string",
