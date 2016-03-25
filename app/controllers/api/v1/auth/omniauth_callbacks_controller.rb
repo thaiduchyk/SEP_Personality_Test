@@ -32,7 +32,7 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
   # break out provider attribute assignment for easy method extension
   def assign_provider_attrs(user, auth_hash)
 
-    if auth_hash['provider'] == 'facebook'
+    if 'facebook' == auth_hash['provider']  
 
       user.assign_attributes({
                                  name:     auth_hash['info']['name'].split(' ')[0],
@@ -44,12 +44,12 @@ class Api::V1::Auth::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCall
     else
 
       user.assign_attributes({
-                               name:     auth_hash['info']['first_name'],
-                               surname:  auth_hash['info']['last_name'],
-                               email:    auth_hash['info']['email'],
-                               uid:      auth_hash['uid'],
-                               provider: auth_hash['provider']
-                           })
+                                 name:     auth_hash['info']['first_name'],
+                                 surname:  auth_hash['info']['last_name'],
+                                 email:    auth_hash['info']['email'],
+                                 uid:      auth_hash['uid'],
+                                 provider: auth_hash['provider']
+                             })
     end
   end
 
