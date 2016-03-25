@@ -6,7 +6,6 @@ angular.module('ng-token-auth.config', ['ng-token-auth'])
     emailRegistrationPath: '/auth',
     tokenValidationPath: '/auth/validate_token',
     signOutUrl: '/auth/sign_out',
-    storage: 'localStorage',
     authProviderPaths: {
       facebook: '/auth/facebook',
       linkedin: '/auth/linkedin'

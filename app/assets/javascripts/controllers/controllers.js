@@ -38,7 +38,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
       $rootScope.userInfo.name = resp.name;
       $rootScope.userInfo.surname = resp.surname;
       ngDialog.close();
-      $state.go('start');
+      $state.go('auth.start');
     })
     .catch(function(resp){
       $scope.errorMessage = "Incorrect login";
@@ -82,7 +82,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
       $rootScope.userInfo.surname = resp.surname;
       console.log("success");
       ngDialog.close();
-      $state.go('start');
+      $state.go('auth.start');
     })
     .catch(function(resp){
       console.log("registration error");
@@ -139,7 +139,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
           $scope.testInProgress = false;
         };
       } else {
-        $state.go('results');
+        $state.go('auth.results');
       };
 
     };
@@ -159,18 +159,19 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
       console.log($auth.validateUser());
 
       $scope.retakeTest = function(){
-        $state.go('test');
+        $state.go('auth.test');
       };
 
       $scope.authSignOut = function() {
         console.log("Signing out...");
-        $auth.signOut()
-        .then(function(resp) {
-          console.log("Signed out succesfully");
-        })
-        .catch(function(resp) {
-          console.log("Sign out error");
-        });
+        console.log($auth.validateUser());
+        // $auth.signOut()
+        // .then(function(resp) {
+        //   console.log("Signed out succesfully");
+        // })
+        // .catch(function(resp) {
+        //   console.log("Sign out error");
+        // });
       };
 
     }]);

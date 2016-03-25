@@ -1,19 +1,15 @@
 angular.module('ui-router.config', ['ui.router'])
 .config([
   '$stateProvider',
+  '$locationProvider',
   '$urlRouterProvider',
-  function($stateProvider, $urlRouterProvider) {
+  function($stateProvider, $locationProvider, $urlRouterProvider) {
     $stateProvider
     .state('home', {
-      url: '/home',
+      url: '/',
       templateUrl: '/assets/index.html',
       controller: 'MainCtrl'
     })
-    // .state('signup', {
-    //   url: '/signup',
-    //   templateUrl: '/assets/template.html',
-    //   controller: 'MainCtrl'
-    // })
     .state('auth', {
       url: '/auth',
       abstract: true,
@@ -24,46 +20,26 @@ angular.module('ui-router.config', ['ui.router'])
         }
       }
     })
-    .state('start', {
+    .state('auth.start', {
       url: '/start',
       templateUrl: '/assets/start.html',
-      controller: 'TestCtrl',
-      resolve: {
-        auth: function($auth) {
-          console.log($auth.validateUser());
-          return $auth.validateUser();
-        }
-      }
+      controller: 'TestCtrl'
     })
-    .state('test', {
+    .state('auth.test', {
       url: '/test',
       templateUrl: '/assets/test.html',
-      controller: 'TestCtrl',
-      resolve: {
-        auth: function($auth) {
-          return $auth.validateUser();
-        }
-      }
+      controller: 'TestCtrl'
     })
-    .state('results', {
+    .state('auth.results', {
       url: '/results',
       templateUrl: '/assets/results.html',
-      controller: 'ResultsCtrl',
-      resolve: {
-        auth: function($auth) {
-          return $auth.validateUser();
-        }
-      }
+      controller: 'ResultsCtrl'
     });
-    // .state('begin', {
-    //   url: '/begin',
-    //   templateUrl: '/assets/begin.html',
-    //   controller: 'TestCtrl'
-    // })
-    // .state('test', {
-    //   url: '/test',
-    //   templateUrl: '/assets/test.html',
-    //   controller: 'TestCtrl'
-    // });
-    $urlRouterProvider.otherwise('home');
+    $urlRouterProvider.otherwise('/');
+    // $urlRouterProvider.deferIntercept();
+    $locationProvider.html5Mode(false);
   }]);
+  // .run(function($rootScope, $urlRouter){
+  //   $urlRouter.sync();
+  //   $urlRouter.listen();
+  // });
