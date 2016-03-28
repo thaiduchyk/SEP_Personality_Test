@@ -143,6 +143,20 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
       };
 
     };
+
+    $scope.authSignOut = function() {
+      // console.log("Signing out...");
+      // console.log($auth.validateUser());
+      $auth.signOut()
+      .then(function(resp) {
+        console.log("Signed out succesfully");
+        $state.go('home');
+      })
+      .catch(function(resp) {
+        console.log("Sign out error");
+      });
+    };
+
     // Minimal slider config
     $scope.minSlider = {
       value: 0,
