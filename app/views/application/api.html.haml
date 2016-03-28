@@ -42,6 +42,9 @@
               $('pre code').each(function(i, e) {
                 hljs.highlightBlock(e)
               });
+
+              var auth_token = $('#header').data('auth-token');
+              if( auth_token ){ $('[name=auth_token]').val(auth_token); }
             },
             onFailure: function(data) {
               log("Unable to Load SwaggerUI");
@@ -62,5 +65,9 @@
   %body.swagger-section
     #header
       .swagger-ui-wrap
+        %form#api_selector
+      .input
+        %input#input_apiKey{:name => "apiKey", :placeholder => "Authorization token", :type => "text"}/
     #message-bar.swagger-ui-wrap  
     #swagger-ui-container.swagger-ui-wrap
+

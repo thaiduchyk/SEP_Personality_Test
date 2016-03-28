@@ -5,7 +5,6 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
 
   swagger_api :create do
     summary "Creates new user"
-    param :header, :token, :string, :required, "token to be passed as a header" , :in =>'header'
     param :form, :email, :string, :required, "Email"
     param :form, :password, :string, :required, "Password"
     response :unauthorized
@@ -17,7 +16,6 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
     response :unauthorized
     response :not_found
   end
-
 
   def create
     super do

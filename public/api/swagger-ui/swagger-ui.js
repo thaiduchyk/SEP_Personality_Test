@@ -1,5 +1,28 @@
 $(function() {
 
+    HeaderView.prototype.showCustom = function(e) {
+      if (e != null) {
+        e.preventDefault();
+      }
+      return this.trigger('update-swagger-ui', {
+        url: $('#input_baseUrl').val(),
+        apiKey: $('#input_apiKey').val()
+      });
+    };
+
+    HeaderView.prototype.update = function(url, apiKey, trigger) {
+      if (trigger == null) {
+        trigger = false;
+      }
+      $('#input_baseUrl').val(url);
+      if (trigger) {
+        return this.trigger('update-swagger-ui', {
+          url: url
+        });
+      }
+    };
+
+
 	// Helper function for vertically aligning DOM elements
 	// http://www.seodenver.com/simple-vertical-align-plugin-for-jquery/
 	$.fn.vAlign = function() {

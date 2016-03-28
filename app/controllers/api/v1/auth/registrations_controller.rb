@@ -5,14 +5,12 @@ class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsCon
 
   swagger_api :create do
     summary "Creates new user"
-    param :header, :token, :string, :required, "token to be passed as a header" , :in =>'header'
     param :form, :name, :string, :required, "Name"
     param :form, :surname, :string, :required, "Surname"
     param :form, :email, :string, :required, "Email"
     param :form, :password, :string, :required, "Password"
     param :form, :password_confirmation, :string, :required, "Password confirmation"
     response :forbidden
-
   end
 
   private
