@@ -22,6 +22,22 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
     $scope.tab=1;
   };
 
+  $rootScope.$on('auth:login-success', function(ev, user) {
+    $state.go('auth.start');
+    // alert('Welcome ', user.email);
+});
+
+  $scope.authSocial = function(networkName) {
+    $auth.authenticate(networkName)
+    .then(function(resp) {
+      console.log("success");
+      // $state.go('auth.start');
+    })
+    .catch(function(resp) {
+      console.log("error");
+    });
+  };
+
   $scope.selectTab = function(setTab) {
     $scope.tab = setTab;
   };
@@ -38,7 +54,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
       $rootScope.userInfo.name = resp.name;
       $rootScope.userInfo.surname = resp.surname;
       ngDialog.close();
-      $state.go('auth.start');
+      // $state.go('auth.start');
     })
     .catch(function(resp){
       $scope.errorMessage = "Incorrect login";
