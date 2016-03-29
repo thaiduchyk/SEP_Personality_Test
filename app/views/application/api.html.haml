@@ -42,9 +42,6 @@
               $('pre code').each(function(i, e) {
                 hljs.highlightBlock(e)
               });
-
-              var auth_token = $('#header').data('auth-token');
-              if( auth_token ){ $('[name=auth_token]').val(auth_token); }
             },
             onFailure: function(data) {
               log("Unable to Load SwaggerUI");
@@ -58,7 +55,7 @@
             if(key && key.trim() != "") {
               log("added key " + key);
               window.authorizations.add("key", new ApiKeyAuthorization("Authorization", key, "header"));
-      }
+           }
           })
           window.swaggerUi.load();
         });

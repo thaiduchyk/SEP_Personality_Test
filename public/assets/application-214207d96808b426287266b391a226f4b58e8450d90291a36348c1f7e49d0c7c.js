@@ -12341,7 +12341,7 @@ return jQuery;
 
 }).call(this);
 /**
- * @license AngularJS v1.4.8
+ * @license AngularJS docs.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */

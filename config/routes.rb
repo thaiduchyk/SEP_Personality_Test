@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'api' => 'application#api'
 
+ # post 'api/v1/auth/sessions' => 'api/v1/auth/sessions#create'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

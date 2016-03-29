@@ -47,7 +47,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
   // $scope.authSignin = function() {
   //   $http({
   //     method  : 'POST',
-  //     url     : '/api/v1/auth/sign_in',
+  //     url     : '/api/docs/auth/sign_in',
   //     data    : $.param($scope.signInData),  // pass in data as strings
   //     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
   //   })
@@ -89,7 +89,7 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
     });
     // $http({
     //   method  : 'POST',
-    //   url     : '/api/v1/auth',
+    //   url     : '/api/docs/auth',
     //   data    : $.param(signupData),  // pass in data as strings
     //   headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
     // })

@@ -1,7 +1,7 @@
 angular.module('ng-token-auth.config', ['ng-token-auth'])
 .config(function($authProvider) {
   $authProvider.configure({
-    apiUrl: '/api/v1',
+    apiUrl: '/api/docs',
     emailSignInPath: '/auth/sign_in',
     emailRegistrationPath: '/auth',
     tokenValidationPath: '/auth/validate_token',
