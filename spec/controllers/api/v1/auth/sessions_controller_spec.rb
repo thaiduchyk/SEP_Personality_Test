@@ -4,6 +4,11 @@ RSpec.describe Api::V1::Auth::SessionsController, type: :controller do
 
   before(:each) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
+  end
+
+  describe '#create' do
+
+  before(:each) do
     @user = FactoryGirl.create(:user)
   end
 
@@ -38,6 +43,21 @@ RSpec.describe Api::V1::Auth::SessionsController, type: :controller do
       it 'renders correct errors' do
         post :create, {email: '', password: ''}
         expect((JSON.parse(response.body))['errors']).to include('Invalid login credentials. Please try again.')
+      end
+    end
+  end
+  end
+
+  describe '#destory' do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      login @user
+    end
+
+    context 'with existing user' do
+      it 'signs out user' do
+        delete :destroy, nil, {'uid': @user.uid, 'access-token': @user.tokens}
+        binding.pry
       end
     end
   end

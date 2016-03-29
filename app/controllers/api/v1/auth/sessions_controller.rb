@@ -28,12 +28,12 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
     user = remove_instance_variable(:@resource) if @resource
     client_id = remove_instance_variable(:@client_id) if @client_id
     remove_instance_variable(:@token) if @token
-
+    binding.pry
     if user and client_id and user.tokens[client_id]
       user.tokens.delete(client_id)
       user.skip_password_validation = true
       user.save!
-
+      binding.pry
       yield if block_given?
 
       render_destroy_success
