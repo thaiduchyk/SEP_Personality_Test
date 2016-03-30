@@ -12,6 +12,18 @@ Rails.application.routes.draw do
 
   get 'api' => 'application#api'
 
+ # get 'api/v1/questions' => 'api/v1/questions#show'
+
+  namespace :api do
+    namespace :v1 do
+      resources :questions, :only => [:show]
+    end
+  end
+
+
+
+ # post 'api/v1/auth/sessions' => 'api/v1/auth/sessions#create'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
