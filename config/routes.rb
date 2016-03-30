@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'test_result/count'
+
   root to: 'application#angular'
 
   mount_devise_token_auth_for 'User', at: 'api/v1/auth', controllers: {

@@ -1,6 +1,6 @@
 class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsController
 
-  skip_before_filter  :verify_authenticity_token
+  #skip_before_filter  :verify_authenticity_token
   swagger_controller :registrations, "User form registration"
 
   swagger_api :create do
