@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20160328164841) do
   enable_extension "plpgsql"
 
   create_table "questions", force: :cascade do |t|
-    t.string   "qst_txt",    null: false
-    t.string   "a",          null: false
-    t.string   "b",          null: false
+    t.string   "qst_txt"
+    t.string   "a"
+    t.string   "b"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
