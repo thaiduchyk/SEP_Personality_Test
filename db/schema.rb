@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 20160331164712) do
   add_index "personalities_users", ["user_id"], name: "index_personalities_users_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "qst_txt"
-    t.string   "a"
-    t.string   "b"
+    t.string   "qst_txt",    null: false
+    t.string   "a",          null: false
+    t.string   "b",          null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
