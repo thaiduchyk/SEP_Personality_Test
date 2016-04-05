@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_and_belongs_to_many :personalities
+
   attr_accessor :skip_password_validation
 
   # Include default devise modules. Others available are:
@@ -6,7 +8,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,:registerable,
          :recoverable, :omniauthable
   include DeviseTokenAuth::Concerns::User
-
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,
