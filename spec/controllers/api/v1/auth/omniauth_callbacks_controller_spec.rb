@@ -14,7 +14,7 @@ RSpec.describe Api::V1::Auth::OmniauthCallbacksController, type: :controller do
 
     it 'redirects to omniauth_success' do
         get :redirect_callbacks, provider: 'linkedin'
-        expect(response).to redirect_to('http://localhost:3000//api/docs/auth/linkedin/callback')
+        expect(response).to redirect_to('http://localhost:3000//api/v1/auth/linkedin/callback')
     end
 
   end

@@ -1,7 +1,8 @@
 class Api::V1::QuestionsController < ApplicationController
-  def show
+
+  def index
     binding.pry
-    @questions = Question.all
+    render json: { data: Question.all.as_json }
     binding.pry
   end
 end
