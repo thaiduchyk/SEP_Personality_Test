@@ -118,8 +118,8 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
   };
 }])
 .controller('TestCtrl', [
-  '$scope', '$rootScope', '$auth', '$state', '$timeout', '$uibModal',
-  function($scope, $rootScope, $auth, $state, $timeout, $uibModal){
+  '$scope', '$rootScope', '$auth', '$http', '$state', '$timeout', '$uibModal',
+  function($scope, $rootScope, $auth, $http, $state, $timeout, $uibModal){
 
     $rootScope.resultsArray = [];
     $scope.name = $rootScope.userInfo.name;
@@ -158,6 +158,20 @@ function($rootScope, $scope, $auth, $http, $state, ngDialog) {
         $state.go('auth.results');
       };
 
+    };
+
+    $scope.getQuestions = function() {
+      $http({
+        method  : 'GET',
+        url     : 'api/v1/questions'
+        // headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+      })
+      .success(function(data) {
+        console.log(data);
+      })
+      .error(function(error){
+        console.log("error");
+      });
     };
 
     $scope.authSignOut = function() {
