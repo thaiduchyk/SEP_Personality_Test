@@ -17,11 +17,9 @@ ActiveRecord::Schema.define(version: 20160331164712) do
   enable_extension "plpgsql"
 
   create_table "personalities", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "key"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string "name"
+    t.text   "description"
+    t.string "key"
   end
 
   create_table "personalities_users", id: false, force: :cascade do |t|
@@ -33,9 +31,9 @@ ActiveRecord::Schema.define(version: 20160331164712) do
   add_index "personalities_users", ["user_id"], name: "index_personalities_users_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "qst_txt",    null: false
-    t.string   "a",          null: false
-    t.string   "b",          null: false
+    t.string   "qst_txt"
+    t.string   "a"
+    t.string   "b"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

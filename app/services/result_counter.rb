@@ -66,7 +66,7 @@ class ResultCounter
   def countE(answer_hash)
     result = 0
     (1..70).step(7) do |x|
-      result += answer_hash[x][:a]
+      result += answer_hash[x][:a].to_i
     end
     result
   end
@@ -74,7 +74,7 @@ class ResultCounter
   def countI(answer_hash)
     result = 0
     (1..70).step(7) do |x|
-      result += answer_hash[x][:b]
+      result += answer_hash[x][:b].to_i
     end
     result
   end
@@ -82,10 +82,10 @@ class ResultCounter
   def countS(answer_hash)
     result = 0
     (2..70).step(7) do |x|
-      result += answer_hash[x][:a]
+      result += answer_hash[x][:a].to_i
     end
     (3..70).step(7) do |x|
-      result += answer_hash[x][:a]
+      result += answer_hash[x][:a].to_i
     end
     result
   end
@@ -93,10 +93,10 @@ class ResultCounter
   def countN(answer_hash)
     result = 0
     (2..70).step(7) do |x|
-      result += answer_hash[x][:b]
+      result += answer_hash[x][:b].to_i
     end
     (3..70).step(7) do |x|
-      result += answer_hash[x][:b]
+      result += answer_hash[x][:b].to_i
     end
     result
   end
@@ -104,10 +104,10 @@ class ResultCounter
   def countT(answer_hash)
     result = 0
     (4..70).step(7) do |x|
-      result += answer_hash[x][:a]
+      result += answer_hash[x][:a].to_i
     end
     (5..70).step(7) do |x|
-      result += answer_hash[x][:a]
+      result += answer_hash[x][:a].to_i
     end
     result
   end
@@ -115,10 +115,10 @@ class ResultCounter
   def countF(answer_hash)
     result = 0
     (4..70).step(7) do |x|
-      result += answer_hash[x][:b]
+      result += answer_hash[x][:b].to_i
     end
     (5..70).step(7) do |x|
-      result += answer_hash[x][:b]
+      result += answer_hash[x][:b].to_i
     end
     result
   end
@@ -126,10 +126,10 @@ class ResultCounter
   def countJ(answer_hash)
     result = 0
     (6..70).step(7) do |x|
-      result += answer_hash[x][:a]
+      result += answer_hash[x][:a].to_i
     end
     (7..70).step(7) do |x|
-      result += answer_hash[x][:a]
+      result += answer_hash[x][:a].to_i
     end
     result
   end
@@ -137,10 +137,10 @@ class ResultCounter
   def countP(answer_hash)
     result = 0
     (6..70).step(7) do |x|
-      result += answer_hash[x][:b]
+      result += answer_hash[x][:b].to_i
     end
     (7..70).step(7) do |x|
-      result += answer_hash[x][:b]
+      result += answer_hash[x][:b].to_i
     end
     result
   end

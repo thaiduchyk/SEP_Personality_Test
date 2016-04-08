@@ -1,0 +1,35 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000/api/v1",
+  "resourcePath": "test_results",
+  "apis": [
+    {
+      "path": "/own_results",
+      "operations": [
+        {
+          "summary": "Calculates user result",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "result",
+              "type": "string",
+              "description": "Questions result",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            }
+          ],
+          "nickname": "Api::V1::TestResults#own_result",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

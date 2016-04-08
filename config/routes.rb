@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
 
 
- # post 'api/v1/auth/sessions' => 'api/v1/auth/sessions#create'
+  post 'api/v1/own_results' => 'api/v1/test_results#own_result'
 
 
 

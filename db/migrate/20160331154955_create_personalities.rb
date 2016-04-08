@@ -4,8 +4,6 @@ class CreatePersonalities < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :key
-
-      t.timestamps null: false
     end
   end
 end
