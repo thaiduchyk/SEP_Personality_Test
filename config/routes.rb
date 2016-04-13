@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'invites/create'
+
   get 'test_result/count'
 
   root to: 'application#angular'
