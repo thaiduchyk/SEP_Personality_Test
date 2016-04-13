@@ -1,4 +1,5 @@
 class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsController
+
   include Docs::Api::V1::Auth::RegistrationsController
 
   private

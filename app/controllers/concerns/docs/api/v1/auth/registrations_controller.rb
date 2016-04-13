@@ -16,5 +16,4 @@ module Docs::Api::V1::Auth
       end
     end
   end
-
 end

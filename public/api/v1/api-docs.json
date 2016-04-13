@@ -10,6 +10,10 @@
     {
       "path": "/auth/registrations.{format}",
       "description": "User form registration"
+    },
+    {
+      "path": "/test_results.{format}",
+      "description": "Calculating test results"
     }
   ],
   "authorizations": null

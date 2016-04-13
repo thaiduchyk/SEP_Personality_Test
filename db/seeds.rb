@@ -118,3 +118,102 @@ Question.create(
     a: 'Settled and decided',
     b: 'Unsettled and undecided'
 )
+
+##############################################
+
+
+Personality.create(
+    name: 'The Giver',
+    description: ' ',
+    key: 'enfj'
+)
+
+Personality.create(
+    name: 'The Executive',
+    description: ' ',
+    key: 'entj'
+)
+
+Personality.create(
+    name: 'The Inspirer',
+    description: ' ',
+    key: 'enfp'
+)
+
+Personality.create(
+    name: 'The Visionary',
+    description: ' ',
+    key: 'entp'
+)
+
+Personality.create(
+    name: 'The Caregiver',
+    description: ' ',
+    key: 'esfj'
+)
+
+Personality.create(
+    name: 'The Performer',
+    description: ' ',
+    key: 'esfp'
+)
+
+Personality.create(
+    name: 'The Guardian',
+    description: ' ',
+    key: 'estj'
+)
+
+Personality.create(
+    name: 'The Doer',
+    description: ' ',
+    key: 'estp'
+)
+
+Personality.create(
+    name: 'The Protector',
+    description: ' ',
+    key: 'infj'
+)
+
+Personality.create(
+    name: 'The Idealist',
+    description: ' ',
+    key: 'infp'
+)
+
+Personality.create(
+    name: 'The Scientist',
+    description: ' ',
+    key: 'intj'
+)
+
+Personality.create(
+    name: 'The Thinker',
+    description: ' ',
+    key: 'intp'
+)
+
+Personality.create(
+    name: 'The Nurturer',
+    description: ' ',
+    key: 'isfj'
+)
+
+Personality.create(
+    name: 'The Artist',
+    description: ' ',
+    key: 'isfp'
+)
+
+Personality.create(
+    name: 'The Duty Fulfiller',
+    description: ' ',
+    key: 'istj'
+)
+
+Personality.create(
+    name: 'The Mechanic',
+    description: ' ',
+    key: 'istp'
+)
