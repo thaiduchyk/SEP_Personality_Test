@@ -37,7 +37,6 @@ gem 'haml-rails'
 
 gem 'swagger-docs'
 
-
 # Use ActiveModel has_secure_passwordgit
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -55,6 +54,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'faker', github: 'stympy/faker'
 end
 
 group :development do

@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe Question, type: :model do
 
     before(:each) do
-      @question = Question.new(qst_txt:'Question question :', a:'Variant a', b:'Variant b')
+      @question = Question.new(qst_txt:'Question in question :', a:'Variant a', b:'Variant b')
 
     end
-    
+
     describe 'validations' do
       context 'with valid parameters' do
         it 'is valid' do

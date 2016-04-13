@@ -3,23 +3,22 @@ require 'rails_helper'
 RSpec.describe Api::V1::QuestionsController, type: :controller do
 
   before(:each) do
-    binding.pry
-    @questions = FactoryGirl.create(:question).as_json
-    binding.pry
+    @questions = Array.new
+    @question = FactoryGirl.create(:question).as_json
+    @questions.push(@question)
+    @question = FactoryGirl.create(:question).as_json
+    @questions.push(@question)
   end
 
-  context 'Questions#index' do
+  context 'GET#index' do
      it 'returns all questions' do
-       binding.pry
        get :index
-       binding.pry
        expect(JSON.parse(response.body)['data']).to eq(@questions)
-       binding.pry
       end
-   # it 'responds with status 200' do
-   #   get :index
-   #   expect(response.status).to eq(200)
-   # end
+    it 'responds with status 200' do
+      get :index
+      expect(response.status).to eq(200)
+    end
   end
 
 

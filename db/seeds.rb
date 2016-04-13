@@ -2,159 +2,119 @@
 Question.create(
     qst_txt: 'At a party do you:',
     a: 'Interact with many, including strangers',
-    b: 'Interact with a few, known to you',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Interact with a few, known to you'
 )
 #2
 Question.create(
     qst_txt: 'Are you more:',
     a: 'Realistic than speculative',
-    b: 'Speculative than realistic',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Speculative than realistic'
 )
 #3
 Question.create(
     qst_txt: 'Is it worse to:',
     a: 'Have your “head in the clouds”',
-    b: 'Be “in a rut”',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Be “in a rut”'
 )
 #4
 Question.create(
     qst_txt: 'Are you more impressed by:',
     a: 'Principles',
-    b: 'Emotions',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Emotions'
 )
 #5
 Question.create(
     qst_txt: 'Are more drawn toward the:',
     a: 'Convincing',
-    b: 'Touching',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Touching'
 )
 #6
 Question.create(
     qst_txt: 'you prefer to work:',
     a: 'To deadlines',
-    b: 'Just “whenever”',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Just “whenever”'
 )
 #7
 Question.create(
     qst_txt: 'Do you tend to choose:',
     a: 'Rather carefully',
-    b: 'Somewhat impulsively',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Somewhat impulsively'
 )
 #8
 Question.create(
     qst_txt: 'At parties do you:',
     a: 'Stay late, with increasing energy',
-    b: 'Leave early with decreased energy',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Leave early with decreased energy'
 )
 #9
 Question.create(
     qst_txt: 'Are you more attracted to:',
     a: 'Sensible people',
-    b: 'Imaginative people',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Imaginative people'
 )
 #10
 Question.create(
     qst_txt: 'Are you more interested in:',
     a: 'What is actual',
-    b: 'What is possible',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'What is possible'
 )
 #11
 Question.create(
     qst_txt: 'In judging others are you more swayed',
     a: 'Laws than circumstances',
-    b: 'Circumstances than laws',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Circumstances than laws'
 )
 #12
 Question.create(
     qst_txt: 'In approaching others is your inclination to be somewhat:',
     a: 'Objective',
-    b: 'Personal',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Personal'
 )
 #13
 Question.create(
     qst_txt: 'Are you more:',
     a: 'Punctual',
-    b: 'Leisurely',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Leisurely'
 )
 #14
 Question.create(
     qst_txt: 'Does it bother you more having things:',
     a: 'Incomplete',
-    b: 'Completed',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Completed'
 )
 #15
 Question.create(
     qst_txt: 'In your social groups do you:',
     a: 'Keep abreast of other’s happenings',
-    b: 'Get behind on the news',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Get behind on the news'
 )
 #16
 Question.create(
     qst_txt: 'In doing ordinary things are you more likely to:',
     a: 'Do it the usual way',
-    b: 'Do it your own way',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Do it your own way'
 )
 #17
 Question.create(
     qst_txt: ' Writers should:',
     a: '“Say what they mean and mean what they say”',
-    b: 'Express things more by use of analogy',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Express things more by use of analogy'
 )
 #18
 Question.create(
     qst_txt: 'Which appeals to you more:',
     a: 'Consistency of thought',
-    b: 'Harmonious human relationships',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Harmonious human relationships'
 )
 #19
 Question.create(
     qst_txt: ' Are you more comfortable in making:',
     a: 'Logical judgments',
-    b: 'Value judgments',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Value judgments'
 )
 #20
 Question.create(
     qst_txt: 'Do you want things:',
     a: 'Settled and decided',
-    b: 'Unsettled and undecided',
-    created_at: Time.zone.now,
-    updated_at: Time.zone.now
+    b: 'Unsettled and undecided'
 )
