@@ -57,7 +57,6 @@ RSpec.describe Api::V1::Auth::SessionsController, type: :controller do
     context 'with existing user' do
       it 'signs out user' do
         delete :destroy, nil, {'uid': @user.uid, 'access-token': @user.tokens}
-        binding.pry
       end
     end
   end
