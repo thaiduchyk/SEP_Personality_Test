@@ -1,4 +1,4 @@
-class InvitesController < ApplicationController
+class Api::V1::InvitesController < ApplicationController
   include Docs::Api::V1::InvitesController
 
   before_action :authenticate_user!
