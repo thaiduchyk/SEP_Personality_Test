@@ -1,4 +1,5 @@
 class InvitesController < ApplicationController
+  include Docs::Api::V1::InvitesController
 
   before_action :authenticate_user!
 
@@ -7,11 +8,18 @@ class InvitesController < ApplicationController
     if @invite.save
       InvitesMailer.invite_friend(@invite).deliver
     else
-      if
+      render_create_error
     end
   end
 
   private
 
+  def render_create_error
+     render json: {
+                 status: 'error',
+                 data:   @invite.as_json,
+                 errors: @resource.errors.to_hash.merge(full_messages: @resource.errors.full_messages)
+             }, status: 403
+  end
 
 end

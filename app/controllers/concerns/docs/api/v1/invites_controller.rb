@@ -1,13 +1,13 @@
 module Docs::Api::V1
-  module TestResultsController
+  module InvitesController
     extend ActiveSupport::Concern
 
     included do
-      swagger_controller :test_results, "Calculating test results"
+      swagger_controller :invites, "Invites"
 
-      swagger_api :own_results do
-        summary "Calculates user result"
-        param :body, :email, :string, :required, "Friend's email"
+      swagger_api :create do
+        summary "Creates new invite and sends email to friend"
+        param :body, :result, :string, :required, "Questions result"
         param :header, :uid, :string, :required, "uid"
         param :header, :client, :string, :required, "client"
         param :header, 'access-token', :string, :required, "token"
@@ -17,4 +17,3 @@ module Docs::Api::V1
     end
   end
 end
-

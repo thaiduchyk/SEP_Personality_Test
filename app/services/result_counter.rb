@@ -66,6 +66,7 @@ class ResultCounter
 
   def countE(answer_hash)
     result = 0
+    binding.pry
     (1..70).step(7) do |x|
       result += answer_hash[x.to_s][:a].to_i
     end
