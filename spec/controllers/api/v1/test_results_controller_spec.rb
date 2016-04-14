@@ -6,8 +6,6 @@ RSpec.describe Api::V1::TestResultsController, type: :controller do
     load "#{Rails.root}/db/seeds.rb"
     @user = FactoryGirl.create(:user)
     allow(controller).to receive_messages(:current_user => @user)
-
-
   end
 
   describe '#own_result' do

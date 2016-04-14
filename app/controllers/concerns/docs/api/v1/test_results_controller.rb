@@ -7,7 +7,7 @@ module Docs::Api::V1
 
       swagger_api :own_results do
         summary "Calculates user result"
-        param :body, :email, :string, :required, "Friend's email"
+        param :body, :results, :string, :required, "Friend's email"
         param :header, :uid, :string, :required, "uid"
         param :header, :client, :string, :required, "client"
         param :header, 'access-token', :string, :required, "token"
