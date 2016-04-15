@@ -14,12 +14,11 @@ Rails.application.routes.draw do
 
   get 'api' => 'application#api'
 
- # get 'api/v1/questions' => 'api/v1/questions#show'
+ #get 'api/v1/questions' => 'api/v1/questions#show'
 
   namespace :api do
     namespace :v1 do
       resources :questions
-      #, :only => [:show]
     end
   end
 
