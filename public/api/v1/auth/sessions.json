@@ -30,15 +30,35 @@
               "code": 401,
               "responseModel": null,
               "message": "Unauthorized"
-            },
-            {
-              "code": 406,
-              "responseModel": null,
-              "message": "The request you made is not acceptable"
             }
           ],
-          "nickname": "Api::V1::Overrides::Sessions#create",
+          "nickname": "Api::V1::Auth::Sessions#create",
           "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/auth/sign_out",
+      "operations": [
+        {
+          "summary": "Deletes an existing User item",
+          "parameters": [
+
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Auth::Sessions#destroy",
+          "method": "delete"
         }
       ]
     }

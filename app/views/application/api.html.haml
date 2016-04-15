@@ -62,5 +62,9 @@
   %body.swagger-section
     #header
       .swagger-ui-wrap
+        %form#api_selector
+      .input
+        %input#input_apiKey{:name => "apiKey", :placeholder => "Authorization token", :type => "text"}/
     #message-bar.swagger-ui-wrap  
     #swagger-ui-container.swagger-ui-wrap
+

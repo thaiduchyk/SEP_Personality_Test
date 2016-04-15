@@ -1,10 +1,14 @@
 angular.module('ng-token-auth.config', ['ng-token-auth'])
 .config(function($authProvider) {
   $authProvider.configure({
-    apiUrl: 'http://localhost:3000',
+    apiUrl: '/api/v1',
+    emailSignInPath: '/auth/sign_in',
+    emailRegistrationPath: '/auth',
+    tokenValidationPath: '/auth/validate_token',
+    signOutUrl: '/auth/sign_out',
     authProviderPaths: {
-      facebook: '/api/v1/auth/facebook',
-      linkedin: '/api/v1/auth/linkedin'
+      facebook: '/auth/facebook',
+      linkedin: '/auth/linkedin'
     }
   });
 });

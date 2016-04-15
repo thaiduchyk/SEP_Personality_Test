@@ -1,16 +1,17 @@
 angular.module('controllers', ['ngDialog', 'rzModule'])
-.controller('MainCtrl', ['$rootScope', '$scope', '$http', '$location', 'ngDialog',
-function($rootScope, $scope, $http, $location, ngDialog) {
+.controller('MainCtrl', ['$rootScope', '$scope', '$auth', '$http', '$state', 'ngDialog',
+function($rootScope, $scope, $auth, $http, $state, ngDialog) {
 
   $scope.images = {fb: '/assets/fb.png',
                    in: '/assets/in.png',
                  mail: '/assets/mail.png',};
 
   $scope.formData = {};
-  $scope.formData.valid = false;
+  $scope.formValidation = {};
+  $scope.formValidation.valid = false;
   $scope.signInData = {};
   $scope.errorMessage = "";
-
+  $rootScope.userInfo = {};
 
   $scope.clearErrorMessage = function() {
     $scope.errorMessage = "";
@@ -21,77 +22,94 @@ function($rootScope, $scope, $http, $location, ngDialog) {
     $scope.tab=1;
   };
 
-
-  // $scope.$watch('signupForm.$valid', function(newVal) {
-  //   console.log("changed");
-  // });
-
-
-
   $scope.selectTab = function(setTab) {
     $scope.tab = setTab;
   };
   $scope.isSelected = function(checkTab) {
     return $scope.tab === checkTab;
   };
-  $scope.userSignin = function() {
-    // localStorage.setItem("email", $scope.signInData.email);
-    // localStorage.setItem("pass", $scope.signInData.password);
-    $http({
-      method  : 'POST',
-      url     : '/api/v1/auth/sign_in',
-      data    : $.param($scope.signInData),  // pass in data as strings
-      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-    })
-    .then(function(response) {
-      // console.log("success");
-      localStorage.setItem("name", response.data.data.name);
-      localStorage.setItem("surname", response.data.data.surname);
-      // if not successful, bind errors to error variables
-      console.log(response.headers('x-request-id'));
+  // $rootScope.$on('auth:login-success', function(ev, user) {
+  //   console.log(user.name+' '+user.surname);
+  //   alert('Welcome ' + user.name);
+  // });
+  $scope.authSignin = function() {
+    $auth.submitLogin($scope.signInData)
+    .then(function(resp){
+      $rootScope.userInfo.name = resp.name;
+      $rootScope.userInfo.surname = resp.surname;
       ngDialog.close();
-      $location.path('/begin');
-
-    }, function(response) {
+      $state.go('auth.start');
+    })
+    .catch(function(resp){
       $scope.errorMessage = "Incorrect login";
     });
   };
+  // $scope.authSignin = function() {
+  //   $http({
+  //     method  : 'POST',
+  //     url     : '/api/docs/auth/sign_in',
+  //     data    : $.param($scope.signInData),  // pass in data as strings
+  //     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+  //   })
+  //   .then(function(response) {
+  //     console.log(response.headers());
+  //     // ngDialog.close();
+  //     // $location.path('/test');
+  //
+  //   }, function(response) {
+  //     $scope.errorMessage = "Incorrect login";
+  //   });
+  // };
   $scope.comparePasswords = function() {
-    // console.log($scope.formData.signupForm);
      return $scope.formData.password == $scope.formData.password_confirmation;
   };
 
   $scope.isFormValid = function(){
-    return ($scope.formData.valid && $scope.comparePasswords());
+    return ($scope.formValidation.valid && $scope.comparePasswords());
   };
 
-  // $scope.gotoBegin = function() {
-  //   if (($scope.testLogin.username === 'test') && ($scope.testLogin.password='test')) {
-  //     ngDialog.close();
-  //     $location.path('/begin');
-  //   }
-  // };
   $scope.processForm = function() {
-    $http({
-      method  : 'POST',
-      url     : '/api/v1/auth',
-      data    : $.param($scope.formData),  // pass in data as strings
-      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+    // var signupData = {
+    //   name: $scope.formData.name,
+    //   surname: $scope.formData.surname,
+    //   email: $scope.formData.email,
+    //   password: $scope.formData.password,
+    //   password_confirmation: $scope.formData.password_confirmation
+    //   };
+    $auth.submitRegistration($scope.formData)
+    .then(function(resp){
+      $rootScope.userInfo.name = resp.name;
+      $rootScope.userInfo.surname = resp.surname;
+      console.log("success");
+      ngDialog.close();
+      $state.go('auth.start');
     })
-    .success(function(data) {
-      console.log(data.data);
-    })
-    .error(function(error){
-      console.log("error");
+    .catch(function(resp){
+      console.log("registration error");
     });
+    // $http({
+    //   method  : 'POST',
+    //   url     : '/api/docs/auth',
+    //   data    : $.param(signupData),  // pass in data as strings
+    //   headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+    // })
+    // .success(function(data) {
+    //   console.log(data.data);
+    // })
+    // .error(function(error){
+    //   console.log("error");
+    // });
   };
 }])
 .controller('TestCtrl', [
-  '$scope', '$rootScope', '$timeout', '$uibModal',
-  function($scope, $rootScope, $timeout, $uibModal){
-    $scope.count = 0;
-    $scope.name = localStorage.getItem('name');
-    $scope.surname = localStorage.getItem('surname');
+  '$scope', '$rootScope', '$auth', '$state', '$timeout', '$uibModal',
+  function($scope, $rootScope, $auth, $state, $timeout, $uibModal){
+
+    $rootScope.resultsArray = [];
+    $scope.name = $rootScope.userInfo.name;
+    // $scope.surname = $rootScope.userInfo.surname;
+    $scope.count = 1;
+    $scope.buttonText = "Next";
     $scope.array = ["You believe most people have a short attention span",
     "You are interested in people histories",
     "You always root for the underdog",
@@ -103,16 +121,72 @@ function($rootScope, $scope, $http, $location, ngDialog) {
     "Your faith sustains you",
     "You intuitively see the perspectives of others",
     "You feel being a focused expert is better than a broad generalist"];
-    $scope.nextQuestion = function(){
-      $scope.count += 1;
-      if ($scope.count > 10) {
-        $scope.count = 0;
-      }
-      $scope.question = $scope.array[$scope.count];
-    };
     $scope.question = $scope.array[0];
+    $scope.testInProgress = true;
+
+    $scope.nextQuestion = function(){
+      var item = {
+        question: $scope.question,
+        value: $scope.minSlider.value
+      };
+      $rootScope.resultsArray.push(item);
+      if ($scope.testInProgress) {
+        $scope.minSlider.value = 0;
+        $scope.question = $scope.array[$scope.count];
+        $scope.count += 1;
+        if ($scope.count == $scope.array.length) {
+          $scope.buttonText = "Finish";
+          $scope.testInProgress = false;
+        };
+      } else {
+        $state.go('auth.results');
+      };
+
+    };
+
+    $scope.authSignOut = function() {
+      // console.log("Signing out...");
+      // console.log($auth.validateUser());
+      $auth.signOut()
+      .then(function(resp) {
+        console.log("Signed out succesfully");
+        $state.go('home');
+      })
+      .catch(function(resp) {
+        console.log("Sign out error");
+      });
+    };
+
     // Minimal slider config
     $scope.minSlider = {
-      value: 8
+      value: 0,
+      options: {
+        floor: -50,
+        ceil: 50
+      }
     };
-  }]);
+  }])
+  .controller('ResultsCtrl', [
+    '$scope', '$rootScope', '$auth', '$state',
+    function($scope, $rootScope, $auth, $state){
+
+      console.log($auth.validateUser());
+
+      $scope.retakeTest = function(){
+        $state.go('auth.test');
+      };
+
+      $scope.authSignOut = function() {
+        // console.log("Signing out...");
+        // console.log($auth.validateUser());
+        $auth.signOut()
+        .then(function(resp) {
+          console.log("Signed out succesfully");
+          $state.go('home');
+        })
+        .catch(function(resp) {
+          console.log("Sign out error");
+        });
+      };
+
+    }]);

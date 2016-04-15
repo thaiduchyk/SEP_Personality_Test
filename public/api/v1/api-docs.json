@@ -4,12 +4,16 @@
   "basePath": "http://localhost:3000/api/v1",
   "apis": [
     {
-      "path": "/overrides/sessions.{format}",
+      "path": "/auth/sessions.{format}",
       "description": "User Management"
     },
     {
-      "path": "/overrides/registrations.{format}",
-      "description": "User Management"
+      "path": "/auth/registrations.{format}",
+      "description": "User form registration"
+    },
+    {
+      "path": "/test_results.{format}",
+      "description": "Calculating test results"
     }
   ],
   "authorizations": null

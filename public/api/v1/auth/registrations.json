@@ -48,17 +48,12 @@
           ],
           "responseMessages": [
             {
-              "code": 401,
+              "code": 403,
               "responseModel": null,
-              "message": "Unauthorized"
-            },
-            {
-              "code": 406,
-              "responseModel": null,
-              "message": "The request you made is not acceptable"
+              "message": "Forbidden"
             }
           ],
-          "nickname": "Api::V1::Overrides::Registrations#create",
+          "nickname": "Api::V1::Auth::Registrations#create",
           "method": "post"
         }
       ]

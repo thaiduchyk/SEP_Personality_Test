@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'test_result/count'
+
   root to: 'application#angular'
 
   mount_devise_token_auth_for 'User', at: 'api/v1/auth', controllers: {
@@ -11,6 +13,18 @@ Rails.application.routes.draw do
                                     }
 
   get 'api' => 'application#api'
+
+ #get 'api/v1/questions' => 'api/v1/questions#show'
+
+  namespace :api do
+    namespace :v1 do
+      resources :questions
+    end
+  end
+
+
+
+  post 'api/v1/own_results' => 'api/v1/test_results#own_result'
 
 
 

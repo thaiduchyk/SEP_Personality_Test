@@ -1,14 +1,28 @@
 class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
-  skip_before_filter  :verify_authenticity_token
+   include Docs::Api::V1::Auth::SessionsController
 
-  swagger_controller :sessions, "User Management"
+  def create
+    super do
+      @resource.skip_password_validation = true
+    end
+  end
 
-  swagger_api :create do
-    summary "Creates new user"
-    param :form, :email, :string, :required, "Email"
-    param :form, :password, :string, :required, "Password"
-    response :unauthorized
-    response :not_acceptable, "The request you made is not acceptable"
+
+  def destroy
+    # remove auth instance variables so that after_action does not run
+    user = remove_instance_variable(:@resource) if @resource
+    client_id = remove_instance_variable(:@client_id) if @client_id
+    remove_instance_variable(:@token) if @token
+    if user and client_id and user.tokens[client_id]
+      user.tokens.delete(client_id)
+      user.skip_password_validation = true
+      user.save!
+      yield if block_given?
+
+      render_destroy_success
+    else
+      render_destroy_error
+    end
   end
 
 end
