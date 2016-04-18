@@ -5,7 +5,7 @@ module Docs::Api::V1
     included do
       swagger_controller :test_results, "Calculating test results"
 
-      swagger_api :own_results do
+      swagger_api :own_result do
         summary "Calculates user result"
         param :body, :results, :string, :required, "Friend's email"
         param :header, :uid, :string, :required, "uid"

@@ -49,7 +49,7 @@ RSpec.describe User, type: :model do
         end
       end
 
-      it 'is invalid then password password is blank' do
+      it 'is invalid then password is blank' do
         @user.password = ''
         expect(@user).to_not be_valid
       end

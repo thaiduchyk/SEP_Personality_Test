@@ -12,6 +12,10 @@
       "description": "User form registration"
     },
     {
+      "path": "/invites.{format}",
+      "description": "Invites"
+    },
+    {
       "path": "/test_results.{format}",
       "description": "Calculating test results"
     }
