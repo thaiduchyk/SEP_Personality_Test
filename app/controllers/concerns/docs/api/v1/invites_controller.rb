@@ -7,12 +7,23 @@ module Docs::Api::V1
 
       swagger_api :create do
         summary "Creates new invite and sends email to friend"
-        param :body, :email, :string, :required, "Questions result"
+        param :body, :email, :string, :required, "email to send invite"
         param :header, :uid, :string, :required, "uid"
         param :header, :client, :string, :required, "client"
         param :header, 'access-token', :string, :required, "token"
         response :unauthorized
       end
+
+      swagger_api :check_invite do
+        summary "Checks if invite was sent to email and if token is valid"
+        param :body, :email, :string, :required, "email"
+        param :body, :token, :string, :required, "token"
+        param :header, :uid, :string, :required, "uid"
+        param :header, :client, :string, :required, "client"
+        param :header, 'access-token', :string, :required, "token"
+        response :unauthorized
+      end
+
 
     end
   end
