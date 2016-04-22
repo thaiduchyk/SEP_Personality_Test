@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :personalities
+  has_many :results
+  has_many :personalities, through: :results
+
+  after_create :add_results
 
   attr_accessor :skip_password_validation
 
@@ -25,4 +28,11 @@ class User < ActiveRecord::Base
 
   validates :surname, presence:true,
             format: { with: VALID_NAME_REGEX }
+
+  private
+
+  def add_results
+    self.personalities << Personality.all
+  end
+
 end

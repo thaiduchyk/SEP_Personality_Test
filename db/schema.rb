@@ -33,21 +33,25 @@ ActiveRecord::Schema.define(version: 20160412171416) do
     t.string "key"
   end
 
-  create_table "personalities_users", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "personality_id"
-  end
-
-  add_index "personalities_users", ["personality_id"], name: "index_personalities_users_on_personality_id", using: :btree
-  add_index "personalities_users", ["user_id"], name: "index_personalities_users_on_user_id", using: :btree
-
   create_table "questions", force: :cascade do |t|
-    t.string   "qst_txt"
-    t.string   "a"
-    t.string   "b"
+    t.string   "qst_txt",    null: false
+    t.string   "a",          null: false
+    t.string   "b",          null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "personality_id"
+    t.boolean  "own_result"
+    t.integer  "friend_rate"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "results", ["personality_id"], name: "index_results_on_personality_id", using: :btree
+  add_index "results", ["user_id"], name: "index_results_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
@@ -56,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160412171416) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.string   "email"
-    t.json     "tokens"
+    t.string   "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
