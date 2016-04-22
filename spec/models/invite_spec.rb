@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Invite, type: :model do
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @invite = FactoryGirl.create(:invite)
-    @invite.user = @user
+    @invite = FactoryGirl.create(:invite, user: @user)
   end
 
   describe 'validations' do

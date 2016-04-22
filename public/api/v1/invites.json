@@ -50,6 +50,32 @@
           "method": "post"
         }
       ]
+    },
+    {
+      "path": "/check_invite",
+      "operations": [
+        {
+          "summary": "Checks if invite was sent to email and if token is valid",
+          "parameters": [
+            {
+              "paramType": "body",
+              "name": "params",
+              "type": "string",
+              "description": "email and token",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            }
+          ],
+          "nickname": "Api::V1::Invites#check_invite",
+          "method": "post"
+        }
+      ]
     }
   ],
   "authorizations": null

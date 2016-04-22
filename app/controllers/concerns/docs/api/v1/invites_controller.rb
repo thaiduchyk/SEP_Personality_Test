@@ -16,11 +16,7 @@ module Docs::Api::V1
 
       swagger_api :check_invite do
         summary "Checks if invite was sent to email and if token is valid"
-        param :body, :email, :string, :required, "email"
-        param :body, :token, :string, :required, "token"
-        param :header, :uid, :string, :required, "uid"
-        param :header, :client, :string, :required, "client"
-        param :header, 'access-token', :string, :required, "token"
+        param :body, :params, :string, :required, "email and token"
         response :unauthorized
       end
 

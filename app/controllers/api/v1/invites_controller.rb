@@ -4,7 +4,9 @@ class Api::V1::InvitesController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
 
   def create
-    @invite = Invite.new(email: invite_params, user_id: current_user.id)
+
+    @invite = Invite.new(email: invite_params[:email], user_id: current_user.id)
+
     if @invite.save
       InvitesMailer.invite_friend(@invite).deliver_now
       render_create_success
@@ -17,12 +19,12 @@ class Api::V1::InvitesController < ApplicationController
 
     @check_invite = Invite.find_by_email(check_params[:email])
     token = check_params[:token]
-
-    if @check_invite && @check_invite.token=token && @check_invite.passed=false
+    #binding.pry
+    if @check_invite && @check_invite.token==token && @check_invite.passed==false
       render_check_success
-    elsif @check_invite && @check_invite.token=token && @check_invite.passed=true
+    elsif @check_invite && @check_invite.token==token && @check_invite.passed==true
       render_check_error_already_passed
-    elsif @check_invite && !@check_invite.token=token
+    elsif @check_invite && @check_invite.token!=token
       render_check_error_token_not_valid
     else
       render_check_error_not_found
@@ -33,7 +35,7 @@ class Api::V1::InvitesController < ApplicationController
   private
 
   def invite_params
-    params.require(:email)
+    params.permit(:email)
   end
 
   def check_params
@@ -48,9 +50,9 @@ class Api::V1::InvitesController < ApplicationController
 
   def render_create_error
      render json: {
-                 status: 'error',
-                 data:   @invite.as_json,
-                 errors: @invite.errors.to_hash.merge(full_messages: @invite.errors.full_messages)
+                status: 'error',
+                data:   @invite.as_json,
+                errors: @invite.errors.to_hash.merge(full_messages: @invite.errors.full_messages)
              }, status: 403
   end
 
@@ -82,7 +84,7 @@ class Api::V1::InvitesController < ApplicationController
     render json: {
                status: 'error',
                data:   @check_invite.as_json,
-               errors: 'email not found'
+               errors: 'invite not send on email'
            }, status: 403
   end
 

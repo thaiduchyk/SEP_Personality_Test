@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :questions
       resources :invites, only: [:create]
+      post 'check_invite' => 'invites#check_invite'
     end
   end
 
