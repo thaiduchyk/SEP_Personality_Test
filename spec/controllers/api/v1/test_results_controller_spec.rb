@@ -11,8 +11,8 @@ RSpec.describe Api::V1::TestResultsController, type: :controller do
 
   describe '#own_result' do
 
-    it 'saves user personalities' do
-      expect{ post :own_result, @result_hash }.to change{@user.personalities.count}.by(3)
+    it 'saves own result' do
+      expect{ post :own_result, @result_hash }.to change{User.own_result(@user.id).count}.by(3)
     end
 
     it 'responds with status 200' do
@@ -22,7 +22,7 @@ RSpec.describe Api::V1::TestResultsController, type: :controller do
 
     it 'renders user personalities' do
       post :own_result, @result_hash
-      expect((JSON.parse(response.body))['data'].map { |p| p['name'] }).to eq(@user.personalities.map{ |p| p['name']})
+      expect((JSON.parse(response.body))['data'].map { |p| p['name'] }).to eq(User.own_result(@user.id).map{ |p| p['name']})
     end
 
   end

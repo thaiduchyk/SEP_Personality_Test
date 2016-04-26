@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
   validates :surname, presence:true,
             format: { with: VALID_NAME_REGEX }
 
+  scope :own_result, -> (id) { User.find(id).personalities.joins(:results).where('results.own_result = true') }
+
   private
 
   def add_results

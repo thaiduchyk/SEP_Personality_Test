@@ -1,32 +1,33 @@
-class ResultCounter
+class OwnResultCounter
 
-  def initialize(answer_hash, user_id)
-
+  def initialize(answers, user_id)
     @user = User.find(user_id)
-    @e = countE(answer_hash)
-    @i = countI(answer_hash)
-    @s = countS(answer_hash)
-    @n = countN(answer_hash)
-    @t = countT(answer_hash)
-    @f = countF(answer_hash)
-    @j = countJ(answer_hash)
-    @p = countP(answer_hash)
+    @e = countE(answers)
+    @i = countI(answers)
+    @s = countS(answers)
+    @n = countN(answers)
+    @t = countT(answers)
+    @f = countF(answers)
+    @j = countJ(answers)
+    @p = countP(answers)
     @diff_ar = [(@e - @i).abs, (@s - @n).abs, (@t - @f).abs, (@j - @p).abs]
+    @keys = Array.new
   end
 
   def call
-    save_personalities
+    save_results
   end
 
   private
 
-  def save_personalities
-    @user.personalities << Personality.where('key = ?', first_personality)
-    @user.personalities << Personality.where('key = ?', second_personality)
-    @user.personalities << Personality.where('key = ?', third_personality)
+  def save_results
+    [first_key, second_key, third_key].each do |key|
+      result = Result.find_by_user_and_key(@user, key)
+      result.update(own_result: true)
+    end
   end
 
-  def first_personality
+  def first_key
     @e > @i ? @first_key = 'e' : @first_key = 'i'
     @s > @n ? @first_key += 's' : @first_key += 'n'
     @t > @f ? @first_key += 't' : @first_key += 'f'
@@ -34,13 +35,13 @@ class ResultCounter
     @first_key
   end
 
-  def second_personality
+  def second_key
     index = @diff_ar.index(@diff_ar.min)
     @diff_ar[index] = 1000
     change_key(@first_key, index)
   end
 
-  def third_personality
+  def third_key
     index = @diff_ar.index(@diff_ar.min)
     change_key(@first_key, index)
   end
@@ -64,84 +65,84 @@ class ResultCounter
   end
 
 
-  def countE(answer_hash)
+  def countE(answers)
     result = 0
     (1..70).step(7) do |x|
-      result += answer_hash[x.to_s][:a].to_i
+      result += answers[x.to_s][:a].to_i
     end
     result
   end
 
-  def countI(answer_hash)
+  def countI(answers)
     result = 0
     (1..70).step(7) do |x|
-      result += answer_hash[x.to_s][:b].to_i
+      result += answers[x.to_s][:b].to_i
     end
     result
   end
 
-  def countS(answer_hash)
+  def countS(answers)
     result = 0
     (2..70).step(7) do |x|
-      result += answer_hash[x.to_s][:a].to_i
+      result += answers[x.to_s][:a].to_i
     end
     (3..70).step(7) do |x|
-      result += answer_hash[x.to_s][:a].to_i
+      result += answers[x.to_s][:a].to_i
     end
     result
   end
 
-  def countN(answer_hash)
+  def countN(answers)
     result = 0
     (2..70).step(7) do |x|
-      result += answer_hash[x.to_s][:b].to_i
+      result += answers[x.to_s][:b].to_i
     end
     (3..70).step(7) do |x|
-      result += answer_hash[x.to_s][:b].to_i
+      result += answers[x.to_s][:b].to_i
     end
     result
   end
 
-  def countT(answer_hash)
+  def countT(answers)
     result = 0
     (4..70).step(7) do |x|
-      result += answer_hash[x.to_s][:a].to_i
+      result += answers[x.to_s][:a].to_i
     end
     (5..70).step(7) do |x|
-      result += answer_hash[x.to_s][:a].to_i
+      result += answers[x.to_s][:a].to_i
     end
     result
   end
 
-  def countF(answer_hash)
+  def countF(answers)
     result = 0
     (4..70).step(7) do |x|
-      result += answer_hash[x.to_s][:b].to_i
+      result += answers[x.to_s][:b].to_i
     end
     (5..70).step(7) do |x|
-      result += answer_hash[x.to_s][:b].to_i
+      result += answers[x.to_s][:b].to_i
     end
     result
   end
 
-  def countJ(answer_hash)
+  def countJ(answers)
     result = 0
     (6..70).step(7) do |x|
-      result += answer_hash[x.to_s][:a].to_i
+      result += answers[x.to_s][:a].to_i
     end
     (7..70).step(7) do |x|
-      result += answer_hash[x.to_s][:a].to_i
+      result += answers[x.to_s][:a].to_i
     end
     result
   end
 
-  def countP(answer_hash)
+  def countP(answers)
     result = 0
     (6..70).step(7) do |x|
-      result += answer_hash[x.to_s][:b].to_i
+      result += answers[x.to_s][:b].to_i
     end
     (7..70).step(7) do |x|
-      result += answer_hash[x.to_s][:b].to_i
+      result += answers[x.to_s][:b].to_i
     end
     result
   end
