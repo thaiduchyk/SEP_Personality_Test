@@ -1,5 +1,7 @@
 class Api::V1::TestResultsController < ApplicationController
-  include Docs::Api::V1::TestResultsController
+  if Rails.env == 'development'
+    include Docs::Api::V1::TestResultsController
+  end
 
   before_action :authenticate_user!
 

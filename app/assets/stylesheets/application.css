@@ -12,9 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap.min
- *= require ngDialog.min
- *= require ngDialog-theme-plain.min
- *= require rzslider
- *= require main
+ *= require bootstrap/dist/css/bootstrap.css
+
  */

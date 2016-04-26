@@ -1,5 +1,8 @@
 class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
+
+  if Rails.env == 'development'
    include Docs::Api::V1::Auth::SessionsController
+  end
 
   def create
     super do
