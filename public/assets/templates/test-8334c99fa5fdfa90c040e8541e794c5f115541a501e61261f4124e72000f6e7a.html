@@ -1,0 +1,35 @@
+<div class="wrapper" >
+
+  <div class="row" style="height:200px; margin-top: 50px">
+    <div class="col-md-12 text-center">
+    <strong style="font-size:3.5em">{{question}}</strong>
+    </div>
+  </div>
+
+  <div class="row">
+    <rzslider rz-slider-model="minSlider.value" rz-slider-options="minSlider.options"></rzslider>
+  </div>
+
+  <div class="row" style="margin-top: 40px">
+    <div class="col-xs-6 text-left" style="padding-left: 0px">
+      Strongly Disagree
+    </div>
+    <div class="col-xs-6 text-right" style="padding-right: 0px">
+      Strongly Agree
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <br><br>
+      <button type="button" class="btn btn-default btn-lg" ng-click="nextQuestion()">{{buttonText}}</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <br><br>
+      <h4>{{count}}/{{array.length}}</h4>
+    </div>
+  </div>
+</div>

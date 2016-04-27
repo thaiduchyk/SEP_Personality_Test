@@ -1,4 +1,6 @@
 asset 'angular'
 asset 'angular-ui-router'
-asset 'angular-cookie'
+asset 'ng-token-auth'
+asset 'ngDialog'
+
 asset 'bootstrap'

@@ -1,9 +1,8 @@
 (function() {
     debugger;
     'use strict';
-    var myApp = angular.module('app',
-        ['templates',
-         'ui.router'
+    angular.module('app',
+        ['templates', 'ui.router','ng-token-auth', 'ngDialog'
     ]);
 
 }());

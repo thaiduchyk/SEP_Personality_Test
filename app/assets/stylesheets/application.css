@@ -12,6 +12,16 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap/dist/css/bootstrap.css
+
+ *  Libraries
+
+ *= require ngDialog/css/ngDialog
+ *= require ngDialog/css/ngDialog-theme-default
+
+
+ *  Project css files
+ *= require app
+ *= require rzslider
+
 
  */
