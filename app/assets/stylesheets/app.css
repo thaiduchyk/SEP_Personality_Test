@@ -91,3 +91,17 @@ h5{
   background-color: #f7cc17 !important;
   color: #fff !important;
 }
+
+#btnsContainer {
+  
+}
+
+#loginBtn {
+
+}
+
+#signinBtn {
+  color: white;
+  background-color: #f7cc17;
+  margin: 0 auto;
+}
