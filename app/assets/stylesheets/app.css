@@ -56,6 +56,36 @@ h5{
   margin-right: 14%;
 }
 
+.modal-header {
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}
+.modal-body{
+  padding-top: 0 !important;
+}
+
+.border{
+  background-color: #fff !important;
+  border: 4px solid #f7cc17 !important;
+  border-radius: 0 !important;
+}
+.login {
+  width: 75px;
+  color: #040503;
+  font-weight: bold;
+}
+.signin {
+  width: 75px;
+  color: #fff;
+  font-weight: bold;
+  background-color: #f7cc17 !important;
+}
+.signin:hover {
+  color: #f7cc17 !important;
+  background-color:#fff !important;
+}
+
+
 /*****************START.html*****************/
 .logout{
   position: absolute;
@@ -90,18 +120,4 @@ h5{
   text-decoration: none !important;
   background-color: #f7cc17 !important;
   color: #fff !important;
-}
-
-#btnsContainer {
-  
-}
-
-#loginBtn {
-
-}
-
-#signinBtn {
-  color: white;
-  background-color: #f7cc17;
-  margin: 0 auto;
 }

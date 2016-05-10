@@ -40,6 +40,11 @@
                 url: '/results',
                 controller: 'ResultsController',
                 templateUrl: 'results.html'
+            })
+            .state('login_form_test', {
+                url: '/login_form_test',
+                controller: 'homeController',
+                templateUrl: 'login_form_test.html'
             });
 
             $urlRouterProvider.otherwise('/home');
