@@ -1,132 +1,93 @@
 
 @media (max-width: 600px) {
-    h1{font-size: 3.5em;}
-    h2{font-size:1.2em;}
+  h1{font-size: 3.5em;}
+  h2{font-size:1.2em;}
 }
 @media (min-width: 600px) {
-    h1{font-size: 5em;}
-    h2{font-size: 1.8em;}
+  h1{font-size: 5em;}
+  h2{font-size: 1.8em;}
+}
+body{
+  color: #040503 !important;
+}
+/*****************INDEX.html*****************/
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  padding: 100px 150px;
+  width: 700px;
+
+}
+h1 {
+  font-size: 60px !important;
+  font-weight: 900 !important;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 hr {
-    border-top: 10px solid #f7cc17 !important;
-    margin-bottom:50px !important;
-    margin-top:10px !important;
+  width: 85%;
+  border-top: 10px solid #f7cc17 !important;
 }
 
-h1 {
-    margin-top: 60px;
-    font-weight: bold;
+.text{
+  padding: 0 40px;
+  text-align: justify;
+  line-height: 1.6em;
 }
 
-h2 {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    font-weight: bold;
-}
-
-.col-centered {
-    float: none;
-    margin: 0 auto;
-}
-
-
-.input {
-  width: 75%;
-  height: 50px;
-  display: block;
-  margin: 0 auto 15px;
-  padding: 0 15px;
-  border: none;
-  border-bottom: 2px solid #ebebeb;
-}
-.input:focus {
-  outline: none;
-  border-bottom-color: #f7cc17 !important;
-}
-.input:hover {
-  border-bottom-color: #dcdcdc;
-}
-.input:invalid {
-  box-shadow: none;
-}
-
-.ng-invalid.ng-dirty {
-  border-color: #FA787E;
-}
-
-.ng-invalid-pattern {
-  border-color: #FA787E;
-}
-
-.form-control.redborder {
-  border-color: #FA787E;
-}
-
-.warningMessage {
+h5{
+  margin: 25px 0 !important;
+  font-weight: 900 !important;
   text-align: center;
-  color: #FA787E;
-  margin-bottom: 10px;
+  text-transform: uppercase;
+  line-height: 1.4em !important;
 }
 
-.pass:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px white inset;
+.social{
+  width: 45%;
+  margin: 0 auto;
+}
+.social :last-child{
+  margin-right: 0 !important;
 }
 
-.inputButton {
-  /*position: relative;*/
-  width: 50%;
-  height: 50px;
-  display: block;
-  margin: 30px auto 30px;
-  color: white;
-  background-color: #f7cc17;
-  border: none;
-/*  -webkit-box-shadow: 0 5px 0 #2CADAD;
-  -moz-box-shadow: 0 5px 0 #2CADAD;
-  box-shadow: 0 5px 0 #2CADAD;*/
+.social-item{
+  margin-right: 14%;
 }
 
-.modal-title {
-    text-align: center;
-}
-
-#logbox {
-  padding: 10px;
-  margin: 50px auto;
-  width: 340px;
+/*****************START.html*****************/
+.logout{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 35px;
+  font-size: 18px;
+  color: #f7cc17;
   background-color: #fff;
-  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  border: 2px solid #f7cc17;
+  border-top: none;
+}
+.logout:hover{
+  color: ;
 }
 
-.inputButton:hover {
-  top: 2px;
- /* -webkit-box-shadow: 0 3px 0 #2CADAD;
-  -moz-box-shadow: 0 3px 0 #2CADAD;
-  box-shadow: 0 3px 0 #2CADAD;*/
-}
-.inputButton:active {
-  top: 5px;
-  box-shadow: none;
-}
-.inputButton:focus {
-  outline: none;
-}
-
-
-
-/*.icon {
-    padding: 0 10px 0 10px;
-}*/
-
-.glyphicon {
-    color: #f7cc17;
+.start{
+  text-decoration: none;
+  text-align: center;
+  margin: 40px auto;
+  display: block;
+  width: 150px;
+  height: 54px;
+  color: #040503;
+  font-size: 22px;
+  line-height: 40px;
+  font-weight: bold;
+  border: 7px solid #f7cc17;
 }
 
-.row {
-    max-width: 700px;
-    margin: auto;
+.start:hover{
+  text-decoration: none !important;
+  background-color: #f7cc17 !important;
+  color: #fff !important;
 }

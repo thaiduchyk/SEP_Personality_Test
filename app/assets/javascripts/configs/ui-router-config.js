@@ -3,7 +3,7 @@
     angular.module('app')
         .config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
             function($stateProvider, $locationProvider, $urlRouterProvider) {
-        debugger;
+        // debugger;
             $stateProvider
             .state('home', {
 
@@ -25,7 +25,7 @@
                     }
                 }
             })
-            .state('auth.start', {
+            .state('start', {
                 url: '/start',
                 controller: 'TestController',
                 templateUrl: 'start.html'
@@ -48,4 +48,3 @@
 
 
 }());
-
