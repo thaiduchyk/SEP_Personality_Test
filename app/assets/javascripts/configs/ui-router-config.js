@@ -27,7 +27,7 @@
             })
             .state('start', {
                 url: '/start',
-                controller: 'TestController',
+                controller: 'HomeController',
                 templateUrl: 'start.html'
             })
             .state('auth.test', {

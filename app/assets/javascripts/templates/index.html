@@ -1,25 +1,13 @@
 <div class="index wrapper">
 
-	<h1>Welcome</h1>
-	<hr>
-
-	<div class="text">
-		<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing
-		elit. Proin elit ex, imperdiet eget lorem rutrum, vestib-
-		ulum congue purus. Ut tincidunt congue sollicitudin.
-		Nulla facilisi. Nulla porta et dolor sit amet mattis. Ali-
-		quam commodo pulvinar laoreet. Maecenas tempor
-		mauris diam, non semper leo ultrices sit amet. Morbi
-	 </p>
-	</div>
+<div ng-include="'welcome.html'"></div>
 
 	<div>
 		<h5>LOGIN TO START THE TEST <br>& ACCESS RESULTS</h5>
 		<div class="social">
-			<img  ng-src={{images.fb}} ng-click="authenticate('facebook')" class="social-item" width="40px">
-			<img  ng-src={{images.in}} ng-click="authenticate('linkedin')" class="social-item" width="40px">
-			<img  ng-src={{images.mail}} class="social-item" width="40px" data-toggle="modal" data-target="#loginContainer">
+			<img  ng-src={{iconfb}} ng-init="iconfb=images.fb" ng-mouseover="iconfb=images.in" ng-mouseout="iconfb=images.fb" ng-click="authenticate('facebook')" class="social-item" width="40px">
+			<img  ng-src={{iconin}} ng-init="iconin=images.in" ng-mouseover="iconin=images.fb" ng-mouseout="iconin=images.in" ng-click="authenticate('linkedin')" class="social-item" width="40px">
+			<img  ng-src={{iconml}} ng-init="iconml=images.mail" ng-mouseover="iconml=images.fb" ng-mouseout="iconml=images.mail" class="social-item" width="40px" data-toggle="modal" data-target="#loginContainer">
 		</div>
 	</div>
 
@@ -44,7 +32,7 @@
 	                    <input type="text" class="border form-control" id="password">
 	                </div>
 	                <div id="btnsContainer" align="center">
-	                    <button type="button" class="login border" data-dismiss="modal">Log in</button>
+	                    <button type="button" class="login border" data-dismiss="modal" ng-click="clickToOpen('/start')">Log in</button>
 	                    <h4>or</h4>
 	                    <button type="button" class="signin border" data-dismiss="modal" data-toggle="modal" data-target="#signinContainer" id="signinBtn">Sign in</button>
 	                </div>

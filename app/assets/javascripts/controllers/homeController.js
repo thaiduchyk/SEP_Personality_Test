@@ -23,9 +23,8 @@
             //     ngDialog.open({ template: '/assets/temlates/'+template+'.html', className: 'ngdialog-theme-default', scope: $scope });
             //     $scope.tab=1;
             // };
-            $scope.clickToOpen = function(){
-              $location.url('/login_form_test');
-              // location.path
+            $scope.clickToOpen = function(route){
+              $location.url(route);
 
             }
 

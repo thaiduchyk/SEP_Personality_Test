@@ -54,6 +54,7 @@ h5{
 
 .social-item{
   margin-right: 14%;
+  cursor: pointer;
 }
 
 .modal-header {
