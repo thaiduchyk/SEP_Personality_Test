@@ -130,3 +130,17 @@ h2 {
     max-width: 700px;
     margin: auto;
 }
+
+#btnsContainer {
+  
+}
+
+#loginBtn {
+
+}
+
+#signinBtn {
+  color: white;
+  background-color: #f7cc17;
+  margin: 0 auto;
+}
