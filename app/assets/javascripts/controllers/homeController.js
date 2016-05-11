@@ -6,7 +6,10 @@
             // debugger;
             $scope.images = {fb: '/assets/fb.png',
                              in: '/assets/in.png',
-                             mail: '/assets/mail.png',};
+                             mail: '/assets/mail.png',
+                             fb_hov: '/assets/fb2.png',
+                             in_hov: '/assets/in2.png',
+                             mail_hov: '/assets/mail2.png',};
 
             $scope.formData = {};
             $scope.formValidation = {};
