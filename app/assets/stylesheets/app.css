@@ -100,7 +100,9 @@ h5{
   border-top: none;
 }
 .logout:hover{
-  color: ;
+  color: #A18307;
+  border: 2px solid #A18307;
+  border-top: none;
 }
 
 .start{

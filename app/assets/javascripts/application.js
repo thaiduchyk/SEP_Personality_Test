@@ -1,5 +1,5 @@
 //  Libraries
-//= require jquery
+//= require jquery/dist/jquery
 //= require jquery_ujs
 //= require angular/angular
 //= require angular-cookie/angular-cookie

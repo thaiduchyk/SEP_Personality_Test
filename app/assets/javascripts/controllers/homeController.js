@@ -28,7 +28,7 @@
             // };
             $scope.clickToOpen = function(route){
               $location.url(route);
-
+              $(".modal-backdrop").hide();
             }
 
             $scope.selectTab = function(setTab) {
