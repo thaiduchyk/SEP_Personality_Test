@@ -70,6 +70,12 @@ h5{
   border: 4px solid #f7cc17 !important;
   border-radius: 0 !important;
 }
+
+.login[disabled] {
+    border: 4px solid #c7bf9d !important;
+    background-color: #c7bf9d !important;
+}
+
 .login {
   width: 75px;
   color: #040503;
