@@ -17,11 +17,11 @@
 
  *= require ngDialog/css/ngDialog
  *= require ngDialog/css/ngDialog-theme-default
+ *= require bootstrap/dist/css/bootstrap
 
 
  *  Project css files
  *= require rzslider
- *= require bootstrap
  *= require app
 
 
