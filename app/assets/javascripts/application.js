@@ -1,11 +1,15 @@
 //  Libraries
-//= require jquery
+//= require jquery/dist/jquery
 //= require jquery_ujs
 //= require angular/angular
 //= require angular-cookie/angular-cookie
 //= require bootstrap/dist/js/bootstrap
 //= require angular-ui-router/release/angular-ui-router
 //= require angular-rails-templates
+//= require angular-ui/build/angular-ui
+//= require angular-bootstrap/ui-bootstrap
+//= require angular-modal-service/modal-service
+
 
 //= require ng-token-auth/dist/ng-token-auth
 //= require ngDialog/js/ngDialog
