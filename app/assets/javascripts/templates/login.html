@@ -1,4 +1,32 @@
-<form name="signinForm" ng-submit="signinForm.$valid && authenticate('facebook')" novalidate>
+<div id="loginContainer" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close form-close" data-dismiss="modal">&times;</button>
+				<div class="modal-title"></div>
+			</div>
+			<div class="modal-body">
+				<form name="loginForm" novalidate>
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input type="text" class="border form-control" ng-model="logEmail" name="logEmail" placeholder="address@example.com" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/" required>
+					</div>
+					<div class="form-group">
+						<label for="password">Password:</label>
+						<input type="password" class="border form-control" name="logPassword" ng-model="logPassword" ng-minlength="6" ng-maxlength="16" ng-pattern="" required>
+					</div>
+				</form>
+				<div id="btnsContainer" align="center">
+					<button type="button" class="login border" data-dismiss="modal" ng-click="closeModal(); clickToOpen('/start')" ng-disabled="loginForm.logEmail.$invalid || loginForm.logPassword.$invalid">Log in</button>
+					<h4>or</h4>
+					<button type="button" class="signin border" data-dismiss="modal" data-toggle="modal" data-target="#signinContainer" id="signinBtn">Sign in</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <form name="signinForm" ng-submit="signinForm.$valid && authenticate('facebook')" novalidate>
   <div class="form-group form-group-lg" style="margin-top:20px">
     <input type="email" class="form-control" placeholder="Email" ng-model="signInData.email" ng-change="clearErrorMessage()" required/>
   </div>
@@ -11,4 +39,4 @@
   <div class="form-group form-group-lg">
     <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
   </div>
-</form>
+</form> -->
