@@ -9,7 +9,7 @@
 				<form name="loginForm" novalidate>
 					<div class="form-group">
 						<label for="email">Email:</label>
-						<input type="text" class="border form-control" ng-model="logEmail" name="logEmail" data-toggle="tooltip" title="Only a-z, 0-9, ., _" placeholder="address@example.com" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/" required>
+						<input type="text" class="border form-control" ng-model="logEmail" name="logEmail" data-toggle="tooltip" title="Only a-z, 0-9, ., _" placeholder="address@example.com" ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/" required>
 
 						<span style="color:red" ng-show="loginForm.logEmail.$dirty && loginForm.logEmail.$invalid">
 							<span ng-show="loginForm.logEmail.$error.required">Email is required.</span>
