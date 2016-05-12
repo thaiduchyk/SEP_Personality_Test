@@ -1,4 +1,42 @@
-<form name="signinForm" ng-submit="signinForm.$valid && authenticate('facebook')" novalidate>
+<div id="loginContainer" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close form-close" data-dismiss="modal">&times;</button>
+				<div class="modal-title"></div>
+			</div>
+			<div class="modal-body">
+				<form name="loginForm" novalidate>
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input type="text" class="border form-control" ng-model="logEmail" name="logEmail" data-toggle="tooltip" title="Only a-z, 0-9,.,_" placeholder="address@example.com" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/" required>
+
+						<span style="color:red" ng-show="loginForm.logEmail.$dirty && loginForm.logEmail.$invalid">
+							<span ng-show="loginForm.logEmail.$error.required">Email is required.</span>
+							<span ng-show="loginForm.logEmail.$error">Invalid email address.</span>
+							</span>
+					</div>
+					<div class="form-group">
+						<label for="password">Password:</label>
+						<input type="password" class="border form-control" ng-model="logPassword" name="logPassword" data-toggle="tooltip" title="Min-length:6, max-length:16" ng-minlength="6" ng-maxlength="16" required>
+
+						<span style="color:red" ng-show="loginForm.logPassword.$dirty && loginForm.logPassword.$invalid">
+							<span ng-show="loginForm.logPassword.$error.required">Password is required.</span>
+							<span ng-show="loginForm.logPassword.$error">Invalid password.</span>
+							</span>
+					</div>
+				</form>
+				<div id="btnsContainer" align="center">
+					<button type="button" class="login border" data-dismiss="modal" ng-click="closeModal(); clickToOpen('/start')" ng-disabled="loginForm.logEmail.$invalid || loginForm.logPassword.$invalid">Log in</button>
+					<h4>or</h4>
+					<button type="button" class="signin border" data-dismiss="modal" data-toggle="modal" data-target="#signinContainer" id="signinBtn">Sign in</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <form name="signinForm" ng-submit="signinForm.$valid && authenticate('facebook')" novalidate>
   <div class="form-group form-group-lg" style="margin-top:20px">
     <input type="email" class="form-control" placeholder="Email" ng-model="signInData.email" ng-change="clearErrorMessage()" required/>
   </div>
@@ -11,4 +49,4 @@
   <div class="form-group form-group-lg">
     <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
   </div>
-</form>
+</form> -->
