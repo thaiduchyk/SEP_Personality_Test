@@ -58,7 +58,7 @@ h5{
 }
 
 .modal-header {
-  padding-bottom: 0 !important;
+  padding-bottom: 5px !important;
   border-bottom: none !important;
 }
 .modal-body{
@@ -78,19 +78,34 @@ h5{
 }
 
 .login:hover {
+<<<<<<< HEAD
   color: #fff;
   background-color: #f7cc17;
+=======
+  color: #040503;
+  background-color:#f7cc17 !important;
+>>>>>>> 134f9eaf62d58dc32ca7c204c7045409e5aadfb7
 }
 
 .login[disabled] {
     border: 4px solid #c7bf9d !important;
     background-color: #c7bf9d !important;
 }
+<<<<<<< HEAD
 .login[disabled]:hover {
 
 }
 
 
+=======
+
+.login[disabled]:hover {
+  color: #040503 !important;
+  border: 4px solid #c7bf9d !important;
+  background-color: #c7bf9d !important;
+}
+
+>>>>>>> 134f9eaf62d58dc32ca7c204c7045409e5aadfb7
 .signin {
   width: 75px;
   color: #fff;
@@ -102,12 +117,38 @@ h5{
   color: #f7cc17 !important;
   background-color:#fff !important;
 }
+<<<<<<< HEAD
+=======
 
 .signin[disabled] {
     border: 4px solid #c7bf9d !important;
     background-color: #c7bf9d !important;
 }
 
+.signin[disabled]:hover {
+  color: #fff !important;
+  border: 4px solid #c7bf9d !important;
+  background-color: #c7bf9d !important;
+}
+
+input.ng-invalid.ng-dirty {
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(255,9,0,1);
+     -moz-box-shadow: 0px 0px 8px 0px rgba(255,9,0,1);
+          box-shadow: 0px 0px 8px 0px rgba(255,9,0,1);
+}
+
+/*input.ng-valid {
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(13,112,4,1);
+     -moz-box-shadow: 0px 0px 8px 0px rgba(13,112,4,1);
+          box-shadow: 0px 0px 8px 0px rgba(13,112,4,1);
+}*/
+>>>>>>> 134f9eaf62d58dc32ca7c204c7045409e5aadfb7
+
+.close {
+    outline:none !important;
+}
+
+<<<<<<< HEAD
 .signin[disabled]:hover {
   color: #fff !important;
   border: 4px solid #c7bf9d !important;
@@ -126,6 +167,15 @@ input.ng-valid {
 }
 
 
+=======
+.close.backArr {
+    outline:none !important;
+    float:left;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+>>>>>>> 134f9eaf62d58dc32ca7c204c7045409e5aadfb7
 /*****************START.html*****************/
 .logout{
   position: absolute;
