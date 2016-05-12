@@ -24,11 +24,23 @@
 				<form name="loginForm" novalidate>
 					<div class="form-group">
 						<label for="email">Email:</label>
-						<input type="text" class="border form-control" ng-model="logEmail" name="logEmail" placeholder="address@example.com" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/" required>
+						<input type="text" class="border form-control" ng-model="logEmail" name="logEmail" data-toggle="tooltip" title="Only a-z, 0-9,.,_" placeholder="address@example.com" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/" required>
+
+						<span style="color:red" ng-show="loginForm.logEmail.$dirty && loginForm.logEmail.$invalid">
+						  <span ng-show="loginForm.logEmail.$error.required">Email is required.</span>
+							<span ng-show="loginForm.logEmail.$error">Invalid email address.</span>
+							</span>
+
 					</div>
 					<div class="form-group">
 						<label for="password">Password:</label>
-						<input type="password" class="border form-control" name="logPassword" ng-model="logPassword" ng-minlength="6" ng-maxlength="16" required>
+						<input type="password" class="border form-control" ng-model="logPassword" name="logPassword" data-toggle="tooltip" title="Min-length:6, max-length:16" ng-minlength="6" ng-maxlength="16" required>
+
+						<span style="color:red" ng-show="loginForm.logPassword.$dirty && loginForm.logPassword.$invalid">
+							<span ng-show="loginForm.logPassword.$error.required">Password is required.</span>
+							<span ng-show="loginForm.logPassword.$error">Invalid password.</span>
+							</span>
+
 					</div>
 				</form>
 				<div id="btnsContainer" align="center">
@@ -53,22 +65,52 @@
 					<div class="form-group">
 						<label for="fname">First name:</label>
 						<input type="text" class="border form-control" ng-model="signFName" name="signFName" placeholder="Jack">
+
+						<span style="color:red" ng-show="signinForm.signFName.$dirty && signinForm.signFName.$invalid">
+							<span ng-show="signinForm.signFName.$error.required">First name is required.</span>
+							<span ng-show="signinForm.signFName.$error">Invalid first name address.</span>
+							</span>
+
 					</div>
 					<div class="form-group">
 						<label for="lname">Last name:</label>
 						<input type="text" class="border form-control" ng-model="signLName" name="signLName" placeholder="Johnson">
+
+						<span style="color:red" ng-show="signinForm.signLName.$dirty && signinForm.signLName.$invalid">
+							<span ng-show="signinForm.signLName.$error.required">Last name is required.</span>
+							<span ng-show="signinForm.signLName.$error">Invalid last name address.</span>
+							</span>
+
 					</div>
 					<div class="form-group">
 						<label for="email">Email:</label>
 						<input type="text" class="border form-control" ng-model="signEmail" name="signEmail" placeholder="j.johnson@example.com">
+
+						<span style="color:red" ng-show="signinForm.signEmail.$dirty && signinForm.signEmail.$invalid">
+							<span ng-show="signinForm.signEmail.$error.required">Email is required.</span>
+							<span ng-show="signinForm.signEmail.$error">Invalid email address.</span>
+							</span>
+
 					</div>
 					<div class="form-group">
 						<label for="password">Password:</label>
 						<input type="password" class="border form-control" ng-model="signPassword" name="signPassword">
+
+						<span style="color:red" ng-show="signinForm.signPassword.$dirty && signinForm.signPassword.$invalid">
+							<span ng-show="signinForm.signPassword.$error.required">Password is required.</span>
+							<span ng-show="signinForm.signPassword.$error">Invalid password.</span>
+							</span>
+
 					</div>
 					<div class="form-group">
 						<label for="conpassword">Confirm password:</label>
 						<input type="password" class="border form-control" ng-model="conpassword" name="conpassword">
+
+						<span style="color:red" ng-show="signinForm.conpassword.$dirty && signinForm.conpassword.$invalid">
+							<span ng-show="signinForm.conpassword.$error.required">Password is required.</span>
+							<span ng-show="signinForm.conpassword.$error">Invalid password.</span>
+							</span>
+
 					</div>
 				</form>
 				<div align="center">

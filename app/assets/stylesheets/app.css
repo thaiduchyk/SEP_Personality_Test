@@ -91,6 +91,16 @@ h5{
   color: #f7cc17 !important;
   background-color:#fff !important;
 }
+.ng-invalid .ng-dirty {
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(255,9,0,1);
+     -moz-box-shadow: 0px 0px 8px 0px rgba(255,9,0,1);
+          box-shadow: 0px 0px 8px 0px rgba(255,9,0,1);
+}
+.ng-valid {
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(13,112,4,1);
+     -moz-box-shadow: 0px 0px 8px 0px rgba(13,112,4,1);
+          box-shadow: 0px 0px 8px 0px rgba(13,112,4,1);
+}
 
 
 /*****************START.html*****************/
