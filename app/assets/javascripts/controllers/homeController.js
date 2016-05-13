@@ -37,6 +37,12 @@
                     $location.url(route);
                 };
 
+
+
+
+
+
+
                 $scope.selectTab = function(setTab) {
                     $scope.tab = setTab;
                 };
@@ -83,9 +89,6 @@
                 };
             }
         ]);
-
-
-
-
-
+        
+        
 }());
