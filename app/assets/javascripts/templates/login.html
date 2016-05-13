@@ -9,31 +9,45 @@
 				<form name="loginForm" novalidate>
 					<div class="form-group">
 						<label for="email">Email:</label>
-						<input type="email" overwrite-email class="border form-control" ng-model="logEmail" name="logEmail" data-toggle="tooltip" title="Only a-z, 0-9, ., _" placeholder="address@example.com" required>
+						<input type="email" overwrite-email class="border form-control email" ng-model="logEmail" name="logEmail" placeholder="address@example.com" required>
 						<!--<form-span info="email"></form-span>-->
-						
+						<script>
+							$(document).ready(function() {
+								$('.email').tooltip({
+									title: "Only a-z, 0-9, ., _",
+									trigger: "focus",
+									placement: "right"
+								});
+								$('.password').tooltip({
+									title: "Min-length:6, max-length:16",
+									trigger: "focus",
+									placement: "right"
+								});
+							});
+						</script>
+
 						<span style="color:red" ng-show="loginForm.logEmail.$dirty && loginForm.logEmail.$invalid">
 						<span ng-show="loginForm.logEmail.$error.required">Email is required.</span>
 						<span ng-show="loginForm.logEmail.$error">Invalid email address.</span>
 						</span>
-						
-							
+
+
 					</div>
 					<div class="form-group">
 						<label for="password">Password:</label>
-						<input type="password" overwrite-password class="border form-control" ng-model="logPassword" name="logPassword" data-toggle="tooltip" title="Min-length:6, max-length:16" ng-minlength="6" ng-maxlength="16" required>
-						<!--<form-span info="password"></form-span>-->	
-						
+						<input type="password" overwrite-password class="border form-control password" ng-model="logPassword" name="logPassword"ng-minlength="6" ng-maxlength="16" required>
+						<!--<form-span info="password"></form-span>-->
+
 						<span style="color:red" ng-show="loginForm.logPassword.$dirty && loginForm.logPassword.$invalid">
 						<span ng-show="loginForm.logPassword.$error.required">Password is required.</span>
 						<span ng-show="loginForm.logPassword.$error">Invalid password.</span>
 						</span>
-							
-							
+
+
 					</div>
 				</form>
 				<div id="btnsContainer" align="center">
-					<button type="button" class="login border" data-dismiss="modal" ng-click="closeModal(); clickToOpen('/start')" ng-disabled="loginForm.logEmail.$invalid || loginForm.logPassword.$invalid">Log in</button>
+					<button type="button" class="login border logbtn" data-dismiss="modal" ng-click="closeModal(); clickToOpen('/start')" ng-disabled="loginForm.logEmail.$invalid || loginForm.logPassword.$invalid">Log in</button>
 					<h4>or</h4>
 					<button type="button" class="signin border" data-dismiss="modal" data-toggle="modal" data-target="#signinContainer" id="signinBtn">Sign in</button>
 				</div>
