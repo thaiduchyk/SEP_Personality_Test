@@ -10,62 +10,64 @@
 
 			<div class="modal-body">
 
-				<form name="signinForm" ng-controller="FormController">
+				<form name="registrationForm" role="form" ng-init="registrationForm = {}" novalidate>
+
 					<div class="form-group">
-						<label for="fname">First name:</label>
+						<label for="signFName">First name:</label>
 
-						<input type="text" class="border form-control" ng-model="signFName" name="signFName" data-toggle="tooltip" title="Only latin and cyrillic letters, - ,'" placeholder="Jack" ng-pattern="NAME_REGEXP" required>
+						<input type="text" class="border form-control" ng-model="registrationForm.fName" name="signFName" data-toggle="tooltip" title="Only latin and cyrillic letters, - ,'" placeholder="Jack" ng-pattern="/^[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+(-[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+)?$/" required>
 
-						<span style="color:red" ng-show="signinForm.signFName.$dirty && signinForm.signFName.$invalid">
-							<span ng-show="signinForm.signFName.$error.required">First name is required.</span>
-						<span ng-show="signinForm.signFName.$error">Invalid first name.</span>
+						<span style="color:red" ng-show="registrationForm.signFName.$dirty && registrationForm.signFName.$invalid">
+							<span ng-show="registrationForm.signFName.$error.required">First name is required.</span>
+						<span ng-show="registrationForm.signFName.$error">Invalid first name.</span>
 						</span>
 
 					</div>
 					<div class="form-group">
-						<label for="lname">Last name:</label>
+						<label for="signLName">Last name:</label>
 
-						<input type="text" class="border form-control" ng-model="signLName" name="signLName" data-toggle="tooltip" title="Only latin and cyrillic letters, - ,'" placeholder="Johnson" ng-pattern="NAME_REGEXP" required>
+						<input type="text" class="border form-control" ng-model="registrationForm.lName" name="signLName" data-toggle="tooltip" title="Only latin and cyrillic letters, - ,'" placeholder="Johnson" ng-pattern="/^[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+(-[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+)?$/" required>
 
-						<span style="color:red" ng-show="signinForm.signLName.$dirty && signinForm.signLName.$invalid">
-							<span ng-show="signinForm.signLName.$error.required">Last name is required.</span>
-						<span ng-show="signinForm.signLName.$error">Invalid last name.</span>
+						<span style="color:red" ng-show="registrationForm.signLName.$dirty && registrationForm.signLName.$invalid">
+							<span ng-show="registrationForm.signLName.$error.required">Last name is required.</span>
+						<span ng-show="registrationForm.signLName.$error">Invalid last name.</span>
 						</span>
 					</div>
+
 					<div class="form-group">
-						<label for="email">Email:</label>
+						<label for="signEmail">Email:</label>
+						<input type="email" overwrite-email class="border form-control" ng-model="registrationForm.email" name="signEmail" data-toggle="tooltip" title="Only a-z, 0-9, ., _" placeholder="j.johnson@example.com" required>
 
-						<input type="email" overwrite-email class="border form-control" ng-model="signEmail" name="signEmail" data-toggle="tooltip" title="Only a-z, 0-9, ., _" placeholder="j.johnson@example.com" required>
-
-            <span style="color:red" ng-show="signinForm.signEmail.$dirty && signinForm.signEmail.$invalid">
-            <span ng-show="signinForm.signEmail.$error.required">Email is required.</span>
-            <span ng-show="signinForm.signEmail.$error">Invalid email address.</span>
-            </span>
+						<span style="color:red" ng-show="registrationForm.signEmail.$dirty && registrationForm.signEmail.$invalid">
+            <span ng-show="registrationForm.signEmail.$error.required">Email is required.</span>
+						<span ng-show="registrationForm.signEmail.$error">Invalid email address.</span>
+						</span>
 
 					</div>
 					<div class="form-group">
-						<label for="password">Password:</label>
-						<input type="password" overwrite-password class="border form-control" ng-model="signPassword" name="signPassword" data-toggle="tooltip" title="Min-length:6, max-length:16" ng-minlength="6" ng-maxlength="16" ng-pattern="/[A-Za-z0-9]{6,16}/" required>
+						<label for="signPassword">Password:</label>
+						<input type="password" overwrite-password class="border form-control" ng-model="registrationForm.password" name="signPassword" data-toggle="tooltip" title="Min-length:6, max-length:16" ng-minlength="6" ng-maxlength="16" required>
 
-            <span style="color:red" ng-show="signinForm.signPassword.$dirty && signinForm.signPassword.$invalid">
-            <span ng-show="signinForm.signPassword.$error.required">Password is required.</span>
-            <span ng-show="signinForm.signPassword.$error">Invalid password.</span>
-            </span>
+						<span style="color:red" ng-show="registrationForm.signPassword.$dirty && registrationForm.signPassword.$invalid">
+            <span ng-show="registrationForm.signPassword.$error.required">Password is required.</span>
+						<span ng-show="registrationForm.signPassword.$error">Invalid password.</span>
+						</span>
 					</div>
-					<div class="form-group">
-						<label for="conpassword">Confirm password:</label>
-						<input type="password" overwrite-password class="border form-control" ng-model="signConPassword" name="signConPassword" data-toggle="tooltip" title="Min-length:6, max-length:16" ng-minlength="6" ng-maxlength="16" required>
 
-            <span style="color:red" ng-show="(signinForm.signConPassword.$dirty && signinForm.signConPassword.$invalid) || (signPassword != signConPassword && signinForm.signConPassword.$dirty)">
-            <span ng-show="signinForm.signConPassword.$error.required">Password is required.</span>
-            <span ng-show="signinForm.signConPassword.$error">Invalid password.</span>
-            <span ng-show="signPassword != signConPassword && signinForm.signConPassword.$dirty">Passwords don't match.</span>
-            </span>
+					<div class="form-group">
+						<label for="signConPassword">Confirm password:</label>
+						<input type="password" name="signConPassword" overwrite-password class="border form-control" ng-model="registrationForm.password_confirmation" data-toggle="tooltip" title="Min-length:6, max-length:16" ng-minlength="6" ng-maxlength="16" required>
+
+						<span style="color:red" ng-show="(registrationForm.signConPassword.$dirty && registrationForm.signConPassword.$invalid) || (registrationForm.password != registrationForm.password_confirmation && registrationForm.signConPassword.$dirty)">
+            <span ng-show="registrationForm.signConPassword.$error.required">Password is required.</span>
+						<span ng-show="registrationForm.signConPassword.$error">Invalid password.</span>
+						<span ng-show="(registrationForm.password != registrationForm.password_confirmation) && registrationForm.signConPassword.$dirty">Passwords don't match.</span>
+						</span>
 					</div>
 				</form>
 
 				<div align="center">
-					<button type="button" class="signin border" data-dismiss="modal" ng-disabled="signinForm.signFName.$invalid || signinForm.signLName.$invalid || signinForm.signEmail.$invalid || signinForm.signPassword.$invalid || signinForm.signConPassword.$invalid || (signPassword != signConPassword)">Sign in</button>
+					<button type="button" ng-click="closeModal(); signin()" class="signin border" data-dismiss="modal" ng-disabled="registrationForm.signFName.$invalid || registrationForm.signLName.$invalid || registrationForm.signEmail.$invalid || registrationForm.signPassword.$invalid || registrationForm.signConPassword.$invalid || (registrationForm.password != registrationForm.password_confirmation)">Register</button>
 				</div>
 
 			</div>
