@@ -30,65 +30,92 @@
                 // };
 
                 $scope.closeModal = function() {
-                  $(".modal-backdrop").hide();
+                    $(".modal-backdrop").hide();
                 };
 
-                $scope.clickToOpen = function(route) {
-                    $location.url(route);
-                };
+                // $scope.clickToOpen = function(route) {
+                //     $state.go('start');
+                // };
+
+                $scope.login = function() {
+                    $auth.submitLogin($scope.loginForm)
+                        .then(function(resp) {
+                            // handle success response
+                            
+                            
+                            $state.go('start');   
+                        })
+                        .catch(function(resp) {
+                            // handle error response
+                        });
+                }
+                
+                $scope.signin = function(){
+                    $auth.submitRegistration($scope.registrationForm)
+                        .then(function(resp) {
+                            alert("HIUJO");
+                            // $scope.user = { "userFName" : $scope.fName,
+                            //                      };
+                            // var sObj = JSON.stringify(obj);
+                            // localStorage.setItem("object", sObj);
+                           
+                            $state.go('start');   
+                        })
+                        .catch(function(resp) {
+                            // handle error response
+                        });
+                    
+                }
 
 
 
+                // $scope.selectTab = function(setTab) {
+                //     $scope.tab = setTab;
+                // };
+                // $scope.isSelected = function(checkTab) {
+                //     return $scope.tab === checkTab;
+                // };
 
-
-
-
-                $scope.selectTab = function(setTab) {
-                    $scope.tab = setTab;
-                };
-                $scope.isSelected = function(checkTab) {
-                    return $scope.tab === checkTab;
-                };
                 // $rootScope.$on('auth:login-success', function(ev, user) {
                 //   console.log(user.name+' '+user.surname);
                 //   alert('Welcome ' + user.name);
                 // });
-                $scope.authSignin = function() {
-                    $auth.submitLogin($scope.signInData)
-                        .then(function(resp) {
-                            $rootScope.userInfo.name = resp.name;
-                            $rootScope.userInfo.surname = resp.surname;
-                            ngDialog.close();
-                            $state.go('auth.start');
-                        })
-                        .catch(function(resp) {
-                            $scope.errorMessage = "Incorrect login";
-                        });
-                };
-
-                $scope.comparePasswords = function() {
-                    return $scope.formData.password == $scope.formData.password_confirmation;
-                };
-
-                $scope.isFormValid = function() {
-                    return ($scope.formValidation.valid && $scope.comparePasswords());
-                };
-
-                $scope.processForm = function() {
-                    $auth.submitRegistration($scope.formData)
-                        .then(function(resp) {
-                            $rootScope.userInfo.name = resp.name;
-                            $rootScope.userInfo.surname = resp.surname;
-                            console.log("success");
-                            ngDialog.close();
-                            $state.go('auth.start');
-                        })
-                        .catch(function(resp) {
-                            console.log("registration error");
-                        });
-                };
+                // $scope.authSignin = function() {
+                //     $auth.submitLogin($scope.signInData)
+                //         .then(function(resp) {
+                //             $rootScope.userInfo.name = resp.name;
+                //             $rootScope.userInfo.surname = resp.surname;
+                //             ngDialog.close();
+                //             $state.go('auth.start');
+                //         })
+                //         .catch(function(resp) {
+                //             $scope.errorMessage = "Incorrect login";
+                //         });
+                // };
+                //
+                // $scope.comparePasswords = function() {
+                //     return $scope.formData.password == $scope.formData.password_confirmation;
+                // };
+                //
+                // $scope.isFormValid = function() {
+                //     return ($scope.formValidation.valid && $scope.comparePasswords());
+                // };
+                //
+                // $scope.processForm = function() {
+                //     $auth.submitRegistration($scope.formData)
+                //         .then(function(resp) {
+                //             $rootScope.userInfo.name = resp.name;
+                //             $rootScope.userInfo.surname = resp.surname;
+                //             console.log("success");
+                //             ngDialog.close();
+                //             $state.go('auth.start');
+                //         })
+                //         .catch(function(resp) {
+                //             console.log("registration error");
+                //         });
+                // };
             }
         ]);
-        
-        
+
+
 }());
