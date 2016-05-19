@@ -37,8 +37,9 @@
                 //     $state.go('start');
                 // };
 
-                $scope.login = function() {
-                    $auth.submitLogin($scope.loginForm)
+                $scope.login = function(params) {
+              debugger;
+                    $auth.submitLogin({email: params.email, password:  params.password})
                         .then(function(resp) {
                             // handle success response
                             $window.alert('success response');
@@ -51,15 +52,19 @@
                         });
                 }
 
-                $scope.signin = function() {
-                    $auth.registrationForm($scope.registrationForm)
+                $scope.signin = function(params) {
+              debugger;
+                    $auth.submitRegistration({email: params.email, password: params.password, name: params.fName, surname: params.lName, password_confirmation: params.password_confirmation})
                         .then(function(resp) {
                             // handle success response
+
+                            $scope.closeModal();
                             $window.alert('success response');
-                            $state.go('start');
+                            // $state.go('start');
                         })
                         .catch(function(resp) {
                             // handle error response
+                      debugger;
 
                             $window.alert('error response');
                         });

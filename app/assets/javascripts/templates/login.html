@@ -27,14 +27,14 @@
 						<span ng-show="loginForm.logPassword.$error.required">Password is required.</span>
 						<span ng-show="loginForm.logPassword.$error">Invalid password.</span>
 						</span>
-
+					</div>
+					<div id="btnsContainer" align="center">
+						<button type="submit" class="login border" ng-click="login(loginForm)" ng-disabled="loginForm.logEmail.$invalid || loginForm.logPassword.$invalid">Log in</button>
+						<h4>or</h4>
+						<button type="button" class="signin border" data-dismiss="modal" data-toggle="modal" data-target="#signinContainer" id="signinBtn">Sign in</button>
 					</div>
 				</form>
-				<div id="btnsContainer" align="center">
-					<button type="button" class="login border" data-dismiss="modal" ng-click="closeModal(); login()" ng-disabled="loginForm.logEmail.$invalid || loginForm.logPassword.$invalid">Log in</button>
-					<h4>or</h4>
-					<button type="button" class="signin border" data-dismiss="modal" data-toggle="modal" data-target="#signinContainer" id="signinBtn">Sign in</button>
-				</div>
+
 			</div>
 		</div>
 	</div>

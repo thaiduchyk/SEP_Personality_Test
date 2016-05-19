@@ -64,11 +64,10 @@
 						<span ng-show="(registrationForm.password != registrationForm.password_confirmation) && registrationForm.signConPassword.$dirty">Passwords don't match.</span>
 						</span>
 					</div>
+					<div align="center">
+						<button ng-click="signin(registrationForm)" class="signin border" ng-disabled="registrationForm.signFName.$invalid || registrationForm.signLName.$invalid || registrationForm.signEmail.$invalid || registrationForm.signPassword.$invalid || registrationForm.signConPassword.$invalid || (registrationForm.password != registrationForm.password_confirmation)">Register</button>
+					</div>
 				</form>
-
-				<div align="center">
-					<button type="button" ng-click="closeModal(); signin()" class="signin border" data-dismiss="modal" ng-disabled="registrationForm.signFName.$invalid || registrationForm.signLName.$invalid || registrationForm.signEmail.$invalid || registrationForm.signPassword.$invalid || registrationForm.signConPassword.$invalid || (registrationForm.password != registrationForm.password_confirmation)">Register</button>
-				</div>
 
 			</div>
 		</div>

@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: {case_sensitive: false}
 
-  VALID_PASSWORD_REGEX = /(?=.*\d)(?=.*[a-zA-Z])/
+  # VALID_PASSWORD_REGEX = /(?=.*\d)(?=.*[a-zA-Z])/
   validates :password, length: {minimum: 6},
-             format: { with: VALID_PASSWORD_REGEX },
+            #  format: { with: VALID_PASSWORD_REGEX },
              unless: :skip_password_validation
 
   VALID_NAME_REGEX = /\A[A-ZА-Я][a-zа-я]{2,}\z/

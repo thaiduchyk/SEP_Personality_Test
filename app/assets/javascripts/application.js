@@ -20,6 +20,7 @@
 
 //  Configs
 //= require configs/ui-router-config
+//= require configs/http-provider-config
 //= require configs/ng-token-auth-config
 
 //  Controllers
