@@ -3,7 +3,6 @@
     angular.module('app')
         .controller('HomeController', ['$rootScope', '$scope', '$auth', '$http', '$state', 'ngDialog', '$location', '$window',
             function($rootScope, $scope, $auth, $http, $state, ngDialog, $location, $window) {
-                // debugger;
                 $scope.images = {
                     fb: '/assets/fb.png',
                     in : '/assets/in.png',
@@ -19,44 +18,69 @@
                 $scope.signInData = {};
                 $scope.errorMessage = "";
                 $rootScope.userInfo = {};
-
-                $scope.clearErrorMessage = function() {
-                    $scope.errorMessage = "";
+                $scope.NAME_REGEXP = /^[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+(-[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+)?$/;
+                $scope.EMAIL_REGEXP = /^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/;
+                $scope.PASSWORD_REGEXP = /^[A-Za-z0-9]{6,16}$/;
+                
+                $scope.getErrorFName = function (error) {
+                    if (angular.isDefined(error)) {
+                        if (error.required) {
+                        return "First name is required.";
+                        } else if (error.pattern) {
+                            return "First name is invalid.";
+                        } 
+                    }
                 };
-
-                // $scope.clickToOpen = function(template) {
-                //     ngDialog.open({ template: '/assets/temlates/'+template+'.html', className: 'ngdialog-theme-default', scope: $scope });
-                //     $scope.tab=1;
-                // };
+                
+                $scope.getErrorLName = function (error) {
+                    if (angular.isDefined(error)) {
+                        if (error.required) {
+                        return "Last name is required.";
+                        } else if (error.pattern) {
+                            return "Last name is invalid.";
+                        } 
+                    }
+                };
+                
+                $scope.getErrorEmail = function (error) {
+                    if (angular.isDefined(error)) {
+                        if (error.required) {
+                        return "Email is required.";
+                        } else if (error.pattern) {
+                            return "Email is invalid.";
+                        } 
+                    }
+                };
+                
+                $scope.getErrorPassword = function (error) {
+                    if (angular.isDefined(error)) {
+                        if (error.required) {
+                        return "Password is required.";
+                        } else if (error.pattern) {
+                            return "Password is invalid.";
+                        } 
+                    }
+                };
 
                 $scope.closeModal = function() {
                     $(".modal-backdrop").hide();
                 };
-
-                // $scope.clickToOpen = function(route) {
-                //     $state.go('start');
-                // };
-
+                
                 $scope.signin = function(params) {
-                    // debugger;
                     $auth.submitLogin({
                             email: params.email,
                             password: params.password
                         })
                         .then(function(resp) {
-                            // handle success response
-                            // $window.alert('success response');
                             $scope.closeModal();
                             $state.go('start');
                         })
                         .catch(function(resp) {
-                            // handle error response
                             $window.alert('Wrong email or password!');
                         });
                 };
 
                 $scope.signup = function(params) {
-                    // debugger;
                     $auth.submitRegistration({
                             email: params.email,
                             password: params.password,
@@ -65,14 +89,11 @@
                             password_confirmation: params.password_confirmation
                         })
                         .then(function(resp) {
-                            // handle success response
                             $window.alert('Registration completed!');
                             $scope.closeModal();
                             $state.go('start');
                         })
                         .catch(function(resp) {
-                            // handle error response
-                            // debugger;
                             $window.alert('error response');
                         });
                 };

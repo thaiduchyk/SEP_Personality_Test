@@ -27,7 +27,5 @@
 //= require controllers/homeController
 //= require controllers/testController
 //= require controllers/resultsController
-//= require controllers/formController
 
 // Directives
-//= require directives/validationDirectives
