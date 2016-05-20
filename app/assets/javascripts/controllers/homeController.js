@@ -37,44 +37,45 @@
                 //     $state.go('start');
                 // };
 
-                $scope.login = function(params) {
-              debugger;
-                    $auth.submitLogin({email: params.email, password:  params.password})
+                $scope.signin = function(params) {
+                    // debugger;
+                    $auth.submitLogin({
+                            email: params.email,
+                            password: params.password
+                        })
                         .then(function(resp) {
                             // handle success response
-                            $window.alert('success response');
+                            // $window.alert('success response');
+                            $scope.closeModal();
                             $state.go('start');
                         })
                         .catch(function(resp) {
                             // handle error response
-
-                            $window.alert('error response');
+                            $window.alert('Wrong email or password!');
                         });
-                }
+                };
 
-                $scope.signin = function(params) {
-              debugger;
-                    $auth.submitRegistration({email: params.email, password: params.password, name: params.fName, surname: params.lName, password_confirmation: params.password_confirmation})
+                $scope.signup = function(params) {
+                    // debugger;
+                    $auth.submitRegistration({
+                            email: params.email,
+                            password: params.password,
+                            name: params.fName,
+                            surname: params.lName,
+                            password_confirmation: params.password_confirmation
+                        })
                         .then(function(resp) {
                             // handle success response
-
+                            $window.alert('Registration completed!');
                             $scope.closeModal();
-                            $window.alert('success response');
-                            // $state.go('start');
+                            $state.go('start');
                         })
                         .catch(function(resp) {
                             // handle error response
-                      debugger;
-
+                            // debugger;
                             $window.alert('error response');
                         });
-                }
-
-                $scope.test = function() {
-                    $window.alert('greeting');
-                }
-
-
+                };
 
                 // $scope.selectTab = function(setTab) {
                 //     $scope.tab = setTab;

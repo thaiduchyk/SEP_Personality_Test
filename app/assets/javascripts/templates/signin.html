@@ -1,136 +1,47 @@
-<div id="signinContainer" class="modal fade" role="dialog" style="align-content:col-centeredcenter">
+<div id="signinContainer" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<button type="button" class="close backArr" data-dismiss="modal" data-toggle="modal" data-target="#loginContainer">&larr;</button>
-				<div class="modal-title"></div>
 			</div>
-
 			<div class="modal-body">
-
-				<form name="registrationForm" role="form" ng-init="registrationForm = {}" novalidate>
+				<form name="signinForm" ng-init="signinForm = {}" role="form" novalidate>
 
 					<div class="form-group">
-						<label for="signFName">First name:</label>
-
-						<input type="text" class="border form-control" ng-model="registrationForm.fName" name="signFName" data-toggle="tooltip" title="Only latin and cyrillic letters, - ,'" placeholder="Jack" ng-pattern="/^[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+(-[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+)?$/" required>
-
-						<span style="color:red" ng-show="registrationForm.signFName.$dirty && registrationForm.signFName.$invalid">
-							<span ng-show="registrationForm.signFName.$error.required">First name is required.</span>
-						<span ng-show="registrationForm.signFName.$error">Invalid first name.</span>
-						</span>
-
-					</div>
-					<div class="form-group">
-						<label for="signLName">Last name:</label>
-
-						<input type="text" class="border form-control" ng-model="registrationForm.lName" name="signLName" data-toggle="tooltip" title="Only latin and cyrillic letters, - ,'" placeholder="Johnson" ng-pattern="/^[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+(-[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+)?$/" required>
-
-						<span style="color:red" ng-show="registrationForm.signLName.$dirty && registrationForm.signLName.$invalid">
-							<span ng-show="registrationForm.signLName.$error.required">Last name is required.</span>
-						<span ng-show="registrationForm.signLName.$error">Invalid last name.</span>
-						</span>
+						<label for="signinEmail">Email:</label>
+						<input type="text" class="border form-control" ng-model="signinForm.email" name="signinEmail" placeholder="address@example.com">
 					</div>
 
 					<div class="form-group">
-						<label for="signEmail">Email:</label>
-						<input type="email" overwrite-email class="border form-control" ng-model="registrationForm.email" name="signEmail" data-toggle="tooltip" title="Only a-z, 0-9, ., _" placeholder="j.johnson@example.com" required>
-
-						<span style="color:red" ng-show="registrationForm.signEmail.$dirty && registrationForm.signEmail.$invalid">
-            <span ng-show="registrationForm.signEmail.$error.required">Email is required.</span>
-						<span ng-show="registrationForm.signEmail.$error">Invalid email address.</span>
-						</span>
-
-					</div>
-					<div class="form-group">
-						<label for="signPassword">Password:</label>
-						<input type="password" overwrite-password class="border form-control" ng-model="registrationForm.password" name="signPassword" data-toggle="tooltip" title="Min-length:6, max-length:16" ng-minlength="6" ng-maxlength="16" required>
-
-						<span style="color:red" ng-show="registrationForm.signPassword.$dirty && registrationForm.signPassword.$invalid">
-            <span ng-show="registrationForm.signPassword.$error.required">Password is required.</span>
-						<span ng-show="registrationForm.signPassword.$error">Invalid password.</span>
-						</span>
+						<label for="signinPassword">Password:</label>
+						<input type="password" class="border form-control" ng-model="signinForm.password" name="signinPassword">
 					</div>
 
-					<div class="form-group">
-						<label for="signConPassword">Confirm password:</label>
-						<input type="password" name="signConPassword" overwrite-password class="border form-control" ng-model="registrationForm.password_confirmation" data-toggle="tooltip" title="Min-length:6, max-length:16" ng-minlength="6" ng-maxlength="16" required>
-
-						<span style="color:red" ng-show="(registrationForm.signConPassword.$dirty && registrationForm.signConPassword.$invalid) || (registrationForm.password != registrationForm.password_confirmation && registrationForm.signConPassword.$dirty)">
-            <span ng-show="registrationForm.signConPassword.$error.required">Password is required.</span>
-						<span ng-show="registrationForm.signConPassword.$error">Invalid password.</span>
-						<span ng-show="(registrationForm.password != registrationForm.password_confirmation) && registrationForm.signConPassword.$dirty">Passwords don't match.</span>
-						</span>
-					</div>
-					<div align="center">
-						<button ng-click="signin(registrationForm)" class="signin border" ng-disabled="registrationForm.signFName.$invalid || registrationForm.signLName.$invalid || registrationForm.signEmail.$invalid || registrationForm.signPassword.$invalid || registrationForm.signConPassword.$invalid || (registrationForm.password != registrationForm.password_confirmation)">Register</button>
+					<div id="btnsContainer" align="center">
+						<button type="submit" class="signin border" ng-click="signin(signinForm)">Sign in</button>
+						<h4>or</h4>
+						<button type="button" class="signup border" data-dismiss="modal" data-toggle="modal" data-target="#signupContainer" id="signupBtn">Sign up</button>
 					</div>
 				</form>
-
 			</div>
 		</div>
 	</div>
 </div>
 
-<!-- <section style="margin-top:20px">
-  <ul class="nav nav-tabs nav-justified">
-    <li role="presentation" ng-class="{active:isSelected(1)}"> <a href ng-click="selectTab(1)">Log in</a> </li>
-    <li role="presentation" ng-class="{active:isSelected(2)}"> <a href ng-click="selectTab(2)">Create account</a> </li>
-  </ul>
-</section>
-<div class="panel" ng-show="isSelected(1)">
-  <form name="signinForm" ng-submit="signinForm.$valid && authSignin()" novalidate>
-    <div class="form-group form-group-lg" style="margin-top:20px">
-      <input type="email" class="form-control" placeholder="Email" ng-model="signInData.email" ng-change="clearErrorMessage()" required/>
-    </div>
-    <div class="form-group form-group-lg">
-      <input type="password" class="form-control" placeholder="Password" ng-model="signInData.password" ng-change="clearErrorMessage()" required/>
-    </div>
-    <div class="warningMessage">
-      {{errorMessage}}
-    </div>
-    <div class="form-group form-group-lg">
-      <button type="submit" class="btn btn-warning btn-lg btn-block" ng-disabled="signinForm.$invalid">Sign in</button>
-    </div>
-  </form>
-</div>
-<div class="panel" ng-show="isSelected(2)">
-  <form name="signupForm" ng-submit="processForm()" novalidate>
-    <div class="form-group form-group-md" style="margin-top:10px">
-      <input type="text" class="form-control" placeholder="Name" ng-model="formData.name" required/>
-    </div>
-    <div class="form-group form-group-md">
-      <input type="text" name='surname' class="form-control" placeholder="Surname" ng-model="formData.surname" required/>
-    </div>
-    <div class="form-group form-group-md">
-      <input type="email" class="form-control" placeholder="Email" ng-model="formData.email" required/>
-    </div>
-    <div class="form-group form-group-md">
-      <input type="password"
-             name="password"
-             class="form-control"
-             placeholder="Password, alphanumeric with minimum 6 characters"
-             ng-model="formData.password"
-             ng-pattern="/^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/"
-             required/>
-    </div>
-    <div class="form-group form-group-md">
-      <input
-      type="password"
-      name="confirmPassword"
-      placeholder="Confirm password"
-      ng-model="formData.password_confirmation"
-      ng-class="comparePasswords() ? 'form-control':'form-control redborder'"
-      required/>
-    </div>
-    <div class="form-group form-group-md">
-      <button
-      type="submit"
-      class="btn btn-warning btn-lg btn-block"
-      ng-disabled="!isFormValid()">Sign me up!</button>
-    </div>
-    <span ng-show="false" >{{ formValidation.valid = signupForm.$valid }}</span>
-  </form>
-</div> -->
+
+
+
+<!-- <form name="signinForm" ng-submit="signinForm.$valid && authenticate('facebook')" novalidate>
+  <div class="form-group form-group-lg" style="margin-top:20px">
+    <input type="email" class="form-control" placeholder="Email" ng-model="signInData.email" ng-change="clearErrorMessage()" required/>
+  </div>
+  <div class="form-group form-group-lg">
+    <input type="password" class="form-control" placeholder="Password" ng-model="signInData.password" ng-change="clearErrorMessage()" required/>
+  </div>
+  <div class="warningMessage">
+    {{errorMessage}}
+  </div>
+  <div class="form-group form-group-lg">
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+  </div>
+</form> -->

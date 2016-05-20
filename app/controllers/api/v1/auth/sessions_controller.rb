@@ -5,7 +5,7 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
   end
 
   def create
-binding.pry
+# binding.pry
     super do
       @resource.skip_password_validation = true
     end
