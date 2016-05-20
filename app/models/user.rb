@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
          :recoverable, :omniauthable
   include DeviseTokenAuth::Concerns::User
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,
-            format: { with: VALID_EMAIL_REGEX },
+            # format: { with: VALID_EMAIL_REGEX },
             uniqueness: {case_sensitive: false}
 
   # VALID_PASSWORD_REGEX = /(?=.*\d)(?=.*[a-zA-Z])/
@@ -19,10 +19,10 @@ class User < ActiveRecord::Base
             #  format: { with: VALID_PASSWORD_REGEX },
              unless: :skip_password_validation
 
-  VALID_NAME_REGEX = /\A[A-ZА-Я][a-zа-я]{2,}\z/
-  validates :name, presence:true,
-            format: { with: VALID_NAME_REGEX }
+  # VALID_NAME_REGEX = /\A[A-ZА-Я][a-zа-я]{2,}\z/
+  validates :name, presence:true
+            # format: { with: VALID_NAME_REGEX }
 
-  validates :surname, presence:true,
-            format: { with: VALID_NAME_REGEX }
+  validates :surname, presence:true
+            # format: { with: VALID_NAME_REGEX }
 end
