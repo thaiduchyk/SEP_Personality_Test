@@ -5,7 +5,8 @@
 
             $authProvider.configure({
                apiUrl: 'http://localhost:3000/api/v1',
-               forceValidateToken: true
+               forceValidateToken: false,
+               storage: 'localStorage'
             });
 
             // $authProvider.configure({

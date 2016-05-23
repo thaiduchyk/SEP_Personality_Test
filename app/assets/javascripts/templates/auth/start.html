@@ -18,13 +18,13 @@
 </div> -->
 
 <div class="wrapper">
-    <button ui-sref="home" type="button" name="button" class="logout">LogOut</button>
+    <button ng-click="signOutClick()" type="button" name="button" class="logout">LogOut</button>
     <div ng-include="'welcome.html'"></div>
 
 
 
 
-    <a href="#" class="start">Begin test</a>
+    <a ng-click="test()" class="start">Begin test</a>
 
 
 </div>

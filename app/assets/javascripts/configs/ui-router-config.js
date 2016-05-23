@@ -25,10 +25,10 @@
                     }
                 }
             })
-            .state('start', {
+            .state('auth.start', {
                 url: '/start',
                 controller: 'HomeController',
-                templateUrl: 'start.html'
+                templateUrl: 'auth/start.html'
             })
             .state('auth.test', {
                 url: '/test',

@@ -21,51 +21,51 @@
                 $scope.NAME_REGEXP = /^[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+(-[A-ZА-ЯЄІЇҐ][a-zа-яєіїґ]*'?[a-zа-яєіїґ]+)?$/;
                 $scope.EMAIL_REGEXP = /^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/;
                 $scope.PASSWORD_REGEXP = /^[A-Za-z0-9]{6,16}$/;
-                
-                $scope.getErrorFName = function (error) {
+
+                $scope.getErrorFName = function(error) {
                     if (angular.isDefined(error)) {
                         if (error.required) {
-                        return "First name is required.";
+                            return "First name is required.";
                         } else if (error.pattern) {
                             return "First name is invalid.";
-                        } 
+                        }
                     }
                 };
-                
-                $scope.getErrorLName = function (error) {
+
+                $scope.getErrorLName = function(error) {
                     if (angular.isDefined(error)) {
                         if (error.required) {
-                        return "Last name is required.";
+                            return "Last name is required.";
                         } else if (error.pattern) {
                             return "Last name is invalid.";
-                        } 
+                        }
                     }
                 };
-                
-                $scope.getErrorEmail = function (error) {
+
+                $scope.getErrorEmail = function(error) {
                     if (angular.isDefined(error)) {
                         if (error.required) {
-                        return "Email is required.";
+                            return "Email is required.";
                         } else if (error.pattern) {
                             return "Email is invalid.";
-                        } 
+                        }
                     }
                 };
-                
-                $scope.getErrorPassword = function (error) {
+
+                $scope.getErrorPassword = function(error) {
                     if (angular.isDefined(error)) {
                         if (error.required) {
-                        return "Password is required.";
+                            return "Password is required.";
                         } else if (error.pattern) {
                             return "Password is invalid.";
-                        } 
+                        }
                     }
                 };
 
                 $scope.closeModal = function() {
                     $(".modal-backdrop").hide();
                 };
-                
+
                 $scope.signin = function(params) {
                     $auth.submitLogin({
                             email: params.email,
@@ -73,7 +73,7 @@
                         })
                         .then(function(resp) {
                             $scope.closeModal();
-                            $state.go('start');
+                            $state.go('auth.start');
                         })
                         .catch(function(resp) {
                             $window.alert('Wrong email or password!');
@@ -91,11 +91,25 @@
                         .then(function(resp) {
                             $window.alert('Registration completed!');
                             $scope.closeModal();
-                            $state.go('start');
+                            $state.go('auth.start');
                         })
                         .catch(function(resp) {
                             $window.alert('error response');
                         });
+                };
+
+                $scope.signOutClick = function() {
+                    $auth.signOut()
+                        .then(function(resp) {
+                            $state.go('home');
+                        })
+                        .catch(function(resp) {
+                            $window.alert("error! You are not signed in!");
+                        });
+                };
+
+                $scope.test = function(){
+                  $window.alert(JSON.stringify($auth.validateUser()));
                 };
 
                 // $scope.selectTab = function(setTab) {
