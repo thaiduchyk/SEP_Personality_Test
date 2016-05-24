@@ -8,6 +8,7 @@
 //= require angular-rails-templates
 //= require angular-ui/build/angular-ui
 //= require angular-bootstrap/ui-bootstrap
+//= require angularjs-slider/dist/rzslider
 
 
 //= require ng-token-auth/dist/ng-token-auth

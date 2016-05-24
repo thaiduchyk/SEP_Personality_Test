@@ -3,8 +3,8 @@
     angular.module('app')
         .controller('TestController', [
             '$rootScope', '$scope', '$auth', '$http', '$state', 'ngDialog', '$location', '$window', '$timeout', '$uibModal',
-            function($rootScope, $scope, $auth, $http, $state, ngDialog, $location, $window, $timeout, $uibModal){
-// $uibModal
+            function($rootScope, $scope, $auth, $http, $state, ngDialog, $location, $window, $timeout, $uibModal) {
+                // $uibModal
                 $rootScope.resultsArray = [];
                 $scope.count = 1;
                 $scope.buttonText = "Next";
@@ -18,11 +18,12 @@
                     "You find a wide variety of things very interesting",
                     "Your faith sustains you",
                     "You intuitively see the perspectives of others",
-                    "You feel being a focused expert is better than a broad generalist"];
+                    "You feel being a focused expert is better than a broad generalist"
+                ];
                 $scope.question = $scope.array[0];
                 $scope.testInProgress = true;
 
-                $scope.nextQuestion = function(){
+                $scope.nextQuestion = function() {
                     var item = {
                         question: $scope.question,
                         value: $scope.minSlider.value
@@ -41,15 +42,15 @@
                     };
 
                 };
-                    $scope.signOutClick = function() {
-                            $auth.signOut()
-                                .then(function(resp) {
-                                    $state.go('home');
-                                })
-                                .catch(function(resp) {
-                                    $window.alert("error! You are not signed in!");
-                                });
-                        };
+                $scope.signOutClick = function() {
+                    $auth.signOut()
+                        .then(function(resp) {
+                            $state.go('home');
+                        })
+                        .catch(function(resp) {
+                            $window.alert("error! You are not signed in!");
+                        });
+                };
                 // Minimal slider config
                 $scope.minSlider = {
                     value: 0,
@@ -58,6 +59,6 @@
                         ceil: 50
                     }
                 };
-                
-            }]);
+            }
+        ]);
 }());
