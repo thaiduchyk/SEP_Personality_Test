@@ -2,7 +2,7 @@
     // debugger;
     'use strict';
     angular.module('app',
-        ['templates', 'ui.router','ng-token-auth', 'ngDialog'
+        ['templates', 'ui.router','ng-token-auth', 'ngDialog', 'ui.bootstrap'
     ]);
 
 }());

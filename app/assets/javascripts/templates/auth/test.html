@@ -1,0 +1,32 @@
+
+<div class="test wrapper" >
+
+  <button ng-click="signOutClick()" type="button" name="button" class="logout">LogOut</button>
+    
+  <div class="row">
+    <div class="col-md-12"><h2>{{question}}</h2></div>
+  </div>
+
+
+  <div class="row">
+    <rzslider rz-slider-model="minSlider.value" rz-slider-options="minSlider.options"></rzslider>
+  </div>
+
+  <div class="row">
+    <div class="grey-color col-md-6 text-left">
+      Strongly Disagree
+    </div>
+    <div class="grey-color col-md-6 text-right">
+      Strongly Agree
+    </div>
+  </div>
+
+    <div class="next-wrapper">
+      <button type="button" class="next" ng-click="nextQuestion()">{{buttonText}}</button>
+    </div>
+
+
+    <div class="pages text-center">
+      <h4 class="grey-color">{{count}}/{{array.length}}</h4>
+    </div>
+</div>

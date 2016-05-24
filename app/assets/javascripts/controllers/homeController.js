@@ -108,9 +108,10 @@
                         });
                 };
 
-                $scope.test = function(){
-                  $window.alert(JSON.stringify($auth.validateUser()));
+                $scope.beginTest = function(){
+                  $state.go('auth.test')
                 };
+                
 
                 // $scope.selectTab = function(setTab) {
                 //     $scope.tab = setTab;

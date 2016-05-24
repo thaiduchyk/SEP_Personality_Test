@@ -33,7 +33,7 @@
             .state('auth.test', {
                 url: '/test',
                 controller: 'TestController',
-                templateUrl: 'test.html'
+                templateUrl: 'auth/test.html'
 
             })
             .state('auth.results', {
