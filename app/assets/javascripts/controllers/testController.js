@@ -2,12 +2,10 @@
     'use strict';
     angular.module('app')
         .controller('TestController', [
-            '$scope', '$rootScope', '$auth', '$state', '$timeout', '$uibModal',
-            function($scope, $rootScope, $auth, $state, $timeout, $uibModal){
-
+            '$rootScope', '$scope', '$auth', '$http', '$state', 'ngDialog', '$location', '$window', '$timeout', '$uibModal',
+            function($rootScope, $scope, $auth, $http, $state, ngDialog, $location, $window, $timeout, $uibModal){
+// $uibModal
                 $rootScope.resultsArray = [];
-                $scope.name = $rootScope.userInfo.name;
-                // $scope.surname = $rootScope.userInfo.surname;
                 $scope.count = 1;
                 $scope.buttonText = "Next";
                 $scope.array = ["You believe most people have a short attention span",
@@ -43,16 +41,15 @@
                     };
 
                 };
-                $scope.authSignOut = function() {
-                    $auth.signOut()
-                        .then(function(resp) {
-                            console.log("Signed out succesfully");
-                            $state.go('home');
-                        })
-                        .catch(function(resp) {
-                            console.log("Sign out error");
-                        });
-                };
+                    $scope.signOutClick = function() {
+                            $auth.signOut()
+                                .then(function(resp) {
+                                    $state.go('home');
+                                })
+                                .catch(function(resp) {
+                                    $window.alert("error! You are not signed in!");
+                                });
+                        };
                 // Minimal slider config
                 $scope.minSlider = {
                     value: 0,
@@ -61,5 +58,6 @@
                         ceil: 50
                     }
                 };
+                
             }]);
 }());

@@ -24,6 +24,12 @@ h1 {
   text-align: center;
   text-transform: uppercase;
 }
+h2 {
+  font-size: 35px !important;
+  font-weight: 900 !important;
+  text-align: center;
+  text-transform: uppercase;
+}
 
 hr {
   width: 85%;
@@ -177,3 +183,31 @@ input.ng-invalid.ng-dirty {
   background-color: #f7cc17 !important;
   color: #fff !important;
 }
+
+/*****************TEST.html*****************/
+.test.wrapper{
+  padding: 100px 50px;
+}
+.grey-color{
+  color: #BFBFBE;
+}
+.next{
+  background-color: #fff !important;
+  font-size: 18px;
+  font-weight: bold;
+  color: #BFBFBE;
+  text-transform: uppercase;
+  border: none;
+}
+.next-wrapper{
+  width: 62px;
+  margin: 0 auto;
+}
+
+.pages{
+  position: absolute;
+  bottom: 0;
+  left: 47.5%;
+}
+
+

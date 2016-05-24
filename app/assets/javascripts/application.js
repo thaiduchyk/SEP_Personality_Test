@@ -7,6 +7,7 @@
 //= require angular-ui-router/release/angular-ui-router
 //= require angular-rails-templates
 //= require angular-ui/build/angular-ui
+//= require angular-bootstrap/ui-bootstrap
 
 
 //= require ng-token-auth/dist/ng-token-auth
