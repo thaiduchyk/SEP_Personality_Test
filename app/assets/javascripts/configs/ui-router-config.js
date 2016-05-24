@@ -39,7 +39,7 @@
             .state('auth.results', {
                 url: '/results',
                 controller: 'ResultsController',
-                templateUrl: 'results.html'
+                templateUrl: 'auth/results.html'
             });
 
             $urlRouterProvider.otherwise('/home');
