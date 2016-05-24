@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.2.4"
 
 gem 'rails', '4.2.5.1'
 gem 'pg', '0.18.4'
@@ -43,4 +44,3 @@ group :production do
   gem 'rails_stdout_logging'
   gem 'rails_serve_static_assets'
 end
-
