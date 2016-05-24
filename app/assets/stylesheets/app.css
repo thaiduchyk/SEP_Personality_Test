@@ -236,6 +236,12 @@ li:before{
   text-transform: uppercase;
   margin-bottom: 10px;
 }
+
+.down{
+  float: right;
+}
+
+
 .friends-invitation{
   margin-bottom: 20px;
 }
