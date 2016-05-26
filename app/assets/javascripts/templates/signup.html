@@ -18,7 +18,7 @@
               <p class="error" ng-show="registrationForm.signupFName.$dirty && registrationForm.signupFName.$invalid">
              {{getErrorFName(registrationForm.signupFName.$error)}}</p>
 					</div>
-          
+
 					<div class="form-group">
 						<label for="signupLName">Last name:</label>
 						<input type="text" class="border form-control" ng-model="registrationForm.lName" name="signupLName" placeholder="Johnson" ng-pattern="NAME_REGEXP" required>
@@ -28,11 +28,11 @@
 
 					<div class="form-group">
 						<label for="signupEmail">Email:</label>
-						<input type="email" class="border form-control" ng-model="registrationForm.email" name="signupEmail" placeholder="j.johnson@example.com" ng-pattern="EMAIL_REGEXP" required>
+						<input type="text" class="border form-control" ng-model="registrationForm.email" name="signupEmail" placeholder="j.johnson@example.com" ng-pattern="EMAIL_REGEXP" required>
               <p class="error" ng-show="registrationForm.signupEmail.$dirty && registrationForm.signupEmail.$invalid">
              {{getErrorEmail(registrationForm.signupEmail.$error)}}</p>
 					</div>
-          
+
 					<div class="form-group">
 						<label for="signupPassword">Password:</label>
 						<input type="password" class="border form-control" ng-model="registrationForm.password" name="signupPassword" ng-pattern="PASSWORD_REGEXP" required>
@@ -46,7 +46,7 @@
             <p class="error" ng-show="(registrationForm.password != registrationForm.password_confirmation) && registrationForm.signupConPassword.$dirty">
              Passwords don't match.</p>
 					</div>
-          
+
 					<div align="center">
 						<button ng-click="signup(registrationForm)" class="signup border" ng-disabled="registrationForm.signupFName.$invalid || registrationForm.signupLName.$invalid || registrationForm.signupEmail.$invalid || registrationForm.signupPassword.$invalid || registrationForm.signupConPassword.$invalid || (registrationForm.password != registrationForm.password_confirmation)">Sign up</button>
 					</div>
@@ -59,10 +59,10 @@
 
 <script>
 $(document).ready(function(){
-    $('input[name = signupFName]').tooltip({title: "Only latin and cyrillic letters, - ,'", trigger: "focus", placement: "right"}); 
-    $('input[name = signupLName]').tooltip({title: "Only latin and cyrillic letters, - ,'", trigger: "focus", placement: "right"}); 
-    $('input[name = signupEmail]').tooltip({title: "Only a-z, 0-9, ., _", trigger: "focus", placement: "right"}); 
-    $('input[name = signupPassword]').tooltip({title: "A-Z, a-z, 0-9, min-length:6, max-length:16", trigger: "focus", placement: "right"}); 
+    $('input[name = signupFName]').tooltip({title: "Only latin and cyrillic letters, - ,'", trigger: "focus", placement: "right"});
+    $('input[name = signupLName]').tooltip({title: "Only latin and cyrillic letters, - ,'", trigger: "focus", placement: "right"});
+    $('input[name = signupEmail]').tooltip({title: "Only a-z, 0-9, ., _", trigger: "focus", placement: "right"});
+    $('input[name = signupPassword]').tooltip({title: "A-Z, a-z, 0-9, min-length:6, max-length:16", trigger: "focus", placement: "right"});
 });
 </script>
 
