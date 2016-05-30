@@ -239,13 +239,13 @@ li:before{
 
 .down{
   float: right;
+  cursor: pointer;
 }
-
 
 .friends-invitation{
   margin-bottom: 20px;
 }
-input[type=email], input[type=submit]{
+input[type=email], input[type=button]{
   height: 35px;
 }
 input[type=email]{
@@ -256,17 +256,18 @@ input[type=email]{
 .last-child{
   margin-bottom: 0 !important;
 }
-input[type=submit]{
-
-}
-
 .footer {
     margin: 50px 0 15px;
     font-size: 20px !important;
     font-weight: 500 !important;
     color: #C5C5C4;
 }
-
+.descr {
+  width: 260px;
+  margin-top: 15px;
+  font-size: 10px;
+  overflow: auto;
+}
 /*****************TEST.html*****************/
 .test.wrapper{
   padding: 100px 50px;
