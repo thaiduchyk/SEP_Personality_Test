@@ -4,6 +4,9 @@
         .controller('ResultsController', ['$rootScope', '$scope', '$auth', '$http', '$state', 'ngDialog', '$location', '$window',
             function($rootScope, $scope, $auth, $http, $state, ngDialog, $location, $window) {
 
+              $scope.images = {
+                  down: '/assets/down.png'
+              };
                 $scope.retakeTest = function(){
                     $state.go('auth.test');
                 };
