@@ -14,7 +14,7 @@
 
 					<div class="form-group">
 						<label for="signupFName">First name:</label>
-						<input type="text" class="border form-control" ng-model="registrationForm.fName" name="signupFName" placeholder="Jack" ng-pattern="NAME_REGEXP" required>
+						<input type="text" class="border form-control" ng-model="registrationForm.fName" name="signupFName" placeholder="Jack" ng-pattern="NAME_REGEXP" required autofocus>
               <p class="error" ng-show="registrationForm.signupFName.$dirty && registrationForm.signupFName.$invalid">
              {{getErrorFName(registrationForm.signupFName.$error)}}</p>
 					</div>

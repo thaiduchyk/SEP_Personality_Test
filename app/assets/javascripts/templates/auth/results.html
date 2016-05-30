@@ -7,13 +7,14 @@
 
             <div class="middle-section">
                 <ol class="results-ol">
-                    <li ng-repeat="portrait in portraits" ng-click="selectPortrait(portrait)">{{portrait.name}}<span class="down"><img src="../images/down.jpg" alt=""></span></li>
+                    <li ng-repeat="portrait in portraits" ng-click="selectPortrait(portrait)">{{portrait.name}}<span class="down"><img ng-src={{images.down}} alt=""></span></li>
                     <div class="descr" ng-show="isSelected(portrait)">{{portrait.description}}</div>
-                    <li>Maximizer <span class="down"><img ng-src="assets/down.png" alt=""></span></li>
+
+                    <li>Maximizer <span class="down"><img ng-src={{images.down}} alt=""></span></li>
                     <div class="descr"></div>
-                    <li>Ideator <span class="down"><img ng-src="assets/down.png" alt=""></span></li>
+                    <li>Ideator <span class="down"><img ng-src={{images.down}} alt=""></span></li>
                     <div class="descr"></div>
-                    <li>Strategic <span class="down"><img ng-src="assets/down.png" alt=""></span></li>
+                    <li>Strategic <span class="down"><img ng-src={{images.down}} alt=""></span></li>
                     <div class="descr"></div>
                 </ol>
             </div>
@@ -21,6 +22,7 @@
             <div class="footer">Discuss with a coach</div>
         </div>
         <!--end of left-panel-->
+        <!-- jujikiki -->
 
 
         <div class="col-md-6 col-sm-6 col-xs-12 right-panel">
