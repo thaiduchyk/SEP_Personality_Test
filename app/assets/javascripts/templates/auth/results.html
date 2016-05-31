@@ -23,18 +23,18 @@
             <div class="undertitle">Peer review</div>
 
             <div class="middle-section">
-                <form class="friends-email" role="form" name="friendsEmailForm" novalidate>
+                <form class="friends-email" role="form" name="friendsEmailForm" ng-init="friendsEmailForm = {}" novalidate>
                     <div class="clearfix friends-invitation">
-                        <input type="email" class="form-control border" placeholder="friend@email.com" ng-pattern="EMAIL_REGEXP" name="email1" required/>
-                        <input type="button" ng-click="" class="plussign border" value="+" ng-disabled="friendsEmailForm.email1.$invalid" />
+                        <input type="email" class="form-control border" placeholder="friend@email.com" ng-pattern="EMAIL_REGEXP" name="frEmail1" ng-model="friendsEmailForm.email1" required/>
+                        <input type="button" ng-click="test()" class="plussign border plusbtn" value="+" ng-disabled="friendsEmailForm.frEmail1.$invalid" />
                     </div>
                     <div class="clearfix friends-invitation">
-                        <input type="email" class="form-control border" placeholder="friend@email.com" ng-pattern="EMAIL_REGEXP" name="email2" required/>
-                        <input type="button" ng-click="" class="plussign border" value="+" ng-disabled="friendsEmailForm.email2.$invalid" />
+                        <input type="email" class="form-control border" placeholder="friend@email.com"yura ng-pattern="EMAIL_REGEXP" name="frEmail2" ng-model="friendsEmailForm.email2" required/>
+                        <input type="button" ng-click="test()" class="plussign border plusbtn" value="+" ng-disabled="friendsEmailForm.frEmail2.$invalid" />
                     </div>
                     <div class="clearfix friends-invitation last-child">
-                        <input type="email" class="form-control border" placeholder="friend@email.com" ng-pattern="EMAIL_REGEXP" name="email3" required/>
-                        <input type="button" ng-click="" class="plussign border" value="+" ng-disabled="friendsEmailForm.email3.$invalid" />
+                        <input type="email" class="form-control border" placeholder="friend@email.com" ng-pattern="EMAIL_REGEXP" name="frEmail3" ng-model="friendsEmailForm.email3" required/>
+                        <input type="button" ng-click="test()" class="plussign border plusbtn" value="+" ng-disabled="friendsEmailForm.frEmail3.$invalid" />
                     </div>
                 </form>
             </div>

@@ -28,6 +28,10 @@
                             $window.alert("error! You are not signed in!");
                         });
                 };
+
+                $scope.test = function() {
+                  $window.alert("test");
+                };
             }
         ]);
 }());

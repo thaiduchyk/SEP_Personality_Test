@@ -169,6 +169,7 @@ input.ng-invalid.ng-dirty {
     line-height: 40px;
     font-weight: bold;
     border: 7px solid #f7cc17;
+    cursor: pointer;
 }
 .start:hover {
     text-decoration: none !important;
@@ -253,6 +254,17 @@ input[type=email]{
   width: 250px;
   margin-right: -28px;
 }
+.plusbtn {
+    font-weight: bold;
+}
+.plusbtn:hover {
+    color: #fff;
+    background-color: #f7cc17 !important;
+}
+.plusbtn[disabled] {
+  color: #040503;
+    background-color: #c7bf9d !important;
+}
 .last-child{
   margin-bottom: 0 !important;
 }
@@ -264,8 +276,8 @@ input[type=email]{
 }
 .descr {
   width: 260px;
-  margin-top: 15px;
-  font-size: 10px;
+  margin-top: 5px;
+  font-size: 11px;
   overflow: auto;
 }
 /*****************TEST.html*****************/
