@@ -33,7 +33,22 @@
             .state('auth.test', {
                 url: '/test',
                 controller: 'TestController',
-                templateUrl: 'auth/test.html'
+                templateUrl: 'auth/test.html',
+                resolve: {
+                  question: function($q, $http) {
+                    var deferred = $q.defer();
+                    $http({
+                      method: 'GET',
+                      url: '/api/v1/questions'
+                    }).then(function successCallback(response) {
+                        deferred.resolve(response.data.data);
+                      }, function errorCallback(response) {
+                        console.log('error');
+                      });
+                      return deferred.promise;
+
+                  }
+                }
 
             })
             .state('auth.results', {

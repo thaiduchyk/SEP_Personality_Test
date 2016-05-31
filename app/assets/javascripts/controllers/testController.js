@@ -2,36 +2,38 @@
     'use strict';
     angular.module('app')
         .controller('TestController', [
-            '$rootScope', '$scope', '$auth', '$http', '$state', 'ngDialog', '$location', '$window', '$timeout', '$uibModal',
-            function($rootScope, $scope, $auth, $http, $state, ngDialog, $location, $window, $timeout, $uibModal) {
-                // $uibModal
+            '$rootScope', '$scope', '$auth', '$http', '$state', 'ngDialog', '$location', '$window', '$timeout', '$uibModal', 'question',
+            function($rootScope, $scope, $auth, $http, $state, ngDialog, $location, $window, $timeout, $uibModal, question) {
+
+                $scope.array = [];
+                // console.log(question);
+                for(var i = 0; i < question.length; i++){
+                  $scope.array.push(question[i]);
+                }
+                console.log($scope.array);
+
                 $rootScope.resultsArray = [];
                 $scope.count = 1;
                 $scope.buttonText = "Next";
-                $scope.array = ["You believe most people have a short attention span",
-                    "You are interested in people histories",
-                    "You always root for the underdog",
-                    "You like to figure out the best way to get things done",
-                    "You like to talk about things everyone can agree on",
-                    "No one can tell you what to think, you decide",
-                    "You rack up points for your daily score",
-                    "You find a wide variety of things very interesting",
-                    "Your faith sustains you",
-                    "You intuitively see the perspectives of others",
-                    "You feel being a focused expert is better than a broad generalist"
-                ];
-                $scope.question = $scope.array[0];
+
+                $scope.question = $scope.array[0]['qst_txt'];
+                $scope.a = $scope.array[0]['a'];
+                $scope.b = $scope.array[0]['b'];
                 $scope.testInProgress = true;
 
                 $scope.nextQuestion = function() {
                     var item = {
                         question: $scope.question,
+                        a: $scope.a,
+                        b: $scope.b,
                         value: $scope.minSlider.value
                     };
                     $rootScope.resultsArray.push(item);
                     if ($scope.testInProgress) {
                         $scope.minSlider.value = 0;
-                        $scope.question = $scope.array[$scope.count];
+                        $scope.question = $scope.array[$scope.count]['qst_txt'];
+                        $scope.a = $scope.array[$scope.count]['a'];
+                        $scope.b = $scope.array[$scope.count]['b'];
                         $scope.count += 1;
                         if ($scope.count == $scope.array.length) {
                             $scope.buttonText = "Finish";
