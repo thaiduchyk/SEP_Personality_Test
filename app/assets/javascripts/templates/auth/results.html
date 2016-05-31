@@ -1,5 +1,5 @@
 <div class="results text-uppercase wrapper">
-  <button ng-click="signOutClick()" type="button" name="button" class="logout">LogOut</button>
+    <button ng-click="signOutClick()" type="button" name="button" class="logout">LogOut</button>
     <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-12 left-panel">
             <div class="title">Your high <span class="score">3</span></div>
@@ -7,23 +7,15 @@
 
             <div class="middle-section">
                 <ol class="results-ol">
-                    <li ng-repeat="portrait in portraits" ng-click="selectPortrait(portrait)">{{portrait.name}}<span class="down"><img ng-src={{images.down}} alt=""></span></li>
-                    <div class="descr" ng-show="isSelected(portrait)">{{portrait.description}}</div>
-
-                    <li>Maximizer <span class="down"><img ng-src={{images.down}} alt=""></span></li>
-                    <div class="descr"></div>
-                    <li>Ideator <span class="down"><img ng-src={{images.down}} alt=""></span></li>
-                    <div class="descr"></div>
-                    <li>Strategic <span class="down"><img ng-src={{images.down}} alt=""></span></li>
-                    <div class="descr"></div>
+                    <li ng-repeat="portrait in portraits">{{portrait.name}}<span class="down"><img ng-src={{images.down}} alt="" ng-init="boolshow=false" ng-click="boolshow = !boolshow"></span>
+                        <div class="descr" ng-show="boolshow">{{portrait.description}}</div>
+                    </li>
                 </ol>
             </div>
 
             <div class="footer">Discuss with a coach</div>
         </div>
         <!--end of left-panel-->
-        <!-- jujikiki -->
-
 
         <div class="col-md-6 col-sm-6 col-xs-12 right-panel">
 
@@ -31,18 +23,18 @@
             <div class="undertitle">Peer review</div>
 
             <div class="middle-section">
-                <form class="friends-email">
+                <form class="friends-email" role="form" name="friendsEmailForm" ng-init="friendsEmailForm = {}" novalidate>
                     <div class="clearfix friends-invitation">
-                        <input type="email" class="form-control border" placeholder="friend@email.com" required/>
-                        <input type="submit" class="plussign border" value="+" />
+                        <input type="email" class="form-control border" placeholder="friend@email.com" ng-pattern="EMAIL_REGEXP" name="frEmail1" ng-model="friendsEmailForm.email1" required/>
+                        <input type="button" ng-click="test()" class="plussign border plusbtn" value="+" ng-disabled="friendsEmailForm.frEmail1.$invalid" />
                     </div>
                     <div class="clearfix friends-invitation">
-                        <input type="email" class="form-control border" placeholder="friend@email.com" required/>
-                        <input type="submit" class="plussign border" value="+" />
+                        <input type="email" class="form-control border" placeholder="friend@email.com"yura ng-pattern="EMAIL_REGEXP" name="frEmail2" ng-model="friendsEmailForm.email2" required/>
+                        <input type="button" ng-click="test()" class="plussign border plusbtn" value="+" ng-disabled="friendsEmailForm.frEmail2.$invalid" />
                     </div>
                     <div class="clearfix friends-invitation last-child">
-                        <input type="email" class="form-control border" placeholder="friend@email.com" required/>
-                        <input type="submit" class="plussign border" value="+" />
+                        <input type="email" class="form-control border" placeholder="friend@email.com" ng-pattern="EMAIL_REGEXP" name="frEmail3" ng-model="friendsEmailForm.email3" required/>
+                        <input type="button" ng-click="test()" class="plussign border plusbtn" value="+" ng-disabled="friendsEmailForm.frEmail3.$invalid" />
                     </div>
                 </form>
             </div>

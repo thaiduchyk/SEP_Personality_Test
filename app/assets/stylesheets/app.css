@@ -169,6 +169,7 @@ input.ng-invalid.ng-dirty {
     line-height: 40px;
     font-weight: bold;
     border: 7px solid #f7cc17;
+    cursor: pointer;
 }
 .start:hover {
     text-decoration: none !important;
@@ -239,13 +240,13 @@ li:before{
 
 .down{
   float: right;
+  cursor: pointer;
 }
-
 
 .friends-invitation{
   margin-bottom: 20px;
 }
-input[type=email], input[type=submit]{
+input[type=email], input[type=button]{
   height: 35px;
 }
 input[type=email]{
@@ -253,20 +254,32 @@ input[type=email]{
   width: 250px;
   margin-right: -28px;
 }
+.plusbtn {
+    font-weight: bold;
+}
+.plusbtn:hover {
+    color: #fff;
+    background-color: #f7cc17 !important;
+}
+.plusbtn[disabled] {
+  color: #040503;
+    background-color: #c7bf9d !important;
+}
 .last-child{
   margin-bottom: 0 !important;
 }
-input[type=submit]{
-
-}
-
 .footer {
     margin: 50px 0 15px;
     font-size: 20px !important;
     font-weight: 500 !important;
     color: #C5C5C4;
 }
-
+.descr {
+  width: 260px;
+  margin-top: 5px;
+  font-size: 11px;
+  overflow: auto;
+}
 /*****************TEST.html*****************/
 .test.wrapper{
   padding: 100px 50px;
