@@ -29,5 +29,6 @@
 //= require controllers/homeController
 //= require controllers/testController
 //= require controllers/resultsController
+//= require controllers/questionController
 
 // Directives

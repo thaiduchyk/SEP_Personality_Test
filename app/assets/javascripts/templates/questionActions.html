@@ -1,0 +1,32 @@
+<style>
+  .question-form{
+    margin: 50px auto;
+    padding: 15px;
+    width: 300px;
+  }
+  input[type="text"]{
+    width: 200px;
+  }
+</style>
+<form>
+  <div align="center" class="question-form border">
+  <div class="form-group">
+    <label for="">Question:</label>
+    <input type="text" name="question" ng-model="question" class="border form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="">Answer a:</label>
+    <input type="text" name="a" ng-model="a" class="border form-control">
+  </div>
+
+    <div class="form-group">
+      <label for="">Answer b:</label>
+      <input type="text" name="b" ng-model="b" class="border form-control">
+    </div>
+
+
+    <button type="submit" class="signup border" ng-click="SendData()">Add</button>
+    </div>
+  </div>
+</form>

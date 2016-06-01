@@ -15,6 +15,12 @@
                 //    controller: 'homeController as homeCtrl'
                 //}
             })
+            .state('question', {
+
+                url: '/question',
+                controller: 'QuestionController',
+                templateUrl: 'questionActions.html'
+            })
             .state('auth', {
                 url: '/auth',
                 abstract: true,
