@@ -5,6 +5,9 @@
 
             $authProvider.configure({
                apiUrl: 'http://localhost:3000/api/v1',
+              //  tokenFormat: {
+              //     "Authorization": "token={{ token }} expiry={{ expiry }} uid={{ uid }}"
+              //   },
                forceValidateToken: false,
                storage: 'localStorage'
             });

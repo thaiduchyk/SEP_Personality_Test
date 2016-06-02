@@ -72,6 +72,8 @@
                             password: params.password
                         })
                         .then(function(resp) {
+                      // debugger;
+                            // $window.alert(resp.data);
                             $scope.closeModal();
                             $state.go('auth.start');
                         })
@@ -111,7 +113,7 @@
                 $scope.beginTest = function(){
                   $state.go('auth.test')
                 };
-                
+
 
                 // $scope.selectTab = function(setTab) {
                 //     $scope.tab = setTab;

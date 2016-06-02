@@ -41,6 +41,9 @@
                 controller: 'TestController',
                 templateUrl: 'auth/test.html',
                 resolve: {
+                  auth: function($auth) {
+                      return $auth.validateUser();
+                  },
                   question: function($q, $http) {
                     var deferred = $q.defer();
                     $http({
