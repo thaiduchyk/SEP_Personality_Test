@@ -30,5 +30,6 @@
 //= require controllers/testController
 //= require controllers/resultsController
 //= require controllers/questionController
+//= require controllers/friendsTestController
 
 // Directives

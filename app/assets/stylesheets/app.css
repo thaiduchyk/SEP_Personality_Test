@@ -23,7 +23,7 @@ body {
 .wrapper {
     position: relative;
     margin: 0 auto;
-    padding: 100px 150px;
+    padding: 100px 140px;
     width: 700px;
 }
 h1 {
@@ -46,7 +46,7 @@ hr {
 }
 .text {
     padding: 0 40px;
-    text-align: justify;
+    text-align: center;
     line-height: 1.6em;
 }
 h5 {
@@ -314,4 +314,11 @@ input[type=email]{
 
 .questionblock {
   height: 95px;
+}
+
+/******************FRIENDS_INVITATION.html********************/
+.invitation{
+  padding: 0 40px;
+  text-align: center;
+  text-transform: uppercase;
 }

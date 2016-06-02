@@ -1,0 +1,29 @@
+
+<div class="test wrapper" >
+  <div class="row">
+    <div class="col-md-12 questionblock"><h2>{{question}}</h2></div>
+  </div>
+
+
+  <div class="row slider">
+    <rzslider rz-slider-model="minSlider.value" rz-slider-options="minSlider.options"></rzslider>
+  </div>
+
+  <div class="row">
+    <div class="grey-color col-md-6 text-left">
+      Not her/him at all
+    </div>
+    <div class="grey-color col-md-6 text-right">
+      That’s totally her/him
+    </div>
+  </div>
+
+    <div class="next-wrapper">
+      <button type="button" class="next" ng-click="nextQuestion()">{{buttonText}}</button>
+    </div>
+
+
+    <div class="pages text-center">
+      <h4 class="grey-color">{{count}}/{{array.length}}</h4>
+    </div>
+</div>

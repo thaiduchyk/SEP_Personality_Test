@@ -6,21 +6,47 @@
         // debugger;
             $stateProvider
             .state('home', {
-
                 url: '/home',
                 controller: 'HomeController',
                 templateUrl: 'index.html'
-                //content: {
-                //    template: '<h1>hello</h1>',
-                //    controller: 'homeController as homeCtrl'
-                //}
             })
-            .state('question', {
 
+            .state('invitefriends', {
+                url: '/invitefriends',
+                controller: 'HomeController',
+                templateUrl: 'friendsInvitation.html'
+            })
+            .state('friendtest', {
+                url: '/friendtest',
+                controller: 'FriendsTestController',
+                templateUrl: 'friendTest.html',
+                resolve: {
+                  // auth: function($auth) {
+                  //     return $auth.validateUser();
+                  // },
+                  question: function($q, $http) {
+                    var deferred = $q.defer();
+                    $http({
+                      method: 'GET',
+                      url: '/api/v1/questions'
+                    }).then(function successCallback(response) {
+                        deferred.resolve(response.data.data);
+                      }, function errorCallback(response) {
+                        console.log('error');
+                      });
+                      return deferred.promise;
+
+                  }
+                }
+            })
+
+            .state('question', {
                 url: '/question',
                 controller: 'QuestionController',
                 templateUrl: 'questionActions.html'
             })
+
+
             .state('auth', {
                 url: '/auth',
                 abstract: true,
@@ -64,6 +90,11 @@
                 url: '/results',
                 controller: 'ResultsController',
                 templateUrl: 'auth/results.html'
+            })
+            .state('auth.friendreview', {
+                url: '/friendreview',
+                controller: 'ResultsController',
+                templateUrl: 'auth/friendReview.html'
             });
 
             $urlRouterProvider.otherwise('/home');

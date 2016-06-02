@@ -1,0 +1,38 @@
+<div class="results text-uppercase wrapper">
+    <button ng-click="signOutClick()" type="button" name="button" class="logout">LogOut</button>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 left-panel">
+            <div class="title">Your high <span class="score">3</span></div>
+            <div class="undertitle">Test result</div>
+
+            <div class="middle-section">
+                <ol class="results-ol">
+                    <li ng-repeat="portrait in portraits">{{portrait.name}}<span class="down"><img ng-src={{images.down}} alt="" ng-init="boolshow=false" ng-click="boolshow = !boolshow"></span>
+                        <div class="descr" ng-show="boolshow">{{portrait.description}}</div>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="footer">Discuss with a coach</div>
+        </div>
+        <!--end of left-panel-->
+
+        <div class="col-md-6 col-sm-6 col-xs-12 right-panel">
+
+            <div class="title">Your high <span class="score">3</span></div>
+            <div class="undertitle">Friend review</div>
+
+            <div class="middle-section">
+                <ol class="results-ol">
+                    <li ng-repeat="portrait in portraits">{{portrait.name}}<span class="down"><img ng-src={{images.down}} alt="" ng-init="boolshow=false" ng-click="boolshow = !boolshow"></span>
+                        <div class="descr" ng-show="boolshow">{{portrait.description}}</div>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="footer">Why is it important</div>
+        </div>
+        <!--end of right-panel-->
+    </div>
+    <!--end of panels row-->
+</div>
