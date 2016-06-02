@@ -18,8 +18,12 @@ body {
     color: #040503 !important;
 }
 
-/*****************INDEX.html*****************/
+.none-padding-r-l{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
 
+/*****************INDEX.html*****************/
 .wrapper {
     position: relative;
     margin: 0 auto;
@@ -277,7 +281,10 @@ input[type=email]{
 .descr {
   width: 260px;
   margin-top: 5px;
-  font-size: 11px;
+  font-size: 14px;
+  color: #545553;
+  font-weight: 200;
+  text-transform: none;
   overflow: auto;
 }
 /*****************TEST.html*****************/
@@ -285,13 +292,13 @@ input[type=email]{
   padding: 100px 50px;
 }
 .grey-color{
-  color: #BFBFBE;
+  color: #545553;
 }
 .next{
   background-color: #fff !important;
   font-size: 18px;
   font-weight: bold;
-  color: #BFBFBE;
+  color: #545553;
   text-transform: uppercase;
   border: none;
   margin-top: 30px;
